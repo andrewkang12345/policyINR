@@ -1,0 +1,5 @@
+name: single_shift
+description: "Policy 1: train ID, test OOD. Policy 2: train ID, test ID."
+policies:
+  - { pid: 0, train: ID, test: OOD }
+  - { pid: 1, train: ID, test: ID }

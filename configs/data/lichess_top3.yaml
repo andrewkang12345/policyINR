@@ -1,0 +1,13 @@
+name: lichess_top3
+kind: lichess
+pgn_dir: ${oc.env:HOME}/.cache/INR/lichess/pgn
+players:
+  # three active-export Lichess grandmasters (Carlsen/Nakamura/Caruana
+  # have either disabled exports or inactive Lichess accounts)
+  - lance5500         # GM Eric Hansen
+  - Zhigalko_Sergei   # GM Sergei Zhigalko
+  - penguingim1       # GM Andrew Tang
+max_games_per_player: 5000
+min_plies: 20
+max_plies: 120
+tracked_player_only: true

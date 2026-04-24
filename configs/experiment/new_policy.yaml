@@ -1,0 +1,6 @@
+name: new_policy
+description: "Policy 1: ID/ID. Policy 2: ID/ID. Policy 3: unseen in training, test on ID."
+policies:
+  - { pid: 0, train: ID,   test: ID }
+  - { pid: 1, train: ID,   test: ID }
+  - { pid: 2, train: NONE, test: ID }

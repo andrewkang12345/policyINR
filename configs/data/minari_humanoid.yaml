@@ -1,0 +1,6 @@
+name: minari_humanoid
+kind: minari
+env: humanoid
+max_episodes_per_policy: 60
+min_length: 32
+max_length: 256

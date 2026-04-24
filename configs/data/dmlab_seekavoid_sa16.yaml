@@ -1,0 +1,5 @@
+name: dmlab_seekavoid_sa16
+kind: dmlab
+max_episodes_per_policy: 60
+cnn_feature_dim: 128
+featurizer_seed: 0

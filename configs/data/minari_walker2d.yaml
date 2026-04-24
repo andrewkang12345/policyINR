@@ -1,0 +1,6 @@
+name: minari_walker2d
+kind: minari
+env: walker2d
+max_episodes_per_policy: 60
+min_length: 32
+max_length: 256

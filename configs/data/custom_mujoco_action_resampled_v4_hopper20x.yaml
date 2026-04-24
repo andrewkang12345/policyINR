@@ -1,0 +1,33 @@
+name: custom_mujoco_action_resampled_v4_hopper20x
+kind: custom_mujoco
+env: hopper
+dataset_id: inr_mujoco_action_resampled_v4_hopper20x/hopper/controlled-v0
+max_episodes_per_policy: 384
+min_length: 32
+max_length: 2560
+generation:
+  generate_if_missing: true
+  force_rebuild: false
+  generation_mode: action_resampled_v5
+  device: cuda
+  deterministic: true
+  episode_horizon: 2560
+  min_episode_length: 32
+  policies: [simple, medium, expert]
+  episodes_per_policy:
+    ID: 256
+    OOD: 128
+  calibration:
+    episodes_per_policy: 4
+    horizon: 256
+    sample_stride: 4
+  action_distribution:
+    kind: minari_id_action_matched_ood_v4
+    tail_fraction: 0.4
+    train_frac: 0.7
+    val_frac: 0.15
+    acceptance_threshold: 2.5
+    candidate_batch_size: 2048
+    max_candidate_batches: 128
+    probe_like_samples: 8
+    probe_like_repeats: 4

@@ -1,0 +1,30 @@
+name: custom_mujoco_step_resampled_ant
+kind: custom_mujoco
+env: ant
+dataset_id: inr_mujoco_step_resampled/ant/controlled-v0
+max_episodes_per_policy: 384
+min_length: 32
+max_length: 128
+generation:
+  generate_if_missing: true
+  force_rebuild: false
+  generation_mode: resampled_steps
+  device: cuda
+  deterministic: true
+  episode_horizon: 128
+  min_episode_length: 32
+  policies: [simple, medium, expert]
+  episodes_per_policy:
+    ID: 256
+    OOD: 128
+  calibration:
+    episodes_per_policy: 4
+    horizon: 256
+    sample_stride: 4
+  state_distribution:
+    kind: clustered_reference
+    n_components: 16
+    qpos_noise_scale: 0.15
+    qvel_noise_scale: 0.25
+    std_floor: 0.05
+    clip_margin_scale: 0.25

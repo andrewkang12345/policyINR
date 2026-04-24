@@ -1,0 +1,6 @@
+name: dmlab_seekavoid
+kind: dmlab
+# Per-(policy, eps) episode count. Total store size = 2 policies x 2 eps x N.
+max_episodes_per_policy: 60
+cnn_feature_dim: 128
+featurizer_seed: 0

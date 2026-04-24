@@ -1,0 +1,26 @@
+name: custom_mujoco_action_resampled_v2_ant
+kind: custom_mujoco
+env: ant
+dataset_id: inr_mujoco_action_resampled_v2/ant/controlled-v0
+max_episodes_per_policy: 384
+min_length: 32
+max_length: 128
+generation:
+  generate_if_missing: true
+  force_rebuild: false
+  generation_mode: action_resampled_v2
+  device: cuda
+  deterministic: true
+  episode_horizon: 128
+  min_episode_length: 32
+  policies: [simple, medium, expert]
+  episodes_per_policy:
+    ID: 256
+    OOD: 128
+  calibration:
+    episodes_per_policy: 4
+    horizon: 256
+    sample_stride: 4
+  action_distribution:
+    kind: shared_state_action_disagreement_v2
+    tail_fraction: 0.4

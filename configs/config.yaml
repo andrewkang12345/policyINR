@@ -1,0 +1,42 @@
+# Base experiment config. Hydra composes `data`, `model`, `experiment`, `eval`.
+defaults:
+  - _self_
+  - data: synthetic_grf
+  - model: cvae
+  - experiment: no_shift
+  - eval: default
+
+seed: 0
+run_name: "${now:%Y%m%d-%H%M%S}_${data.name}_${model.name}_${experiment.name}_s${seed}"
+output_dir: "outputs/${run_name}"
+
+train:
+  epochs: 30
+  batch_size: 256
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: "cuda"
+  amp: true
+  # history length K used by both training and eval extractors
+  history_k: 16
+  early_stop_patience: 0   # 0 = off
+
+# Shift scheme (swappable). State shift only for now; action shift goes here later.
+shift:
+  kind: "shared_region"        # OOD is a single state-space region where every policy has episodes
+  ood_fraction: 0.3
+  min_per_partition: 3
+
+hydra:
+  run:
+    dir: "${output_dir}"
+  sweep:
+    dir: "outputs/multirun/${now:%Y%m%d-%H%M%S}"
+    subdir: "${hydra.job.num}_${data.name}_${model.name}_${experiment.name}_s${seed}"
+  job:
+    chdir: false

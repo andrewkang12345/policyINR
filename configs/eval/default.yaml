@@ -1,0 +1,10 @@
+name: default
+# per-episode representation extraction
+per_episode_samples: 8          # how many (s_t, past) draws to average per episode
+min_episode_length_for_eval: 4
+# linear probe
+probe_max_iter: 1000
+probe_C: 1.0
+probe_cv_folds: 5               # StratifiedKFold for within-test evaluation
+# generative metric
+gen_n_batches: null             # null = use the whole test loader

@@ -1,0 +1,6 @@
+name: minari_ant
+kind: minari
+env: ant
+max_episodes_per_policy: 60
+min_length: 32
+max_length: 256

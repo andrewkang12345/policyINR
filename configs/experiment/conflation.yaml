@@ -1,0 +1,5 @@
+name: conflation
+description: "Policy 1: train OOD, test OOD. Policy 2: train ID, test ID."
+policies:
+  - { pid: 0, train: OOD, test: OOD }
+  - { pid: 1, train: ID,  test: ID }

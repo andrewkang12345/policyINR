@@ -1,0 +1,6 @@
+name: novel_generalization
+description: "Policy 1: OOD/ID. Policy 2: OOD/ID. Policy 3: unseen in training, test on ID."
+policies:
+  - { pid: 0, train: OOD,  test: ID }
+  - { pid: 1, train: OOD,  test: ID }
+  - { pid: 2, train: NONE, test: ID }

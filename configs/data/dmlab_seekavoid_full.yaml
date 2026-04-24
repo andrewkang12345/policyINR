@@ -1,0 +1,7 @@
+name: dmlab_seekavoid_full
+kind: dmlab
+# Same source episodes as the sa16 baseline; "full" is realized by the
+# suite override train.history_k=301 so each example sees the full episode.
+max_episodes_per_policy: 60
+cnn_feature_dim: 128
+featurizer_seed: 0

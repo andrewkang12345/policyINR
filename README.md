@@ -29,16 +29,40 @@ INR/
 ## 1. Install
 
 ```bash
-cd /mnt/data/INR
-pip install torch torchvision hydra-core omegaconf scikit-learn \
-            minari gymnasium h5py pyyaml stable-baselines3 \
-            sb3-contrib huggingface_hub huggingface_sb3 "gymnasium[mujoco]"
+# From any directory — the repo is location-agnostic.
+cd <your-INR-checkout>
+
+# Python 3.11 recommended. Torch must have CUDA.
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+pip install "gymnasium[mujoco]" minari h5py "hydra-core>=1.3" omegaconf \
+            "stable-baselines3>=2.2" "sb3-contrib>=2.2" huggingface-hub \
+            scikit-learn matplotlib numpy pandas tqdm
 ```
 
-Torch is expected to have CUDA. GPUs are discovered through
-`CUDA_VISIBLE_DEVICES`; the multi-GPU launcher pins one GPU per job.
-Minari HDF5 files cache under `~/.minari/`; our own numpy bundle
-caches under `~/.cache/INR/minari/`.
+GPUs are discovered through `CUDA_VISIBLE_DEVICES`; the multi-GPU launcher
+pins one GPU per job. All cache and dataset locations are controlled by
+environment variables — see [`paths.txt`](paths.txt).
+
+```bash
+# One-shot setup (works from any directory):
+source paths.txt
+# or override the defaults first:
+export INR_DATA_ROOT=/mnt/big_disk/INR_data
+source paths.txt
+```
+
+Defaults (before `paths.txt` runs):
+
+| env var                         | default                                     | purpose                                              |
+|---------------------------------|---------------------------------------------|------------------------------------------------------|
+| `INR_ROOT`                      | dir of `paths.txt`                          | repo root, prepended to `PYTHONPATH`                 |
+| `INR_DATA_ROOT`                 | `$HOME`                                     | parent for all cache / dataset dirs                  |
+| `MINARI_DATASETS_PATH`          | `$INR_DATA_ROOT/.minari/datasets`           | where Minari stores datasets                         |
+| `INR_MUJOCO_CHECKPOINT_CACHE`   | `$INR_DATA_ROOT/.cache/INR/mujoco_checkpoints` | downloaded policy-checkpoint zips                    |
+| `INR_CUSTOM_MUJOCO_CACHE`       | `$INR_DATA_ROOT/.cache/INR/custom_mujoco`   | `.npz` bundle for generated custom-mujoco datasets   |
+| `INR_MINARI_CACHE`              | `$INR_DATA_ROOT/.cache/INR/minari`          | `.npz` re-pack of loaded Minari episodes             |
+| `HF_HOME`                       | `$INR_DATA_ROOT/.cache/huggingface`         | HuggingFace hub cache (model / dataset downloads)    |
+| `MUJOCO_GL`                     | `egl`                                       | headless MuJoCo rendering                            |
 
 ## 2. Smoke test (fast, first thing to run)
 
@@ -125,8 +149,8 @@ python -m train.main data=custom_mujoco_hopper model=inr_transformer_history_con
 
 ## 4.1 Custom checkpoint-generated MuJoCo datasets
 
-The repository can now build local Minari datasets from the published
-Farama Minari policy checkpoints for:
+The repository builds local Minari datasets from the published Farama
+Minari policy checkpoints for:
 
 - `Ant-v5` (`SAC`)
 - `HalfCheetah-v5` (`TQC`)
@@ -134,69 +158,35 @@ Farama Minari policy checkpoints for:
 - `Humanoid-v5` (`TQC`)
 - `Walker2d-v5` (`SAC`)
 
-Generation path:
+Common generation path:
 
 1. download the published checkpoints from `farama-minari/<Env>-v5-<ALGO>-<policy>`
 2. collect pooled reference simulator states from those checkpoints
-3. fit a configurable simulator-state sampler
-4. generate short rollouts from sampled initial states for every policy
-5. write a local Minari dataset with per-episode `ID` / `OOD` tags
+3. fit a suite-specific state / action sampler (kind depends on suite — see §6.4)
+4. generate rollouts from sampled initial states for every policy
+5. write a local Minari dataset with per-episode `ID` / `OOD` tags and,
+   for v3/v4/v5, a `predefined_partition` tag for `train` / `val` / `test`
 
-State-sampler details for the step-resampled custom datasets:
-
-- The calibration pass records simulator states as concatenated `[qpos, qvel]`.
-- Those pooled states are clustered with k-means.
-- Each cluster gets:
-  - a center
-  - a per-dimension std
-  - a cluster weight equal to its empirical mass, meaning the fraction of
-    calibration states assigned to that cluster
-- Clusters are ordered along the first principal direction of the cluster-center
-  cloud, and by default:
-  - the first half of the ordered clusters become `ID`
-  - the remaining half become `OOD`
-- Sampling then:
-  - picks an `ID` or `OOD` cluster according to the normalized cluster weights
-    inside that split
-  - samples around that cluster center with configurable `qpos` / `qvel` noise
-  - clips back to a padded min/max box from the calibration pool
-
-That is the logic behind the `custom_mujoco_step_resampled_*` datasets.
-
-There is also an action-resampled variant:
-
-- start from the same shared reference state bag
-- for each policy separately, evaluate its action on every reference state
-- cluster those actions in action space
-- split the action clusters into `ID` / `OOD` the same way as above
-- sample reference states from the chosen action-cluster subset for that policy
-
-That is the logic behind the `custom_mujoco_action_resampled_*` datasets.
-
-Build all five custom datasets across 4 GPUs:
+Build for a single env + suite (the `--generation-mode` flag picks the suite):
 
 ```bash
-python scripts/build_custom_mujoco.py --n-gpus 4 --force-rebuild
+python scripts/build_custom_mujoco.py \
+  --single-env hopper --generation-mode action_resampled_v5 \
+  --dataset-id inr_mujoco_action_resampled_v5/hopper/controlled-v0 \
+  --episode-horizon 1280 --force-rebuild
 ```
 
-Run the standard suite on the custom datasets using the generator-defined
-ID/OOD tags instead of re-clustering the original trajectories:
+Or build all five envs for a suite across N GPUs:
 
 ```bash
-bash scripts/run_custom_mujoco_suite.sh
+python scripts/build_custom_mujoco.py \
+  --envs ant,halfcheetah,hopper,humanoid,walker2d \
+  --generation-mode action_resampled_v5 --episode-horizon 1280 \
+  --n-gpus 4 --out-root outputs/suites/action_resampled_v5/build --force-rebuild
 ```
 
-Run the state-resampled state-distribution suite:
-
-```bash
-bash scripts/run_step_resampled_suite.sh
-```
-
-Run the action-resampled suite:
-
-```bash
-bash scripts/run_action_resampled_suite.sh
-```
+See §6.4 for the per-suite sampler logic and each suite's entrypoint
+script.
 
 ## 5. Metrics
 
@@ -320,17 +310,24 @@ For the custom checkpoint-generated datasets, use
 per-episode `ID` / `OOD` tags in their metadata, so no extra shift
 reconstruction is needed.
 
-### 6.4 Custom MuJoCo v2 datasets
+### 6.4 Custom MuJoCo shared-sequence suites
 
-The v2 MuJoCo suites are the cleaner constructions used for the
-checkpoint-generated benchmark:
+The shared-sequence suites (v2 onward) are the constructions used for
+the checkpoint-generated benchmark. Current variants:
 
-- `state_resampled_v2`
-- `action_resampled_v2`
-- `action_resampled_v3`
-- `action_resampled_v4`
+- `state_resampled_v2`               — base episode horizon (128)
+- `state_resampled_v3`               — same split logic as v2, 10× longer
+                                         horizon (1280) + 10× history window
+- `action_resampled_v2`              — action-disagreement tails (first attempt)
+- `action_resampled_v3`              — disjoint train/val/test pools, accept
+                                         by cross-policy episode-mean disagreement
+- `action_resampled_v4`              — real-Minari ID + synthetic OOD,
+                                         absolute acceptance threshold, horizon 128
+- `action_resampled_v4_hopper10x`    — v4 generation logic, horizon 1280
+                                         (formerly `action_resampled_v5`)
+- `action_resampled_v4_hopper20x`    — v4 generation logic, horizon 2560
 
-Both start from the same shared reference state pool:
+All start from the same shared reference state pool:
 
 1. Download the published `simple`, `medium`, and `expert` MuJoCo
    checkpoints for an env.
@@ -394,16 +391,23 @@ evaluation does not reuse the same source states.
 Suite entrypoints:
 
 - `scripts/run_state_resampled_v2_suite.sh`
+- `scripts/run_state_resampled_v3_suite.sh`
 - `scripts/run_action_resampled_v2_suite.sh`
 - `scripts/run_action_resampled_v3_suite.sh`
 - `scripts/run_action_resampled_v4_suite.sh`
+- `scripts/run_action_resampled_v5_suite.sh` (→ `action_resampled_v4_hopper10x`)
+- `scripts/slurm_hopper20x_gen.sh` + `scripts/slurm_hopper20x_train.sh`
+  (SLURM array for `action_resampled_v4_hopper20x` on PSC Bridges-2)
 
 Output roots:
 
 - `outputs/suites/state_resampled_v2`
+- `outputs/suites/state_resampled_v3`
 - `outputs/suites/action_resampled_v2`
 - `outputs/suites/action_resampled_v3`
 - `outputs/suites/action_resampled_v4`
+- `outputs/suites/action_resampled_v4_hopper10x`
+- `outputs/suites/action_resampled_v4_hopper20x`
 
 ### 6.5 Experiment composition
 
@@ -501,9 +505,9 @@ bash scripts/run_full_suite_new_datasets.sh
 
 ## 11. What's not done yet
 
-- Action-distribution shift (only state shift for now) — hooks in
-  place via the shift registry.
 - Larger scaling studies — data configs expose `n_policies`,
-  `episodes_per_policy`, `episode_length` so this slots in.
+  `episodes_per_policy`, `episode_length` so this slots in. The
+  `*_hopper10x` / `*_hopper20x` variants are a first step in that
+  direction (10× / 20× the episode horizon + history window).
 - Richer generative metrics (e.g. sample diversity for the diffusion
   policy). Currently `predict_action` is deterministic for all models.

@@ -94,6 +94,7 @@ def _build_base_store(data_cfg: DictConfig):
             min_plies=data_cfg.get("min_plies", 20),
             max_plies=data_cfg.get("max_plies", 120),
             tracked_player_only=bool(data_cfg.get("tracked_player_only", True)),
+            games_per_episode=int(data_cfg.get("games_per_episode", 1)),
         )
     raise ValueError(f"Unknown data kind: {data_cfg.kind}")
 

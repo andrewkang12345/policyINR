@@ -90,13 +90,48 @@ def _game_to_positions_and_moves(game, min_plies: int, max_plies: int,
     return np.stack(states, axis=0).astype(np.float32), moves
 
 
+def _merge_games_into_episodes(
+    all_states: Sequence[np.ndarray],
+    all_actions: Sequence[np.ndarray],
+    policy_ids: Sequence[int],
+    games_per_episode: int,
+) -> Tuple[List[np.ndarray], List[np.ndarray], List[int], List[int]]:
+    if games_per_episode <= 1:
+        return list(all_states), list(all_actions), list(policy_ids), [1] * len(policy_ids)
+
+    merged_states: List[np.ndarray] = []
+    merged_actions: List[np.ndarray] = []
+    merged_policy_ids: List[int] = []
+    merged_game_counts: List[int] = []
+
+    cursor = 0
+    while cursor < len(policy_ids):
+        pid = int(policy_ids[cursor])
+        end = cursor
+        while end < len(policy_ids) and int(policy_ids[end]) == pid:
+            end += 1
+        count = end - cursor
+        usable = (count // games_per_episode) * games_per_episode
+        for start in range(cursor, cursor + usable, games_per_episode):
+            states_chunk = [np.asarray(all_states[i], dtype=np.float32) for i in range(start, start + games_per_episode)]
+            actions_chunk = [np.asarray(all_actions[i]) for i in range(start, start + games_per_episode)]
+            merged_states.append(np.concatenate(states_chunk, axis=0))
+            merged_actions.append(np.concatenate(actions_chunk, axis=0))
+            merged_policy_ids.append(pid)
+            merged_game_counts.append(games_per_episode)
+        cursor = end
+
+    return merged_states, merged_actions, merged_policy_ids, merged_game_counts
+
+
 def build_lichess_store(pgn_dir: Path | str,
                         players: Sequence[str] = TOP_PLAYERS_DEFAULT,
                         max_games_per_player: int = 200,
                         min_plies: int = 20,
                         max_plies: int = 120,
                         tracked_player_only: bool = True,
-                        vocab_path: Path | None = None) -> EpisodeStore:
+                        vocab_path: Path | None = None,
+                        games_per_episode: int = 1) -> EpisodeStore:
     """Build an EpisodeStore for the named Lichess players.
 
     pgn_dir: directory containing `{player}.pgn` (case-sensitive usernames).
@@ -168,12 +203,19 @@ def build_lichess_store(pgn_dir: Path | str,
         with vocab_file.open("w") as f:
             json.dump(vocab, f)
 
+    all_states, all_actions, policy_ids, game_counts = _merge_games_into_episodes(
+        all_states,
+        all_actions,
+        policy_ids,
+        games_per_episode=int(games_per_episode),
+    )
+
     all_meta: List[EpisodeMeta] = []
-    for ei, pid in enumerate(policy_ids):
+    for ei, (pid, game_count) in enumerate(zip(policy_ids, game_counts)):
         all_meta.append(EpisodeMeta(
             episode_id=ei, policy_id=int(pid), is_ood=False,
             source=f"lichess/{players[int(pid)]}",
-            extras={"player": players[int(pid)]},
+            extras={"player": players[int(pid)], "games_per_episode": int(game_count)},
         ))
     state_dim = int(all_states[0].shape[-1]) if all_states else 0
     return EpisodeStore(

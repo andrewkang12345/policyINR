@@ -286,3 +286,53 @@ class PolicyDataset(Dataset):
             "policy_id": torch.as_tensor(meta.policy_id, dtype=torch.long),
             "is_ood": torch.as_tensor(int(meta.is_ood), dtype=torch.long),
         }
+
+
+class MaterializedPolicyDataset(Dataset):
+    """In-memory tensor cache for small continuous low-dimensional datasets.
+
+    This removes the Python/NumPy per-sample history construction cost from
+    every training epoch. For shuffled-history datasets, the sampled history is
+    fixed at materialization time instead of being re-sampled each epoch.
+    """
+
+    def __init__(self, dataset: PolicyDataset):
+        self.dataset = dataset
+        columns = {}
+        for i in range(len(dataset)):
+            item = dataset[i]
+            if not columns:
+                columns = {k: [] for k in item}
+            for k, v in item.items():
+                columns[k].append(v)
+        self.tensors = {k: torch.stack(v, dim=0) for k, v in columns.items()}
+
+        # Preserve attributes used by evaluation/probe code.
+        self.store = dataset.store
+        self.history_k = dataset.history_k
+        self.shuffle_history = dataset.shuffle_history
+        self.behavior_unit = dataset.behavior_unit
+        self.unit_window_size = dataset.unit_window_size
+        self.min_t = dataset.min_t
+        self.index = dataset.index
+        self._unit_key_by_index = dataset._unit_key_by_index
+        self.unit_map = dataset.unit_map
+        self.n_units = dataset.n_units
+        self.state_mean = dataset.state_mean
+        self.state_std = dataset.state_std
+        self.action_mean = dataset.action_mean
+        self.action_std = dataset.action_std
+
+    @property
+    def state_dim(self) -> int:
+        return self.dataset.state_dim
+
+    @property
+    def action_dim(self) -> int:
+        return self.dataset.action_dim
+
+    def __len__(self) -> int:
+        return len(self.dataset)
+
+    def __getitem__(self, i: int):
+        return {k: v[i] for k, v in self.tensors.items()}

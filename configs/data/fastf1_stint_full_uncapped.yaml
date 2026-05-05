@@ -1,0 +1,21 @@
+name: fastf1_stint_full_uncapped
+kind: fastf1
+seasons:
+  - 2023
+  - 2024
+gps:
+  - Bahrain
+  - Saudi Arabia
+  - Australia
+  - Japan
+  - Monaco
+  - British
+  - Italian
+ood_gp: Monaco
+n_drivers: 3
+preferred_drivers:
+  - VER
+min_points: 32
+# Full stint telemetry: no per-stint downsampling cap.
+max_points: null
+cache_dir: ${oc.env:INR_FASTF1_CACHE,${oc.env:HOME}/.cache/INR/fastf1}

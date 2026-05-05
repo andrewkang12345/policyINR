@@ -1,0 +1,20 @@
+Action-resampled MuJoCo action-distribution analysis
+
+What the plots show
+- Each environment overview projects sampled actions into a shared 2D PCA space.
+- Each policy plot shows the action cloud split by ID and OOD action-cluster splits for that policy.
+
+Main conclusion
+- The action-resampled datasets remain strongly policy-separable in action space, which is expected because the split is defined directly from policy action structure.
+
+Quantitative evidence
+ant: action-only linear accuracy=0.537, mean pairwise centroid distance=0.415, mean within-policy radius=1.268
+halfcheetah: action-only linear accuracy=0.534, mean pairwise centroid distance=0.506, mean within-policy radius=1.891
+hopper: action-only linear accuracy=0.430, mean pairwise centroid distance=0.174, mean within-policy radius=1.116
+humanoid: action-only linear accuracy=0.782, mean pairwise centroid distance=0.442, mean within-policy radius=1.074
+walker2d: action-only linear accuracy=0.445, mean pairwise centroid distance=0.253, mean within-policy radius=1.472
+
+Interpretation
+- Unlike the state-resampled construction, this dataset family intentionally partitions the common state bag by each policy's action clusters.
+- That means policy identity is preserved more directly in the action marginals.
+- High probe accuracy here is therefore structurally expected, not a surprise from residual state leakage.

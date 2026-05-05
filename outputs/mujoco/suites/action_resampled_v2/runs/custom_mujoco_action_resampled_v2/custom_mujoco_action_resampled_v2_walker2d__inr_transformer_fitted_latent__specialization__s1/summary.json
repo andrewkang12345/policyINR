@@ -1,0 +1,63 @@
+{
+  "run_name": "custom_mujoco_action_resampled_v2_walker2d__inr_transformer_fitted_latent__specialization__s1",
+  "shift_strength": {
+    "0": 1.0990703902946293,
+    "1": 1.0990703902946293,
+    "2": 1.0990703902946293
+  },
+  "shift_overlap": 0.0,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "custom_mujoco_action_resampled_v2_walker2d",
+  "model": "inr_transformer_fitted_latent",
+  "experiment": "specialization",
+  "seed": 1,
+  "state_dim": 17,
+  "action_dim": 6,
+  "n_train_episodes": 358,
+  "n_val_episodes": 76,
+  "n_test_episodes": 38,
+  "train": {
+    "best_val_loss": 0.2373976599019047,
+    "best_epoch": 9,
+    "final_train_loss": 0.0007634650071523038,
+    "total_epochs": 10,
+    "wallclock_s": 54.00843811035156
+  },
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 38,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "gen_mse": 1.0431045293807983,
+    "gen_rmse": 1.0213248892398532,
+    "gen_nmse": 0.8976346520683396,
+    "gen_median_se": 0.8512120842933655,
+    "gen_nmse_per_dim": [
+      1.162536382675171,
+      1.0002981424331665,
+      0.8882246613502502,
+      0.8201292753219604,
+      0.825706422328949,
+      0.6182765960693359
+    ],
+    "target_var": 1.162059115005493,
+    "n_gen_samples": 4826,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 358,
+    "n_test_episodes_used": 38,
+    "n_test_ood": 38,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

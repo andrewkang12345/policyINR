@@ -14,7 +14,7 @@ import torch
 from torch.utils.data import DataLoader
 
 from data.base import EpisodeStore, PolicyDataset
-from .linear_probe import linear_probe
+from .linear_probe import cosine_knn_probe, linear_probe
 from .generative import generative_metrics
 
 
@@ -125,6 +125,7 @@ def run_full_eval(model, loaders, eval_cfg, device: str) -> Dict:
         C=float(eval_cfg.probe_C),
         max_iter=int(eval_cfg.probe_max_iter),
     )
+    probe.update(cosine_knn_probe(train_embs, train_labels, test_embs, test_labels, k=5))
     out.update(probe)
 
     # generative metrics on the test loader

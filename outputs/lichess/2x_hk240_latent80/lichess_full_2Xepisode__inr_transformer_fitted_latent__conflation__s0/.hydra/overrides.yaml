@@ -1,0 +1,11 @@
+- data=lichess_full_2Xepisode
+- model=inr_transformer_fitted_latent
+- experiment=conflation
+- seed=0
+- run_name=lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0
+- output_dir=/mnt/data/INR/outputs/lichess_full_2Xepisode_hk240_latent80/lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0
+- train.epochs=10
+- train.batch_size=256
+- train.num_workers=4
+- train.history_k=240
+- model.latent_infer_steps=80

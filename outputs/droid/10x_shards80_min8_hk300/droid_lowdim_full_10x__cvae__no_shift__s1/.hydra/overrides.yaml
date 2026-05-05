@@ -1,0 +1,11 @@
+- data=droid_lowdim_full_10x
+- model=cvae
+- experiment=no_shift
+- seed=1
+- run_name=droid_lowdim_full_10x__cvae__no_shift__s1
+- output_dir=/mnt/data/INR/outputs/droid_lowdim_full_10x_suite_20260501/droid_lowdim_full_10x__cvae__no_shift__s1
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=128
+- train.num_workers=4
+- train.history_k=300

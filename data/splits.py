@@ -31,7 +31,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, ConcatDataset
 
-from .base import EpisodeStore, PolicyDataset, EpisodeMeta
+from .base import EpisodeStore, PolicyDataset, EpisodeMeta, MaterializedPolicyDataset
 from .shifts import assign_state_shift
 
 
@@ -119,6 +119,7 @@ def build_experiment_loaders(
     behavior_unit: str = "episode",
     unit_window_size: int = 0,
     use_unit_latents: bool = False,
+    materialize_datasets: bool = False,
     seed: int = 0,
 ):
     """Compose experiment splits. Returns a dict with:
@@ -282,6 +283,14 @@ def build_experiment_loaders(
             action_std=a_std,
             seed=seed,
         )
+
+    if materialize_datasets:
+        if train_dataset is not None:
+            train_dataset = MaterializedPolicyDataset(train_dataset)
+        if val_dataset is not None:
+            val_dataset = MaterializedPolicyDataset(val_dataset)
+        if test_dataset is not None:
+            test_dataset = MaterializedPolicyDataset(test_dataset)
 
     def make_loader(dataset, shuffle, bs):
         if dataset is None or len(dataset) == 0:

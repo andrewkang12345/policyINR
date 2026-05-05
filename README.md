@@ -1,173 +1,177 @@
-# INR: Robust Policy Representation Learning from Offline Data
+# INR — Robust Policy Representation Learning from Offline Data
 
-Offline policy-representation research codebase. No environment, no
-policy labels during training (labels are used only at eval time for
-sanity checks). The main research target is robustness of policy
-representations under **state-distribution shift** between train and
-test episodes.
+Offline policy-representation research codebase. The training signal is
+purely offline behavioral data — no environment rollouts, no policy
+labels at training time (labels are reserved for evaluation only).
+The research target is the **robustness of policy representations under
+state-distribution shift** between train- and test-time episodes,
+measured across continuous-control (MuJoCo, DROID), discrete-action
+visual (DMLab), discrete-action symbolic (Lichess) and time-series
+(FastF1) domains.
 
 ```
 INR/
-├── configs/         Hydra YAML configs
-│   ├── config.yaml           # base config
-│   ├── data/                 # synthetic_grf{,_small}, minari_{hopper,...}
-│   ├── model/                # cvae, history-conditioned INR, fitted-latent INR
-│   ├── experiment/           # no_shift, new_policy, single_shift,
-│   │                         #   conflation, generalization,
-│   │                         #   specialization, novel_generalization
-│   └── eval/default.yaml
-├── data/            dataset interface, synthetic GRF, Minari, shifts, splits
-├── models/          CVAE and INR-family architectures
+├── configs/         Hydra YAML configs (data / model / experiment / eval)
+├── data/            Dataset interfaces — synthetic GRF, Minari, custom
+│                    MuJoCo, DMLab, Lichess, DROID, FastF1
+├── models/          CVAE, INR-Transformer (history-conditioned, fitted-
+│                    latent, infer-latent / MAML), INR-Diffusion
 ├── train/           Hydra entrypoint + generic Trainer
-├── eval/            linear probe, generative metrics, summary/aggregator
-├── scripts/         smoke-test + full-suite launchers (4-GPU)
+├── eval/            linear/kNN probe, generative metrics, summary/aggregator
+├── scripts/         smoke + suite launchers (run_*.sh) and tooling
+│   └── slurm_psc/   PSC Bridges-2 specific SLURM scripts (site-bound)
 ├── utils/           seed, registries, jsonl logger, checkpoint I/O
-└── outputs/         runtime: per-run checkpoints, metrics.jsonl,
-                       eval.json, summary.json, aggregate.csv/.md
+├── outputs/         per-run config/metrics/aggregates (checkpoints on HF)
+└── paths.txt        env-var bootstrap; source before any run
 ```
+
+Checkpoints (`best.pt`, `last.pt`) for every run live on Hugging Face:
+**[`andrewkang12345/policyINR-checkpoints`](https://huggingface.co/andrewkang12345/policyINR-checkpoints)**.
+The repository tree mirrors `outputs/` exactly — see §5.
+
+---
 
 ## 1. Install
 
 ```bash
-# From any directory — the repo is location-agnostic.
-cd <your-INR-checkout>
+git clone https://github.com/andrewkang12345/policyINR.git
+cd policyINR
 
 # Python 3.11 recommended. Torch must have CUDA.
 pip install torch --index-url https://download.pytorch.org/whl/cu118
 pip install "gymnasium[mujoco]" minari h5py "hydra-core>=1.3" omegaconf \
             "stable-baselines3>=2.2" "sb3-contrib>=2.2" huggingface-hub \
-            scikit-learn matplotlib numpy pandas tqdm
+            scikit-learn matplotlib numpy pandas tqdm fastf1 chess
 ```
 
-GPUs are discovered through `CUDA_VISIBLE_DEVICES`; the multi-GPU launcher
-pins one GPU per job. All cache and dataset locations are controlled by
-environment variables — see [`paths.txt`](paths.txt).
+Bootstrap caches and the `PYTHONPATH`. Everything is keyed off
+`INR_DATA_ROOT` — the repo itself is location-agnostic.
 
 ```bash
-# One-shot setup (works from any directory):
+# defaults: $INR_ROOT = repo dir, $INR_DATA_ROOT = $HOME
 source paths.txt
-# or override the defaults first:
-export INR_DATA_ROOT=/mnt/big_disk/INR_data
+
+# or override the data root first
+export INR_DATA_ROOT=/scratch/$USER/INR_data
 source paths.txt
 ```
 
-Defaults (before `paths.txt` runs):
+| env var | default | purpose |
+|---|---|---|
+| `INR_ROOT` | dir of `paths.txt` | repo root (added to `PYTHONPATH`) |
+| `INR_DATA_ROOT` | `$HOME` | parent for all caches |
+| `MINARI_DATASETS_PATH` | `$INR_DATA_ROOT/.minari/datasets` | Minari dataset store |
+| `INR_MUJOCO_CHECKPOINT_CACHE` | `$INR_DATA_ROOT/.cache/INR/mujoco_checkpoints` | Farama policy zips |
+| `INR_CUSTOM_MUJOCO_CACHE` | `$INR_DATA_ROOT/.cache/INR/custom_mujoco` | custom-mujoco `.npz` |
+| `INR_MINARI_CACHE` | `$INR_DATA_ROOT/.cache/INR/minari` | Minari `.npz` re-pack |
+| `INR_DROID_CACHE` | `$INR_DATA_ROOT/.cache/INR/droid` | DROID lowdim arrays |
+| `INR_FASTF1_CACHE` | `$INR_DATA_ROOT/.cache/INR/fastf1` | FastF1 session telemetry |
+| `INR_LICHESS_CACHE` | `$INR_DATA_ROOT/.cache/INR/lichess` | Lichess PGNs |
+| `INR_DMLAB_CACHE` | `$INR_DATA_ROOT/.cache/INR/dmlab` | DMLab episode `.npz` |
+| `INR_RLU_DMLAB_CACHE` | `$INR_DATA_ROOT/.cache/INR/rlu_dmlab` | RLU DMLab tfrecord shards |
+| `HF_HOME` | `$INR_DATA_ROOT/.cache/huggingface` | HuggingFace hub cache |
 
-| env var                         | default                                     | purpose                                              |
-|---------------------------------|---------------------------------------------|------------------------------------------------------|
-| `INR_ROOT`                      | dir of `paths.txt`                          | repo root, prepended to `PYTHONPATH`                 |
-| `INR_DATA_ROOT`                 | `$HOME`                                     | parent for all cache / dataset dirs                  |
-| `MINARI_DATASETS_PATH`          | `$INR_DATA_ROOT/.minari/datasets`           | where Minari stores datasets                         |
-| `INR_MUJOCO_CHECKPOINT_CACHE`   | `$INR_DATA_ROOT/.cache/INR/mujoco_checkpoints` | downloaded policy-checkpoint zips                    |
-| `INR_CUSTOM_MUJOCO_CACHE`       | `$INR_DATA_ROOT/.cache/INR/custom_mujoco`   | `.npz` bundle for generated custom-mujoco datasets   |
-| `INR_MINARI_CACHE`              | `$INR_DATA_ROOT/.cache/INR/minari`          | `.npz` re-pack of loaded Minari episodes             |
-| `HF_HOME`                       | `$INR_DATA_ROOT/.cache/huggingface`         | HuggingFace hub cache (model / dataset downloads)    |
-| `MUJOCO_GL`                     | `egl`                                       | headless MuJoCo rendering                            |
+The same env vars are honored both by the Python data modules
+(`data/{droid,fastf1,dmlab}.py`) and by the Hydra YAMLs
+(`configs/data/*.yaml`) via `${oc.env:...}` interpolation, so you can
+override any individual cache without touching the rest.
 
-## 2. Smoke test (fast, first thing to run)
+---
 
-Verifies the whole pipeline — data → training → checkpoint → repr
-extraction → linear probe → generative eval → summary.
-
-```bash
-bash scripts/smoke_test.sh
-```
-
-Runtime: ~20 s on a single GPU. Trains all four models (CVAE /
-history-conditioned INR-transformer / history-conditioned INR-diffusion /
-fitted-latent INR-transformer) on a tiny synthetic dataset for 2
-epochs and aggregates the results.
-
-Expected final output (the `== smoke summary ==` table):
-
-```
-| data                | model           | experiment | n | probe_acc | probe_acc_seen | novel_dist | gen_mse |
-|---------------------|-----------------|------------|---|-----------|-----------------|-----------|---------|
-| synthetic_grf_small | cvae            | no_shift   | 1 | 0.500     | 0.500           | -         | 0.477   |
-| synthetic_grf_small | inr_diffusion_history_conditioned   | no_shift   | 1 | 0.500     | 0.500           | -         | 1.166   |
-| synthetic_grf_small | inr_transformer_history_conditioned | no_shift   | 1 | 0.500     | 0.500           | -         | 0.303   |
-```
-
-Numbers are illustrative and will vary slightly; what matters is that
-every run produces `summary.json` with finite `gen_mse` and a
-non-null `probe_acc`. Individual run artifacts live under
-`outputs/smoke/<run_name>/`.
-
-## 3. Full suite (all 4 GPUs)
+## 2. Smoke test (~20 s)
 
 ```bash
-bash scripts/run_full_suite.sh
+bash scripts/smoke_test.sh                # synthetic GRF, all 4 model families
+bash scripts/smoke_test_new_datasets.sh   # lichess + dmlab smoke
 ```
 
-By default this sweeps:
+The first writes to `outputs/smoke/`, exercises data → train → ckpt →
+representation → linear probe → generative eval → summary. Passes when
+every run produces a `summary.json` with finite `gen_mse` and a non-null
+`probe_acc`.
 
-- **datasets**: `synthetic_grf`, `minari_{hopper,halfcheetah,walker2d,ant,humanoid}`,
-  `custom_mujoco_{hopper,halfcheetah,walker2d,ant,humanoid}`
-- **models**: `cvae`, `inr_transformer_history_conditioned`,
-  `inr_diffusion_history_conditioned`, `inr_transformer_fitted_latent`
-- **experiments**: `no_shift`, `new_policy`, `single_shift`, `conflation`,
-  `generalization`, `specialization`, `novel_generalization`
-- **seeds**: `0,1`
+---
 
-Jobs are scheduled round-robin across `N_GPUS=4` via a worker-queue in
-`scripts/multi_gpu_launch.py`, each as a subprocess with
-`CUDA_VISIBLE_DEVICES` pinned to one GPU. Tunable via env:
+## 3. Replicating the published runs
+
+Every canonical experiment is launched by a single shell script under
+`scripts/`. Each script is portable: it reads `INR_*` env vars, pins
+one GPU per worker via `CUDA_VISIBLE_DEVICES`, and writes per-run
+artifacts to a deterministic path under `outputs/<domain>/<suite>/`.
+
+| Domain | Canonical run | Launcher | Output dir | Notes |
+|---|---|---|---|---|
+| **lichess** | top-3 GMs, 2× episode horizon, hk=240 | `scripts/run_lichess_full_2Xepisode.sh` | `outputs/lichess/2x_hk240/` | 4 models × 7 exp × 1 seed; complete |
+| lichess | fitted-latent ablation, latent=80 | `scripts/run_lichess_full_2Xepisode.sh MODELS=inr_transformer_fitted_latent LATENT_DIM=80` | `outputs/lichess/2x_hk240_latent80/` | 7 exp |
+| lichess | fitted-latent ablation, latent=160 | same launcher, `LATENT_DIM=160` | `outputs/lichess/2x_hk240_latent160/` | 7 exp |
+| lichess | hk=120 fitted-latent, latent=128 | derived from `run_full_suite_new_datasets.sh` | `outputs/lichess/hk120_latent128/` | 7 exp |
+| lichess | infer-latent MAML (10-step inner, ES) | infer-latent MAML model on lichess | `outputs/lichess/hk120_infer_latent_maml_rerun/` | **canonical MAML rerun**; 7 exp |
+| lichess | infer-latent meta-64 (partial) | meta variant, hk=120 | `outputs/lichess/hk120_infer_latent_meta64_partial/` | only 4/7 exp ran — kept as published partial |
+| lichess | dmlab+lichess v2 combined sweep | `scripts/run_lichess_dmlab_v2.sh` | `outputs/lichess/dmlab_v2_combined/` (+ `dmlabseekavoid/dmlab_v2_combined/`) | 4 models × 7 exp × 2 seeds |
+| lichess | baseline (full_suite_new_datasets) | `scripts/run_full_suite_new_datasets.sh` | `outputs/lichess/baseline_top3/` | with `_sa16` ablation |
+| **dmlab** | seekavoid baseline | `scripts/run_full_suite_new_datasets.sh` | `outputs/dmlabseekavoid/baseline/` | full + sa16 |
+| dmlab | combined v2 sweep | `scripts/run_lichess_dmlab_v2.sh` | `outputs/dmlabseekavoid/dmlab_v2_combined/` | with `_sa16` ablation |
+| **droid** | shards707, balanced, min300, hk=300 (incl. MAML) | `scripts/run_droid_balanced_min300_remove_suite.sh` | `outputs/droid/balanced_min300_remove_hk300/` | 5 models × 7 exp × 2 seeds; MAML 12/14 (2 incomplete on `specialization`) |
+| droid | shards707, all min300, hk=300 | `scripts/run_droid_full_min300_after_maml.sh` | `outputs/droid/all_min300_hk300/` | 4 models × 7 exp × 2 seeds |
+| droid | shards80, 10×, min200, hk=200, mat=512 | `scripts/run_droid_10x_min200_suite_full_util.sh` | `outputs/droid/10x_min200_hk200_mat512/` | 5 models × 7 exp × 2 seeds |
+| droid | shards80, 10×, min8, hk=300 | `scripts/run_droid_10x_suite.sh` | `outputs/droid/10x_shards80_min8_hk300/` | 5 models × 7 exp × 2 seeds |
+| droid | joint droid+fastf1 small subset | `scripts/run_droid_fastf1_full_suite.sh` | `outputs/droid/joint_droid_fastf1_small_subset/` | early joint sweep |
+| **fastf1** | uncapped full suite | `scripts/run_fastf1_uncapped_suite.sh` | `outputs/fastf1/uncapped_full_suite/` | 5 models × 7 exp × 2 seeds |
+| **mujoco** | custom_mujoco baseline (5 envs) | `scripts/run_custom_mujoco_suite.sh` | `outputs/mujoco/baseline_custom_mujoco/` | 5 envs × 4 models × 7 exp × 2 seeds |
+| mujoco | minari baseline | `scripts/run_full_suite.sh` | `outputs/mujoco/baseline_minari_full_suite/` | 5 envs × 4 models × 7 exp × 2 seeds |
+| mujoco | state-resampled v2 | `scripts/run_state_resampled_v2_suite.sh` | `outputs/mujoco/suites/state_resampled_v2/` | 5 envs |
+| mujoco | action-resampled v2 / v3 / v4 | `scripts/run_action_resampled_v{2,3,4}_suite.sh` | `outputs/mujoco/suites/action_resampled_v{2,3,4}/` | each across 5 envs |
+| mujoco | action-resampled v4 hopper-10× / 20× | `scripts/run_action_resampled_v5_suite.sh` (10×); `slurm_psc/slurm_hopper20x_*.sh` (20×) | `outputs/mujoco/suites/action_resampled_v4_hopper{10x,20x}/` | extended-horizon scaling study |
+| **syntheticgrf** | base | `scripts/run_full_suite.sh` (synthetic_grf rows) | `outputs/syntheticgrf/baseline_full_suite/` | sanity / smoke |
+| syntheticgrf | 10× horizon | `scripts/run_full_suite_new_datasets.sh` (synthetic_grf_10x rows) | `outputs/syntheticgrf/baseline_10x/` | scaling sanity |
+
+Every per-run directory carries `config.yaml`, `metrics.jsonl`,
+`summary.json`, `eval.json`, and an `stdout.log`. Per-suite directories
+also have `aggregate.csv` and `aggregate.md`. The `run_dir` column in
+each `aggregate.csv` is now repo-relative
+(`outputs/<domain>/<suite>/<run>`), so the row points to the actual
+artifacts in this checkout.
+
+### One-off Hydra runs
 
 ```bash
-N_GPUS=4 SEEDS=0,1,2 EPOCHS=20 BATCH=256 HISTORY_K=16 MAX_EPS=60 \
-    bash scripts/run_full_suite.sh
-```
-
-Or restrict the sweep:
-
-```bash
-DATASETS=minari_hopper MODELS=cvae,inr_transformer_history_conditioned \
-EXPERIMENTS=no_shift,single_shift SEEDS=0 \
-    bash scripts/run_full_suite.sh
-```
-
-After the sweep completes, an aggregate CSV + markdown table is
-written to `outputs/full_suite/aggregate.{csv,md}`. Each run's own
-artifacts are under `outputs/full_suite/<data>__<model>__<exp>__s<seed>/`.
-
-## 4. Running one-off experiments
-
-```bash
-# single Hydra run
+# minimal
 python -m train.main data=minari_hopper model=inr_transformer_history_conditioned \
     experiment=single_shift seed=0 train.epochs=30
 
-# hydra multirun — seeds x models, sequential
+# multirun: seeds × models, sequential
 python -m train.main -m data=minari_hopper \
     model=cvae,inr_transformer_history_conditioned,inr_diffusion_history_conditioned,inr_transformer_fitted_latent \
-    experiment=no_shift,single_shift seed=0,1,2
+    experiment=no_shift,single_shift seed=0,1
 
-# custom checkpoint-generated MuJoCo data
-python -m train.main data=custom_mujoco_hopper model=inr_transformer_history_conditioned \
-    experiment=no_shift shift.kind=predefined_split seed=0
+# DROID
+python -m train.main data=droid_lowdim_full_balanced_min300_remove \
+    model=inr_transformer_infer_latent_maml experiment=novel_generalization seed=0
+
+# FastF1 stints
+python -m train.main data=fastf1_stint_full_uncapped \
+    model=inr_transformer_history_conditioned experiment=single_shift seed=0
 ```
 
-## 4.1 Custom checkpoint-generated MuJoCo datasets
+---
 
-The repository builds local Minari datasets from the published Farama
-Minari policy checkpoints for:
+## 4. Custom MuJoCo benchmark — design and suites
 
-- `Ant-v5` (`SAC`)
-- `HalfCheetah-v5` (`TQC`)
-- `Hopper-v5` (`SAC`)
-- `Humanoid-v5` (`TQC`)
-- `Walker2d-v5` (`SAC`)
+The repository ships five domains worth of generators / loaders. The
+flagship benchmark for state-shift robustness is the **custom MuJoCo
+shared-sequence suite** (`outputs/mujoco/suites/`).
 
-Common generation path:
+Common generation path (per env):
 
-1. download the published checkpoints from `farama-minari/<Env>-v5-<ALGO>-<policy>`
-2. collect pooled reference simulator states from those checkpoints
-3. fit a suite-specific state / action sampler (kind depends on suite — see §6.4)
-4. generate rollouts from sampled initial states for every policy
-5. write a local Minari dataset with per-episode `ID` / `OOD` tags and,
-   for v3/v4/v5, a `predefined_partition` tag for `train` / `val` / `test`
+1. download published checkpoints `farama-minari/<Env>-v5-<ALGO>-<policy>`
+   (e.g. Hopper-v5-SAC-{simple,medium,expert})
+2. collect pooled simulator states `[qpos, qvel]`
+3. fit a suite-specific state / action sampler
+4. roll out from sampled initial states for every policy
+5. write a Minari-format dataset with per-episode `ID` / `OOD` and (v3/v4/v5)
+   `predefined_partition` ∈ {train, val, test} tags
 
-Build for a single env + suite (the `--generation-mode` flag picks the suite):
+Build for one env+suite:
 
 ```bash
 python scripts/build_custom_mujoco.py \
@@ -176,338 +180,211 @@ python scripts/build_custom_mujoco.py \
   --episode-horizon 1280 --force-rebuild
 ```
 
-Or build all five envs for a suite across N GPUs:
+All 5 envs across N GPUs:
 
 ```bash
 python scripts/build_custom_mujoco.py \
   --envs ant,halfcheetah,hopper,humanoid,walker2d \
   --generation-mode action_resampled_v5 --episode-horizon 1280 \
-  --n-gpus 4 --out-root outputs/suites/action_resampled_v5/build --force-rebuild
+  --n-gpus 4 --out-root outputs/mujoco/suites/action_resampled_v5/build \
+  --force-rebuild
 ```
 
-See §6.4 for the per-suite sampler logic and each suite's entrypoint
-script.
+### Suite variants
 
-## 5. Metrics
+| suite | scoring | tail kept as ID | tail kept as OOD | horizon | source-state pool |
+|---|---|---|---|---|---|
+| `state_resampled_v2` | kNN-density in state space | low-distance | high-distance | 128 | shared, fixed-sequence |
+| `action_resampled_v2` | per-state cross-policy action disagreement | low-disagreement | high-disagreement | 128 | shared, fixed-sequence |
+| `action_resampled_v3` | per-episode mean action disagreement | high-disagreement | low-disagreement | 128 | **disjoint** train/val/test pools |
+| `action_resampled_v4` | per-episode disagreement w/ absolute threshold | real Minari (`simple`/`medium`/`expert`) | synthetic, low-disagreement tail | 128 | disjoint |
+| `action_resampled_v4_hopper10x` | as v4 | as v4 | as v4 | **1280** | disjoint |
+| `action_resampled_v4_hopper20x` | as v4 | as v4 | as v4 | **2560** | disjoint |
 
-Each run emits `summary.json` with:
+The shared-sequence reuse property: within each env+split, every policy
+is queried on the same sampled states in the same order — removing the
+policy-specific state sampler used by v1.
+
+---
+
+## 5. Checkpoints on Hugging Face
+
+Repo: **[`andrewkang12345/policyINR-checkpoints`](https://huggingface.co/andrewkang12345/policyINR-checkpoints)**
+
+The repo mirrors `outputs/` exactly. To download every checkpoint for
+the canonical lichess 2×-episode sweep, for example:
+
+```python
+from huggingface_hub import snapshot_download
+snapshot_download(
+    repo_id="andrewkang12345/policyINR-checkpoints",
+    repo_type="model",
+    allow_patterns=["lichess/2x_hk240/**/*.pt"],
+    local_dir="outputs",  # files land at outputs/lichess/2x_hk240/<run>/best.pt
+)
+```
+
+Or a single run:
+
+```python
+from huggingface_hub import hf_hub_download
+hf_hub_download(
+    repo_id="andrewkang12345/policyINR-checkpoints",
+    filename="droid/balanced_min300_remove_hk300/"
+             "droid_lowdim_full_balanced_min300_remove__"
+             "inr_transformer_infer_latent_maml__novel_generalization__s0/best.pt",
+)
+```
+
+Every leaf run carries `best.pt` (lowest val loss) and `last.pt`
+(final epoch). To rebuild a representation given a downloaded
+checkpoint and the run's `config.yaml`:
+
+```python
+from omegaconf import OmegaConf
+from train.main import _build_base_store, _device, MODELS
+import torch
+cfg = OmegaConf.load("outputs/.../config.yaml")
+model = MODELS.build(cfg.model.name, cfg=cfg.model).to(_device(cfg))
+model.load_state_dict(torch.load("outputs/.../best.pt", map_location="cpu"))
+model.eval()
+```
+
+`outputs/_archive/` (smoke / debug / superseded variants) and `outputs/_logs/`
+(driver / rerun logs) are **not** uploaded to HF and are gitignored.
+
+---
+
+## 6. Metrics
+
+Each run's `summary.json` carries:
 
 - `train.best_val_loss`, `train.wallclock_s`
-- `shift_strength`            — per-policy std-normalized ID↔OOD centroid
-                                  distance (0 = no shift; typically 0.3–1.2)
-- `eval.probe_acc`            — policy classification accuracy, all test policies
-- `eval.probe_acc_seen`       — same, restricted to policies seen in training
-- `eval.novel_mean_embed_dist`— mean L2 distance from novel-policy episode
-                                  embeddings to the nearest seen-policy centroid
-- `eval.gen_mse`, `eval.gen_rmse`   — raw MSE in normalized-action space
-- `eval.gen_nmse`             — MSE / Var(target), scale-free:
-                                  0 = perfect, 1 ≈ "predict the mean" baseline.
-                                  Comparable across environments.
-- `eval.gen_median_se`        — outlier-robust per-sample median SE.
-- `eval.finite_fraction`      — fraction of predictions that were finite.
-- `eval.target_var`           — denominator for gen_nmse (for reference).
+- `shift_strength` — per-policy std-normalized ID↔OOD centroid distance
+- `eval.probe_acc` / `eval.probe_acc_seen` — linear-probe policy ID accuracy
+- `eval.knn_acc1`, `eval.knn_acc5` — kNN companion to the probe
+- `eval.novel_mean_embed_dist` — L2 of novel-policy episode embedding to
+  nearest seen-policy centroid
+- `eval.gen_mse`, `eval.gen_rmse`, `eval.gen_nmse`, `eval.gen_median_se` —
+  generative regression metrics. Read `gen_median_se` alongside `gen_nmse`;
+  CVAE outputs are unbounded and a few large-but-finite predictions can
+  inflate the mean.
+- `eval.gen_acc`, `eval.gen_nll` — generative classification metrics for
+  discrete-action runs (lichess, dmlab). MSE/NMSE are NaN by design here.
+- `eval.finite_fraction`, `eval.target_var` — sanity / scale references.
 
-All probe metrics use `policy_id` labels that are **never** used during
-training — only for evaluation. **Read `gen_median_se` alongside
-`gen_nmse`** — CVAE has no output bound, so under hard OOD it can
-produce a few large-but-finite predictions that skew `gen_nmse`'s mean;
-`gen_median_se` is the uninflated companion.
+Probe / kNN labels (`policy_id`) are **never** seen during training — they
+exist purely for evaluation.
 
-## 6. Design overview
+---
 
-### 6.1 Data interface
+## 7. Design overview (condensed)
 
-`data/base.py::PolicyDataset` yields a uniform dict:
+### Data interface (`data/base.py::PolicyDataset`)
 
+Every dataset yields:
 ```
-past_states      (K, state_dim)
-past_actions     (K, action_dim)
-current_state    (state_dim,)
-next_action      (action_dim,)
-episode_id, unit_id, has_unit_latent, policy_id, is_ood
+past_states (K, S), past_actions (K, A), current_state (S,),
+next_action (A,), episode_id, unit_id, has_unit_latent,
+policy_id, is_ood
 ```
 
-- **CVAE** training uses `shuffle_history=True` → K past pairs are
-  sampled uniformly from the episode (the bag-of-pairs view specified
-  for the encoder).
-- **INR** training uses `shuffle_history=False` → past history is the
-  ordered preceding window of length K; randomness comes from standard
-  batch shuffling.
+- CVAE training: `shuffle_history=True` (bag-of-pairs encoder).
+- INR training: `shuffle_history=False` (ordered preceding window of K).
 
-One episode generates up to `T-1` training examples (every step is a
-possible "current" step). The shuffle/history behavior is controlled
-from the model config field `shuffle_history_train`.
+Discrete-action datasets carry `action_kind="discrete"` end-to-end:
+`PairEmbed` uses `nn.Embedding`, `ActionHead` produces logits +
+cross-entropy, and the eval path reports `gen_acc` / `gen_nll`.
 
-### 6.2 Models
+### Models (subclass `RepresentationModel`, exposing `forward`,
+`extract_representation`, `predict_action`)
 
-All models subclass `RepresentationModel` (models/base.py) and expose:
-```
-forward(batch) -> dict(loss, ...)
-extract_representation(batch) -> Tensor (B, latent_dim)
-predict_action(batch) -> Tensor (B, action_dim)
-```
+- **CVAE** — permutation-invariant Transformer encoder over past (s,a),
+  conditioned on current state; `z=mu`.
+- **INR-Transformer, history-conditioned** — encoder sees past history
+  only; latent `z` drives a FiLM-modulated MLP that takes `current_state`.
+- **INR-Diffusion, history-conditioned** — same factorization with a
+  conditional epsilon-predictor (DDPM).
+- **INR-Transformer, fitted-latent** — one learnable code per behavior
+  unit; FiLM head predicts actions from `(state, z_unit)`. Unseen units
+  optimize `z` only at eval time, with shared INR weights frozen.
+- **INR-Transformer, infer-latent / MAML** — meta-learns a per-unit code
+  via inner-loop adaptation on support past (s,a) pairs. The 10-step
+  early-stopping variant (`maml10_es`) is the canonical lichess/droid
+  configuration in `outputs/{lichess,droid}/.../`.
 
-- **CVAE** (`models/cvae.py`) — encoder=permutation-invariant
-  Transformer on past (s,a); condition=current state; decoder=MLP on
-  `(z, state)`; `z=mu` is the policy representation.
-- **INR-Transformer, history-conditioned** (`models/inr_transformer.py`) —
-  encoder sees past history only; latent code `z` drives a FiLM-modulated
-  MLP head, while the current state is fed directly to that head.
-- **INR-Diffusion, history-conditioned** (`models/inr_diffusion.py`) —
-  same factorization: history-only encoder for `z`, then a conditional
-  epsilon-predictor trained with DDPM on `(current_state, z)`.
-- **INR-Transformer, fitted-latent** (`models/inr_transformer.py`) —
-  one learned latent code is assigned per behavior unit (episode or fixed
-  window). The FiLM-modulated INR head predicts actions from
-  `(current_state, z_unit)`. For unseen units at eval time, the shared INR
-  weights stay frozen and only the unit latent is optimized against support
-  past state-action pairs from that same unit. In comments and metrics this
-  is treated as a behavior-function code / trajectory-level latent, not a
-  guaranteed canonical policy representation.
+### Shifts (`data/shifts.py`)
 
-### 6.3 State-distribution shift
+Default: `shared_region`. kNN over pooled per-step states; high-
+entropy steps (default top 25%) are tagged `shared`; OOD episodes are
+restricted to shared-region steps. If `effective_shared < 0.25` the
+shift transparently falls back to `per_policy_cluster`.
 
-`data/shifts.py` registers shift strategies under a small `Registry`.
-The default is **`shared_region`** — a step-level shared state region
-across all policies, designed so the OOD partition does not leak
-policy identity via state distribution.
+For checkpoint-generated MuJoCo and DROID datasets that already carry
+explicit `predefined_partition` metadata, use
+`shift.kind=predefined_split` — no shift reconstruction is needed.
 
-How it works:
-1. Pool every timestep's state across all policies; build a kNN index.
-2. For each step, measure the entropy of its k neighbors' policy-id
-   distribution. High entropy ⇒ near-uniform across policies ⇒
-   state doesn't reveal policy.
-3. Mark the top `density_quantile` (default 25%) of steps by entropy
-   as *shared* — and store the per-episode bool mask.
-4. An episode is OOD-eligible if it has enough shared steps; the
-   `PolicyDataset` then restricts past-history and current-state
-   sampling for OOD episodes to **only shared-region steps**.
+### Experiments (`configs/experiment/<name>.yaml`)
 
-When a dataset has genuinely shared state regions across policies
-(e.g. Minari ant, halfcheetah, or the synthetic GRF), this produces
-an OOD region where an encoder can only separate policies via the
-action mapping, not via state distribution. When policies are nearly
-state-disjoint (e.g. Minari hopper/walker2d/humanoid — simple/medium/
-expert trajectories occupy different parts of state space), the
-shift reports `effective_shared < 0.25` and transparently falls
-back to `per_policy_cluster` (per-policy ID/OOD), rather than
-fabricating a nominally-shared region that isn't actually shared.
+Each lists per-policy `{train, test}` placements ∈ `{ID, OOD, NONE}`.
+`data/splits.py::build_experiment_loaders` stitches train/val/test
+loaders from each policy's ID/OOD partitions, honoring
+`predefined_partition` tags when present.
 
-Logged per run:
-- `shift_strength[pid]`      per-policy ID-vs-OOD Mahalanobis distance
-- `shift_overlap`             cross-policy dispersion of OOD centroids
-- `shift_overlap_ratio`       OOD disp / ID disp (< 1 = more shared OOD)
-- `effective_shared`          fraction of "shared" steps that actually
-                               have cross-policy kNN neighbors
-- `shift_fallback`            `none` or `per_policy_cluster`
+The seven experiments swept across every domain:
+`no_shift`, `new_policy`, `single_shift`, `conflation`,
+`generalization`, `specialization`, `novel_generalization`.
 
-`per_policy_cluster`, `per_policy_quantile`, and `mean_cluster` are
-kept for ablation. Future **action**-distribution shift plugs in by
-registering a new strategy and swapping `shift.kind`.
+---
 
-For the custom checkpoint-generated datasets, use
-`shift.kind=predefined_split`. Those datasets already carry explicit
-per-episode `ID` / `OOD` tags in their metadata, so no extra shift
-reconstruction is needed.
+## 8. Extending
 
-### 6.4 Custom MuJoCo shared-sequence suites
-
-The shared-sequence suites (v2 onward) are the constructions used for
-the checkpoint-generated benchmark. Current variants:
-
-- `state_resampled_v2`               — base episode horizon (128)
-- `state_resampled_v3`               — same split logic as v2, 10× longer
-                                         horizon (1280) + 10× history window
-- `action_resampled_v2`              — action-disagreement tails (first attempt)
-- `action_resampled_v3`              — disjoint train/val/test pools, accept
-                                         by cross-policy episode-mean disagreement
-- `action_resampled_v4`              — real-Minari ID + synthetic OOD,
-                                         absolute acceptance threshold, horizon 128
-- `action_resampled_v4_hopper10x`    — v4 generation logic, horizon 1280
-                                         (formerly `action_resampled_v5`)
-- `action_resampled_v4_hopper20x`    — v4 generation logic, horizon 2560
-
-All start from the same shared reference state pool:
-
-1. Download the published `simple`, `medium`, and `expert` MuJoCo
-   checkpoints for an env.
-2. Run short calibration rollouts and collect simulator states
-   `[qpos, qvel]`.
-3. Freeze one shared state bag for the environment.
-
-The split logic then differs by suite:
-
-- **State-resampled v2** (`shared_state_density_v2`)
-  - Score each shared reference state by kNN mean-distance in state
-    space.
-  - Define `ID` as the low-distance density tail and `OOD` as the
-    high-distance density tail.
-  - Sample exact fixed state sequences once per split and reuse those
-    same sequences for every policy.
-
-- **Action-resampled v2** (`shared_state_action_disagreement_v2`)
-  - Evaluate all policies on the same shared reference state bag.
-  - For each state, score action disagreement by mean pairwise action
-    distance across policies.
-  - Define `ID` as the low-disagreement tail and `OOD` as the
-    high-disagreement tail.
-  - Again, sample exact fixed state sequences once per split and reuse
-    those same sequences for every policy.
-
-- **Action-resampled v3** (`shared_state_action_mean_matched_v3`)
-  - Evaluate all policies on the same shared reference state bag.
-  - For each state, score action disagreement by mean pairwise action
-    distance across policies.
-  - Define `ID` as the high-disagreement tail and `OOD` as the
-    low-disagreement tail.
-  - Split each split-specific source-state pool into disjoint
-    `train` / `val` / `test` partitions before any episode generation.
-  - Sample many candidate fixed state sequences inside each partition,
-    score them by cross-policy disagreement of the episode mean action,
-    keep the lowest-disagreement sequences, and reuse those accepted
-    sequences for every policy.
-
-- **Action-resampled v4** (`minari_id_action_matched_ood_v4`)
-  - `ID` episodes come directly from the original Minari MuJoCo datasets
-    (`simple`, `medium`, `expert`) rather than from synthetic state
-    sampling.
-  - Only the `OOD` partition is synthetic: build a shared checkpoint
-    reference-state bag, score per-state action disagreement across
-    policies, keep the low-disagreement tail as the difficult OOD source
-    pool, and split that pool into disjoint `train` / `val` / `test`
-    partitions.
-  - Generate many candidate OOD state sequences and accept only those
-    whose cross-policy episode-summary disagreement is below an absolute
-    threshold; continue searching until the desired OOD count is reached
-    or fail loudly.
-
-That exact shared-sequence reuse is the key design constraint: within
-each env and split, every policy is queried on the same sampled
-states, in the same order. This removes the policy-specific state
-sampler used by the earlier v1 constructions. In v3, the underlying
-source-state pools are also disjoint across train/val/test, so held-out
-evaluation does not reuse the same source states.
-
-Suite entrypoints:
-
-- `scripts/run_state_resampled_v2_suite.sh`
-- `scripts/run_state_resampled_v3_suite.sh`
-- `scripts/run_action_resampled_v2_suite.sh`
-- `scripts/run_action_resampled_v3_suite.sh`
-- `scripts/run_action_resampled_v4_suite.sh`
-- `scripts/run_action_resampled_v5_suite.sh` (→ `action_resampled_v4_hopper10x`)
-- `scripts/slurm_hopper20x_gen.sh` + `scripts/slurm_hopper20x_train.sh`
-  (SLURM array for `action_resampled_v4_hopper20x` on PSC Bridges-2)
-
-Output roots:
-
-- `outputs/suites/state_resampled_v2`
-- `outputs/suites/state_resampled_v3`
-- `outputs/suites/action_resampled_v2`
-- `outputs/suites/action_resampled_v3`
-- `outputs/suites/action_resampled_v4`
-- `outputs/suites/action_resampled_v4_hopper10x`
-- `outputs/suites/action_resampled_v4_hopper20x`
-
-### 6.5 Experiment composition
-
-Each `configs/experiment/<name>.yaml` lists per-policy
-`{train, test}` placements with values `ID | OOD | NONE`.
-`data/splits.py::build_experiment_loaders` reads that spec and stitches
-the final train/val/test stores from each policy's ID / OOD partitions.
-If a dataset already carries `predefined_partition` metadata, those
-episode-level train/val/test assignments are honored instead of
-randomly re-splitting episodes.
-
-## 7. Extending
-
-- **New synthetic family**: register a generator in
-  `data/synthetic.py` via `@STATE_GENERATORS.register(...)` or
-  `@ACTION_POLICIES.register(...)`, then reference it in a new YAML
-  under `configs/data/`.
+- **New synthetic family**: `@STATE_GENERATORS.register(...)` /
+  `@ACTION_POLICIES.register(...)` in `data/synthetic.py`,
+  add `configs/data/<name>.yaml`.
 - **New representation architecture**: subclass
-  `models.base.RepresentationModel`, decorate with
-  `@MODELS.register("my_model")`, and add `configs/model/my_model.yaml`.
-- **New shift type**: `@SHIFTS.register("my_shift")` in
-  `data/shifts.py`, then `shift.kind=my_shift` in any run.
-- **New evaluation metric**: add a function in `eval/` and call it
-  from `eval/runner.py::run_full_eval`.
-- **New real dataset**: mirror `data/minari_data.py` — build an
-  `EpisodeStore` and plug in through a new `configs/data/<name>.yaml`
-  with `kind: <your_kind>`; add a branch in
-  `train/main.py::_build_base_store`.
+  `models.base.RepresentationModel`, decorate with `@MODELS.register("foo")`,
+  add `configs/model/foo.yaml`.
+- **New shift type**: `@SHIFTS.register("foo")` in `data/shifts.py`, then
+  `shift.kind=foo` on any run.
+- **New eval metric**: add to `eval/`, call from `eval/runner.py::run_full_eval`.
+- **New real dataset**: mirror `data/minari_data.py` / `data/lichess.py`
+  — build an `EpisodeStore`, plug in via
+  `train/main.py::_build_base_store` and a new `configs/data/<name>.yaml`.
 
-## 8. Gotchas
+---
 
-- Minari datasets download on first use to `~/.minari/`. The
-  `humanoid` set in particular is large (~8 GB). Point elsewhere via
-  `MINARI_DATASETS_PATH`, or move `~/.minari` to a bigger filesystem
-  and symlink — this repo's smoke test uses a small synthetic config
-  instead to avoid the download.
-- `nan` for `probe_acc_seen` or `novel_mean_embed_dist` just means the
-  experiment has no seen / no novel policies in the test partition.
-- The smoke configs intentionally use very few episodes, so
-  linear-probe accuracy is noisy. Meaningful separation between models
-  shows up only in the full suite's aggregate.
+## 9. Known caveats from the published runs
 
-## 9. Known caveats from the full-suite run
-
-- Minari `simple`, `medium`, `expert` checkpoints for hopper,
-  walker2d, and humanoid occupy near-disjoint state regions — there
-  is no meaningful shared state distribution we can carve out at the
-  step level. On these envs the shift honestly reports
+- Minari `simple/medium/expert` checkpoints for hopper, walker2d, and
+  humanoid occupy near-disjoint state regions — no meaningful shared
+  region exists at the step level. The shift honestly reports
   `effective_shared << 0.25` and falls back to `per_policy_cluster`;
   probe saturation on those rows is a **data property**, not a
-  representation property. For envs where a shared region does exist
-  (ant, halfcheetah, synthetic), probe accuracy drops meaningfully
-  under `specialization` and other OOD-test experiments.
-- INR-Transformer out-performs INR-Diffusion on `gen_nmse` almost
-  everywhere. The diffusion subpolicy was deliberately a small
-  conditional epsilon-predictor with few sampling steps; higher
-  `n_diffusion_steps` / `n_sample_steps` would likely close the gap.
-- `gen_nmse` under strong test-time OOD can still be skewed by a
-  handful of large-but-finite CVAE outputs (no clip); always pair it
-  with `gen_median_se`. INR variants are output-clipped.
+  representation property. For ant, halfcheetah, synthetic, and the
+  DROID/FastF1 / lichess / dmlab domains, probe accuracy drops
+  meaningfully under `specialization` and other OOD-test experiments.
+- INR-Transformer beats INR-Diffusion on `gen_nmse` almost everywhere.
+  The diffusion subpolicy is intentionally a small conditional
+  ε-predictor with few sampling steps; raising `n_diffusion_steps` /
+  `n_sample_steps` would close the gap.
+- The infer-latent **MAML** runs on DROID `balanced_min300_remove` are
+  missing 2/14 cells (`specialization` × seeds {0, 1}); the rest of that
+  suite is complete. This is documented in `aggregate.csv` (12 maml rows
+  vs. 14 for other models). Fully reproducible with the matching launcher
+  if rerun.
+- `gen_nmse` under hard test-time OOD can still be inflated by a few
+  large-but-finite CVAE outputs (no clip). Always pair with
+  `gen_median_se`. INR variants are output-clipped.
 
-## 10. Additional datasets (discrete action, featurized state)
+---
 
-Two new datasets extend the same `EpisodeStore`/`PolicyDataset` API
-to image and symbolic observations with discrete action spaces:
+## 10. What's not done yet
 
-- `dmlab_seekavoid` — RL Unplugged DMLab `seekavoid_arena_01`, 3
-  policies = {snapshot_0_eps_0.0, snapshot_1_eps_0.0, snapshot_0_eps_0.25}.
-  State: 72x96 RGB + last_action (onehot) + last_reward → 128-d random
-  CNN + 15 + 1 = 144-d. Action: 15 discrete. Shards are pulled
-  directly from the public `gs://rl_unplugged/dmlab` bucket over HTTPS
-  (skipping TFDS's Beam-backed local rebuild), so first use costs only
-  a few hundred MB.
-- `lichess_top3` — Lichess games of three active-export GMs
-  (lance5500, Zhigalko_Sergei, penguingim1). State: 8×8×12 piece-plane
-  bit encoding + side/castling/ep/move-count metadata → 783-d. Action:
-  UCI-move vocabulary derived from the union of observed moves (~1700
-  classes). PGNs are fetched via Lichess's public games export API.
-Discrete actions are carried end-to-end: `EpisodeStore.action_kind`,
-`PairEmbed` uses an `nn.Embedding`, `ActionHead` produces logits +
-cross-entropy loss, `predict_action` returns argmax, and the
-generative eval path reports `gen_acc` and `gen_nll` (mean cross-entropy)
-with per-class breakdown. `gen_mse`/`gen_nmse` are NaN for discrete
-runs by design and the aggregator does not flag them as degenerate.
-
-Entry points:
-
-```bash
-# ~60s smoke test: 2 datasets × 3 models × 1 experiment
-bash scripts/smoke_test_new_datasets.sh
-
-# full sweep: 2 datasets × 3 models × 7 experiments × 2 seeds
-bash scripts/run_full_suite_new_datasets.sh
-```
-
-## 11. What's not done yet
-
-- Larger scaling studies — data configs expose `n_policies`,
-  `episodes_per_policy`, `episode_length` so this slots in. The
-  `*_hopper10x` / `*_hopper20x` variants are a first step in that
-  direction (10× / 20× the episode horizon + history window).
-- Richer generative metrics (e.g. sample diversity for the diffusion
-  policy). Currently `predict_action` is deterministic for all models.
+- Bigger scaling sweeps. Data configs expose `n_policies`,
+  `episodes_per_policy`, `episode_length`; the `*_hopper10x` /
+  `*_hopper20x` variants are the first step.
+- Sample-diversity metrics for the diffusion policy. `predict_action`
+  is currently deterministic for all models.
+- Joint cross-domain (DROID + FastF1) representation transfer — only a
+  small joint subset is published under `outputs/droid/joint_droid_fastf1_small_subset/`.

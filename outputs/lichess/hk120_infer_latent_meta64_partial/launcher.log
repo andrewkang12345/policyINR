@@ -1,0 +1,4 @@
+[gpu0:0] START lichess_top3_full__inr_transformer_infer_latent__no_shift__s0
+[gpu1:1] START lichess_top3_full__inr_transformer_infer_latent__conflation__s0
+[gpu2:2] START lichess_top3_full__inr_transformer_infer_latent__generalization__s0
+[gpu2:2] OK lichess_top3_full__inr_transformer_infer_latent__generalization__s0 (19047.9s)

@@ -327,5 +327,109 @@ class INRTransformerFittedLatent(RepresentationModel):
         return self.policy_head.action_head.predict(out)
 
 
+@MODELS.register("inr_transformer_infer_latent")
+class INRTransformerInferLatent(RepresentationModel):
+    """INR whose latent is always inferred from support history.
+
+    This is the table-free fitted-latent variant: there is no per-train-unit
+    embedding table, so train and test episodes both obtain z by the same
+    support-loss gradient descent procedure.
+    """
+
+    def __init__(
+        self,
+        state_dim: int,
+        action_dim: int,
+        history_k: int = 16,
+        d_model: int = 128,
+        n_heads: int = 4,
+        n_layers: int = 3,
+        latent_dim: int = 64,
+        head_hidden: int = 256,
+        head_blocks: int = 3,
+        dropout: float = 0.0,
+        action_kind: str = "continuous",
+        n_actions: int | None = None,
+        behavior_unit: str = "episode",
+        latent_infer_steps: int = 40,
+        latent_infer_lr: float = 5.0e-2,
+        latent_infer_l2_weight: float = 1.0e-4,
+        latent_infer_create_graph: bool = False,
+    ):
+        super().__init__()
+        self.latent_dim = latent_dim
+        self.history_k = history_k
+        self.action_kind = action_kind
+        self.behavior_unit = str(behavior_unit)
+        self.latent_infer_steps = int(latent_infer_steps)
+        self.latent_infer_lr = float(latent_infer_lr)
+        self.latent_infer_l2_weight = float(latent_infer_l2_weight)
+        self.latent_infer_create_graph = bool(latent_infer_create_graph)
+        self.z_init = nn.Parameter(torch.zeros(latent_dim))
+        self.policy_head = FiLMPolicyHead(
+            state_dim=state_dim,
+            action_dim=action_dim,
+            latent_dim=latent_dim,
+            hidden_dim=head_hidden,
+            n_blocks=head_blocks,
+            action_kind=action_kind,
+            n_actions=n_actions,
+        )
+
+    def _support_loss(
+        self,
+        z: torch.Tensor,
+        past_states: torch.Tensor,
+        past_actions: torch.Tensor,
+    ) -> torch.Tensor:
+        bsz, k, state_dim = past_states.shape
+        flat_states = past_states.reshape(bsz * k, state_dim)
+        flat_z = z[:, None, :].expand(bsz, k, self.latent_dim).reshape(bsz * k, self.latent_dim)
+        support_pred = self.policy_head(flat_states, flat_z)
+        if self.action_kind == "discrete":
+            flat_actions = past_actions.reshape(bsz * k)
+        else:
+            flat_actions = past_actions.reshape(bsz * k, -1)
+        loss = self.policy_head.action_head.loss(support_pred, flat_actions)
+        if self.latent_infer_l2_weight > 0:
+            loss = loss + self.latent_infer_l2_weight * z.pow(2).mean()
+        return loss
+
+    def _infer_latent(self, batch: Dict[str, torch.Tensor]) -> torch.Tensor:
+        with torch.enable_grad():
+            bsz = batch["current_state"].shape[0]
+            init = self.z_init[None, :].expand(bsz, -1).to(batch["current_state"].device)
+            if self.training:
+                z = init.clone().requires_grad_(True)
+            else:
+                z = init.detach().clone().requires_grad_(True)
+            for _ in range(self.latent_infer_steps):
+                loss = self._support_loss(z, batch["past_states"], batch["past_actions"])
+                grad = torch.autograd.grad(
+                    loss,
+                    z,
+                    only_inputs=True,
+                    create_graph=self.training and self.latent_infer_create_graph,
+                )[0]
+                z = z - self.latent_infer_lr * grad
+                if not self.training:
+                    z = z.detach().requires_grad_(True)
+        return z if self.training else z.detach()
+
+    def forward(self, batch: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+        z = self._infer_latent(batch)
+        pred = self.policy_head(batch["current_state"], z)
+        action_loss = self.policy_head.action_head.loss(pred, batch["next_action"])
+        return {"loss": action_loss, "pred": pred, "action_loss": action_loss}
+
+    def extract_representation(self, batch: Dict[str, torch.Tensor]) -> torch.Tensor:
+        return self._infer_latent(batch)
+
+    def predict_action(self, batch: Dict[str, torch.Tensor]) -> torch.Tensor:
+        z = self._infer_latent(batch)
+        out = self.policy_head(batch["current_state"], z)
+        return self.policy_head.action_head.predict(out)
+
+
 # Backward-compatible class alias for imports.
 INRTransformer = INRTransformerHistoryConditioned

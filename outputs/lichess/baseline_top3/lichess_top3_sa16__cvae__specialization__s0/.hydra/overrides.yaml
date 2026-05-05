@@ -1,0 +1,9 @@
+- data=lichess_top3_sa16
+- model=cvae
+- experiment=specialization
+- seed=0
+- run_name=lichess_top3__cvae__specialization__s0
+- output_dir=outputs/full_suite_new_datasets/lichess_top3__cvae__specialization__s0
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=16

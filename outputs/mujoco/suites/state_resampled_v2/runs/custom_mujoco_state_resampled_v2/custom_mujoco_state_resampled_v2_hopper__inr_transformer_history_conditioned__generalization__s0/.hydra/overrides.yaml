@@ -1,0 +1,11 @@
+- data=custom_mujoco_state_resampled_v2_hopper
+- model=inr_transformer
+- experiment=generalization
+- seed=0
+- run_name=custom_mujoco_state_resampled_v2_hopper__inr_transformer__generalization__s0
+- output_dir=outputs/suites/state_resampled_v2/runs/custom_mujoco_state_resampled_v2/custom_mujoco_state_resampled_v2_hopper__inr_transformer__generalization__s0
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=384

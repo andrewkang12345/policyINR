@@ -1,0 +1,57 @@
+seed: 1
+run_name: minari_ant__inr_transformer__generalization__s1
+output_dir: outputs/full_suite/minari_ant__inr_transformer__generalization__s1
+train:
+  epochs: 10
+  batch_size: 256
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 16
+  early_stop_patience: 0
+shift:
+  kind: shared_region
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: minari_ant
+  kind: minari
+  env: ant
+  max_episodes_per_policy: 40
+  min_length: 32
+  max_length: 256
+model:
+  name: inr_transformer
+  kind: inr_transformer
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  head_hidden: 256
+  head_blocks: 3
+  dropout: 0.0
+  shuffle_history_train: false
+experiment:
+  name: generalization
+  description: 'Policy 1: train OOD, test ID. Policy 2: train OOD, test ID.'
+  policies:
+  - pid: 0
+    train: OOD
+    test: ID
+  - pid: 1
+    train: OOD
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

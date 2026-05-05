@@ -1,0 +1,87 @@
+# INR runtime paths — source this file before running anything in this repo.
+#
+#   source paths.txt
+#
+# All paths are derived from INR_ROOT (the repo) and INR_DATA_ROOT (the cache
+# / dataset root). Either can be overridden by exporting them first, e.g.
+#
+#   export INR_ROOT=/ocean/projects/cis260099p/akang3/INR
+#   export INR_DATA_ROOT=/ocean/projects/cis260099p/akang3/INR_data
+#   source "$INR_ROOT/paths.txt"
+#
+# If nothing is preset, INR_ROOT defaults to the directory holding this file
+# and caches go under ~/.cache/INR + ~/.minari (the historical defaults).
+
+# ---- repo root -------------------------------------------------------------
+if [ -z "${INR_ROOT:-}" ]; then
+  # Resolve the directory containing this file, even when sourced.
+  _inr_self="${BASH_SOURCE[0]:-$0}"
+  INR_ROOT="$(cd "$(dirname "$_inr_self")" && pwd)"
+  unset _inr_self
+fi
+export INR_ROOT
+
+# ---- cache root ------------------------------------------------------------
+# One root that holds everything big: minari datasets, minari npz cache,
+# custom mujoco .npz cache, policy-checkpoint cache, HF hub cache.
+: "${INR_DATA_ROOT:=$HOME}"
+export INR_DATA_ROOT
+
+# ---- python ---------------------------------------------------------------
+export PYTHONPATH="$INR_ROOT:${PYTHONPATH:-}"
+
+# ---- minari ---------------------------------------------------------------
+# Where Minari looks for datasets (.minari layout: $MINARI_DATASETS_PATH/<id>/).
+: "${MINARI_DATASETS_PATH:=$INR_DATA_ROOT/.minari/datasets}"
+export MINARI_DATASETS_PATH
+
+# ---- INR-specific caches --------------------------------------------------
+# Pooled simulator-state + trajectory .npz cache used by custom_mujoco.
+: "${INR_CUSTOM_MUJOCO_CACHE:=$INR_DATA_ROOT/.cache/INR/custom_mujoco}"
+# Minari-load .npz cache (fast second-load path) used by minari_data.
+: "${INR_MINARI_CACHE:=$INR_DATA_ROOT/.cache/INR/minari}"
+# Downloaded Farama-Minari policy checkpoints (hopper/ant/... SAC/TQC zips).
+: "${INR_MUJOCO_CHECKPOINT_CACHE:=$INR_DATA_ROOT/.cache/INR/mujoco_checkpoints}"
+# Per-dataset caches consumed by data/{droid,fastf1,dmlab}.py.
+: "${INR_DROID_CACHE:=$INR_DATA_ROOT/.cache/INR/droid}"
+: "${INR_FASTF1_CACHE:=$INR_DATA_ROOT/.cache/INR/fastf1}"
+: "${INR_LICHESS_CACHE:=$INR_DATA_ROOT/.cache/INR/lichess}"
+: "${INR_DMLAB_CACHE:=$INR_DATA_ROOT/.cache/INR/dmlab}"
+: "${INR_RLU_DMLAB_CACHE:=$INR_DATA_ROOT/.cache/INR/rlu_dmlab}"
+export INR_CUSTOM_MUJOCO_CACHE INR_MINARI_CACHE INR_MUJOCO_CHECKPOINT_CACHE \
+       INR_DROID_CACHE INR_FASTF1_CACHE INR_LICHESS_CACHE \
+       INR_DMLAB_CACHE INR_RLU_DMLAB_CACHE
+
+# ---- huggingface ----------------------------------------------------------
+# The checkpoint downloads use huggingface_hub. HF_HOME reroutes the whole
+# hub cache (models + datasets + hub metadata).
+: "${HF_HOME:=$INR_DATA_ROOT/.cache/huggingface}"
+export HF_HOME
+
+# ---- mujoco rendering -----------------------------------------------------
+# Headless rendering on compute nodes (no X11). Harmless on interactive boxes.
+: "${MUJOCO_GL:=egl}"
+export MUJOCO_GL
+
+# ---- logging --------------------------------------------------------------
+: "${INR_LOG_LEVEL:=INFO}"
+export INR_LOG_LEVEL
+
+# ---- create the directories so first-use doesn't race ---------------------
+mkdir -p \
+  "$MINARI_DATASETS_PATH" \
+  "$INR_CUSTOM_MUJOCO_CACHE" \
+  "$INR_MINARI_CACHE" \
+  "$INR_MUJOCO_CHECKPOINT_CACHE" \
+  "$INR_DROID_CACHE" \
+  "$INR_FASTF1_CACHE" \
+  "$INR_LICHESS_CACHE" \
+  "$INR_DMLAB_CACHE" \
+  "$INR_RLU_DMLAB_CACHE" \
+  "$HF_HOME" \
+  "$INR_ROOT/outputs"
+
+# Convenience: chdir to the repo unless the caller set INR_KEEP_CWD=1.
+if [ -z "${INR_KEEP_CWD:-}" ]; then
+  cd "$INR_ROOT"
+fi

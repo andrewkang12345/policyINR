@@ -1,0 +1,91 @@
+seed: 0
+run_name: custom_mujoco_action_resampled_v5_hopper__cvae__new_policy__s0
+output_dir: outputs/suites/action_resampled_v5/runs/custom_mujoco_action_resampled_v5/custom_mujoco_action_resampled_v5_hopper__cvae__new_policy__s0
+train:
+  epochs: 10
+  batch_size: 32
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 160
+  early_stop_patience: 0
+shift:
+  kind: predefined_split
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: custom_mujoco_action_resampled_v5_hopper
+  kind: custom_mujoco
+  env: hopper
+  dataset_id: inr_mujoco_action_resampled_v5/hopper/controlled-v0
+  max_episodes_per_policy: 384
+  min_length: 32
+  max_length: 1280
+  generation:
+    generate_if_missing: true
+    force_rebuild: false
+    generation_mode: action_resampled_v5
+    device: cuda
+    deterministic: true
+    episode_horizon: 1280
+    min_episode_length: 32
+    policies:
+    - simple
+    - medium
+    - expert
+    episodes_per_policy:
+      ID: 256
+      OOD: 128
+    calibration:
+      episodes_per_policy: 4
+      horizon: 256
+      sample_stride: 4
+    action_distribution:
+      kind: minari_id_action_matched_ood_v4
+      tail_fraction: 0.4
+      train_frac: 0.7
+      val_frac: 0.15
+      acceptance_threshold: 2.5
+      candidate_batch_size: 2048
+      max_candidate_batches: 128
+      probe_like_samples: 8
+      probe_like_repeats: 4
+model:
+  name: cvae
+  kind: cvae
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 2
+  decoder_hidden: 256
+  kl_weight: 0.01
+  dropout: 0.0
+  shuffle_history_train: true
+experiment:
+  name: new_policy
+  description: 'Policy 1: ID/ID. Policy 2: ID/ID. Policy 3: unseen in training, test
+    on ID.'
+  policies:
+  - pid: 0
+    train: ID
+    test: ID
+  - pid: 1
+    train: ID
+    test: ID
+  - pid: 2
+    train: NONE
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

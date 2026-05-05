@@ -1,0 +1,11 @@
+- data=custom_mujoco_action_resampled_v5_halfcheetah
+- model=cvae
+- experiment=new_policy
+- seed=0
+- run_name=custom_mujoco_action_resampled_v5_halfcheetah__cvae__new_policy__s0
+- output_dir=outputs/suites/action_resampled_v5/runs/custom_mujoco_action_resampled_v5/custom_mujoco_action_resampled_v5_halfcheetah__cvae__new_policy__s0
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=32
+- train.history_k=160
+- ++data.max_episodes_per_policy=384

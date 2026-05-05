@@ -1,0 +1,13 @@
+- data=droid_lowdim_full_10x_min200
+- model=inr_transformer_infer_latent_maml
+- experiment=single_shift
+- seed=1
+- run_name=droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s1
+- output_dir=/mnt/data/INR/outputs/droid_lowdim_full_10x_min200_suite_20260502_mat512/droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s1
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=64
+- train.eval_batch_size=128
+- train.num_workers=0
+- train.materialize_dataset=true
+- train.history_k=200

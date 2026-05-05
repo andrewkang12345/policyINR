@@ -1,0 +1,22 @@
+name: fastf1_stint_full
+kind: fastf1
+seasons:
+  - 2023
+  - 2024
+gps:
+  - Bahrain
+  - Saudi Arabia
+  - Australia
+  - Japan
+  - Monaco
+  - British
+  - Italian
+ood_gp: Monaco
+n_drivers: 3
+preferred_drivers:
+  - VER
+min_points: 32
+# Stints can be long and uneven; this preserves stint-level episodes while
+# downsampling very long telemetry traces to a fixed practical ceiling.
+max_points: 800
+cache_dir: ${oc.env:INR_FASTF1_CACHE,${oc.env:HOME}/.cache/INR/fastf1}

@@ -1,0 +1,65 @@
+{
+  "run_name": "synthetic_grf_10x__cvae__novel_generalization__s0",
+  "shift_strength": {
+    "0": 0.19552051572091697,
+    "1": 0.2249567598047441,
+    "2": 0.24069205388861958
+  },
+  "shift_overlap": 1.3281666040420532,
+  "shift_overlap_ratio": 1.2712128784040966,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "synthetic_grf_10x",
+  "model": "cvae",
+  "experiment": "novel_generalization",
+  "seed": 0,
+  "state_dim": 8,
+  "action_dim": 4,
+  "n_train_episodes": 34,
+  "n_val_episodes": 8,
+  "n_test_episodes": 27,
+  "train": {
+    "best_val_loss": 0.5900171433287996,
+    "best_epoch": 7,
+    "final_train_loss": 0.02637776787004133,
+    "total_epochs": 10,
+    "wallclock_s": 69.17235040664673
+  },
+  "eval": {
+    "probe_acc": 0.6296296296296297,
+    "n_probe": 27,
+    "n_classes": 2,
+    "probe_acc_seen": 0.9444444444444444,
+    "novel_mean_embed_dist": 4.420223712921143,
+    "n_novel": 9,
+    "gen_mse": 1.2557473182678223,
+    "gen_rmse": 1.1206013199473854,
+    "gen_nmse": 1.0631320462065423,
+    "gen_median_se": 0.9514297842979431,
+    "gen_nmse_per_dim": [
+      1.0996333360671997,
+      1.3222309350967407,
+      0.9888895153999329,
+      0.7214352488517761
+    ],
+    "target_var": 1.18117718560791,
+    "n_gen_samples": 34533,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 34,
+    "n_test_episodes_used": 27,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 0.5925925925925926,
+    "knn_acc5": 0.6666666666666666,
+    "n_knn": 27
+  }
+}

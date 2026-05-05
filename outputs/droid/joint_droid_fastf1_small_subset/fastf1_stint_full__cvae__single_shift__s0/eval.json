@@ -1,0 +1,33 @@
+{
+  "probe_acc": 1.0,
+  "n_probe": 8,
+  "n_classes": 2,
+  "probe_acc_seen": 1.0,
+  "novel_mean_embed_dist": NaN,
+  "n_novel": 0,
+  "gen_mse": 0.3691445589065552,
+  "gen_rmse": 0.6075726778802312,
+  "gen_nmse": 0.4058180510666498,
+  "gen_median_se": 0.11601542681455612,
+  "gen_nmse_per_dim": [
+    0.33076080679893494,
+    0.7719833254814148,
+    0.003946032375097275,
+    0.699355959892273
+  ],
+  "target_var": 0.9096307025680542,
+  "n_gen_samples": 6392,
+  "finite_fraction": 1.0,
+  "train_pids": [
+    0,
+    1
+  ],
+  "test_pids": [
+    0,
+    1
+  ],
+  "n_train_episodes_used": 52,
+  "n_test_episodes_used": 8,
+  "n_test_ood": 1,
+  "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+}

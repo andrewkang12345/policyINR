@@ -1,0 +1,24 @@
+[gpu0:0] START lichess_full_2Xepisode__cvae__no_shift__s0
+[gpu1:1] START lichess_full_2Xepisode__cvae__conflation__s0
+[gpu2:2] START lichess_full_2Xepisode__cvae__generalization__s0
+[gpu3:3] START lichess_full_2Xepisode__inr_transformer_history_conditioned__no_shift__s0
+[gpu2:2] OK lichess_full_2Xepisode__cvae__generalization__s0 (332.9s)
+[gpu2:2] START lichess_full_2Xepisode__inr_transformer_history_conditioned__conflation__s0
+[gpu1:1] OK lichess_full_2Xepisode__cvae__conflation__s0 (774.2s)
+[gpu1:1] START lichess_full_2Xepisode__inr_transformer_history_conditioned__generalization__s0
+[gpu1:1] OK lichess_full_2Xepisode__inr_transformer_history_conditioned__generalization__s0 (308.6s)
+[gpu1:1] START lichess_full_2Xepisode__inr_diffusion_history_conditioned__no_shift__s0
+[gpu2:2] OK lichess_full_2Xepisode__inr_transformer_history_conditioned__conflation__s0 (753.3s)
+[gpu2:2] START lichess_full_2Xepisode__inr_diffusion_history_conditioned__conflation__s0
+[gpu0:0] OK lichess_full_2Xepisode__cvae__no_shift__s0 (1220.7s)
+[gpu0:0] START lichess_full_2Xepisode__inr_diffusion_history_conditioned__generalization__s0
+[gpu3:3] OK lichess_full_2Xepisode__inr_transformer_history_conditioned__no_shift__s0 (1223.8s)
+[gpu3:3] START lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0
+[gpu0:0] OK lichess_full_2Xepisode__inr_diffusion_history_conditioned__generalization__s0 (304.9s)
+[gpu0:0] START lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0
+[gpu2:2] OK lichess_full_2Xepisode__inr_diffusion_history_conditioned__conflation__s0 (714.7s)
+[gpu2:2] START lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0
+[gpu1:1] OK lichess_full_2Xepisode__inr_diffusion_history_conditioned__no_shift__s0 (1102.1s)
+[gpu2:2] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0 (1156.7s)
+[gpu0:0] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0 (2312.5s)
+[gpu3:3] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0 (3763.8s)

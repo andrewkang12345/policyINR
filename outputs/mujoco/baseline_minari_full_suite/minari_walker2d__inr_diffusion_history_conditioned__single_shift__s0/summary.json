@@ -1,0 +1,66 @@
+{
+  "run_name": "minari_walker2d__inr_diffusion_history_conditioned__single_shift__s0",
+  "shift_strength": {
+    "0": 0.594355583251792,
+    "1": 0.6753729173445653,
+    "2": 0.8411498459970395
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.1283633022706392,
+  "shift_fallback": "per_policy_cluster",
+  "data": "minari_walker2d",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "single_shift",
+  "seed": 0,
+  "state_dim": 17,
+  "action_dim": 6,
+  "n_train_episodes": 40,
+  "n_val_episodes": 8,
+  "n_test_episodes": 6,
+  "train": {
+    "best_val_loss": 0.55176835714602,
+    "best_epoch": 9,
+    "final_train_loss": 0.5607184924185276,
+    "total_epochs": 10,
+    "wallclock_s": 7.815544128417969
+  },
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 6,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "gen_mse": 1.0661523342132568,
+    "gen_rmse": 1.0325465288369609,
+    "gen_nmse": 1.0264513930423278,
+    "gen_median_se": 0.8268678188323975,
+    "gen_nmse_per_dim": [
+      0.799515426158905,
+      1.3417340517044067,
+      0.7201158404350281,
+      1.164047122001648,
+      1.4316680431365967,
+      0.6744310855865479
+    ],
+    "target_var": 1.0386778579483031,
+    "n_gen_samples": 1383,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 40,
+    "n_test_episodes_used": 6,
+    "n_test_ood": 2,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 6
+  }
+}

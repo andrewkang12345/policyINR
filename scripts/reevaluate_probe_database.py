@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import pathlib
 import subprocess
 import sys
 import time
@@ -33,7 +34,7 @@ for mod_name in ("eval", "eval.runner", "eval.summary"):
 
 from eval.summary import aggregate_runs
 from eval.runner import _per_episode_representations
-from eval.linear_probe import linear_probe
+from eval.linear_probe import cosine_knn_probe, linear_probe
 from models import build_model
 from train.main import _build_base_store, _device, _policies_from_cfg
 from data import build_experiment_loaders
@@ -126,6 +127,20 @@ def _remap_legacy_state_dict_keys(state_dict: dict) -> dict:
     for old_key, new_key in key_map.items():
         if old_key in remapped and new_key not in remapped:
             remapped[new_key] = remapped.pop(old_key)
+    # Older history-conditioned INR checkpoints stored the Transformer
+    # history encoder at module root. Current models wrap it under
+    # `encoder`, so only the policy_head keys are already aligned.
+    for key in list(remapped.keys()):
+        if key.startswith("policy_head."):
+            continue
+        if key in {"type_pair", "pos"} or key.startswith(("pair_embed.", "latent_head.", "latent_norm.")):
+            new_key = f"encoder.{key}"
+        elif key.startswith("encoder.layers."):
+            new_key = f"encoder.{key}"
+        else:
+            continue
+        if new_key not in remapped:
+            remapped[new_key] = remapped.pop(key)
     return remapped
 
 
@@ -159,6 +174,8 @@ def _recompute_run(run_dir: Path) -> None:
         raise FileNotFoundError(f"missing config/summary/checkpoint in {run_dir}")
 
     cfg = OmegaConf.load(cfg_path)
+    _remap_unavailable_cache_dirs(cfg)
+    _remap_runtime_cache_roots(cfg)
 
     base_store = _build_base_store(cfg.data)
     policies = _policies_from_cfg(cfg.experiment.policies)
@@ -175,6 +192,10 @@ def _recompute_run(run_dir: Path) -> None:
         eval_batch_size=int(cfg.train.eval_batch_size),
         num_workers=int(cfg.train.num_workers),
         shuffle_history_train=bool(cfg.model.shuffle_history_train),
+        behavior_unit=str(cfg.model.get("behavior_unit", "episode")),
+        unit_window_size=int(cfg.model.get("unit_window_size", cfg.train.history_k)),
+        use_unit_latents=bool(cfg.model.get("use_unit_latents", False)),
+        materialize_datasets=bool(cfg.train.get("materialize_dataset", False)),
         seed=int(cfg.seed),
     )
 
@@ -182,6 +203,9 @@ def _recompute_run(run_dir: Path) -> None:
     model_kwargs.pop("name", None)
     kind = model_kwargs.pop("kind")
     model_kwargs.pop("shuffle_history_train", None)
+    use_unit_latents = bool(model_kwargs.pop("use_unit_latents", False))
+    behavior_unit = str(model_kwargs.pop("behavior_unit", "episode"))
+    model_kwargs.pop("unit_window_size", None)
     model_kwargs.update(
         state_dim=loaders["state_dim"],
         action_dim=loaders["action_dim"],
@@ -189,6 +213,9 @@ def _recompute_run(run_dir: Path) -> None:
         action_kind=loaders.get("action_kind", "continuous"),
         n_actions=loaders.get("n_actions", None),
     )
+    if use_unit_latents:
+        model_kwargs["n_train_units"] = int(loaders.get("n_train_units", 0))
+        model_kwargs["behavior_unit"] = str(loaders.get("behavior_unit", behavior_unit))
     model = _build_model_for_run(kind, model_kwargs, ckpt_path)
     device = _device(cfg)
     _load_model_checkpoint(model, ckpt_path, device)
@@ -203,6 +230,9 @@ def _recompute_run(run_dir: Path) -> None:
         action_mean=loaders["action_mean"], action_std=loaders["action_std"],
         shuffle_history=True, device=device,
         min_len=int(cfg.eval.min_episode_length_for_eval),
+        behavior_unit=str(loaders.get("behavior_unit", "episode")),
+        unit_window_size=int(loaders.get("unit_window_size", 0)),
+        known_unit_map=loaders.get("train_unit_map") if loaders.get("use_unit_latents", False) else None,
     )
     test_embs, test_labels, oods = _per_episode_representations(
         model, loaders["test_store"],
@@ -212,6 +242,9 @@ def _recompute_run(run_dir: Path) -> None:
         action_mean=loaders["action_mean"], action_std=loaders["action_std"],
         shuffle_history=True, device=device,
         min_len=int(cfg.eval.min_episode_length_for_eval),
+        behavior_unit=str(loaders.get("behavior_unit", "episode")),
+        unit_window_size=int(loaders.get("unit_window_size", 0)),
+        known_unit_map=loaders.get("train_unit_map") if loaders.get("use_unit_latents", False) else None,
     )
     train_pids = sorted({int(m.policy_id) for m in loaders["train_store"].meta})
     probe_out = linear_probe(
@@ -221,6 +254,7 @@ def _recompute_run(run_dir: Path) -> None:
         C=float(cfg.eval.probe_C),
         max_iter=int(cfg.eval.probe_max_iter),
     )
+    probe_out.update(cosine_knn_probe(train_embs, train_labels, test_embs, test_labels, k=5))
     probe_out["train_pids"] = [int(p) for p in train_pids]
     probe_out["test_pids"] = [int(p) for p in sorted(set(test_labels.tolist()))]
     probe_out["n_train_episodes_used"] = int(train_embs.shape[0])
@@ -243,9 +277,51 @@ def _recompute_run(run_dir: Path) -> None:
         json.dump(summary, f, indent=2, default=float)
 
 
-def _collect_run_dirs(root: Path) -> List[Path]:
+def _remap_unavailable_cache_dirs(cfg) -> None:
+    """Use local cache mirrors when old run configs point at unavailable HPC paths."""
+    if "data" not in cfg or "cache_dir" not in cfg.data:
+        return
+    cache_dir = Path(str(cfg.data.cache_dir)).expanduser()
+    try:
+        available = cache_dir.exists()
+    except PermissionError:
+        available = False
+    if available:
+        return
+
+    path_s = str(cache_dir)
+    if "INR_cache/fastf1" in path_s:
+        cfg.data.cache_dir = os.environ.get("INR_FASTF1_CACHE",   str(pathlib.Path.home() / ".cache/INR/fastf1"))
+    elif "INR_cache/droid" in path_s:
+        cfg.data.cache_dir = os.environ.get("INR_DROID_CACHE",    str(pathlib.Path.home() / ".cache/INR/droid"))
+    elif "INR_cache/lichess" in path_s:
+        cfg.data.cache_dir = os.environ.get("INR_LICHESS_CACHE",  str(pathlib.Path.home() / ".cache/INR/lichess"))
+
+
+def _remap_runtime_cache_roots(cfg) -> None:
+    """Point modules with import-time default cache roots at local mirrors."""
+    if "data" not in cfg:
+        return
+    if str(cfg.data.get("kind", "")) == "dmlab":
+        import data.dmlab as dmlab
+        dmlab.DEFAULT_CACHE_ROOT = Path(os.environ.get("INR_DMLAB_CACHE",     str(pathlib.Path.home() / ".cache/INR/dmlab")))
+        dmlab.DEFAULT_SHARD_CACHE = Path(os.environ.get("INR_RLU_DMLAB_CACHE", str(pathlib.Path.home() / ".cache/INR/rlu_dmlab")))
+
+
+def _has_knn_metrics(summary_path: Path) -> bool:
+    try:
+        with summary_path.open() as f:
+            eval_out = json.load(f).get("eval", {})
+    except Exception:
+        return False
+    return "knn_acc1" in eval_out and "knn_acc5" in eval_out
+
+
+def _collect_run_dirs(root: Path, *, missing_knn_only: bool = False) -> List[Path]:
     run_dirs = []
     for summary_path in root.rglob("summary.json"):
+        if missing_knn_only and _has_knn_metrics(summary_path):
+            continue
         run_dir = summary_path.parent
         if (run_dir / "config.yaml").exists() and ((run_dir / "best.pt").exists() or (run_dir / "last.pt").exists()):
             run_dirs.append(run_dir)
@@ -298,8 +374,8 @@ def _worker(gpu_id: int, q: "Queue[Path | None]", root: Path, log_path: Path) ->
             q.task_done()
 
 
-def _run_database(root: Path, n_gpus: int) -> None:
-    run_dirs = _collect_run_dirs(root)
+def _run_database(root: Path, n_gpus: int, *, missing_knn_only: bool = False) -> None:
+    run_dirs = _collect_run_dirs(root, missing_knn_only=missing_knn_only)
     log_path = root / "reevaluate_probe_database.log"
     if log_path.exists():
         log_path.unlink()
@@ -321,15 +397,16 @@ def _run_database(root: Path, n_gpus: int) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--root", type=Path, default=Path("/mnt/data/INR/outputs"))
+    ap.add_argument("--root", type=Path, default=Path(os.environ.get("INR_OUTPUTS_ROOT", str(pathlib.Path(__file__).resolve().parent.parent / "outputs"))))
     ap.add_argument("--run-dir", type=Path, default=None)
     ap.add_argument("--n-gpus", type=int, default=4)
+    ap.add_argument("--missing-knn-only", action="store_true")
     args = ap.parse_args()
 
     if args.run_dir is not None:
         _recompute_run(args.run_dir.resolve())
         return
-    _run_database(args.root.resolve(), args.n_gpus)
+    _run_database(args.root.resolve(), args.n_gpus, missing_knn_only=bool(args.missing_knn_only))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+name: droid_lowdim_full
+kind: droid
+source: droid
+data_dir: ${oc.env:INR_DROID_CACHE,${oc.env:HOME}/.cache/INR/droid}
+# Capped full-release slice. We still download TFRecord shards that contain
+# images, but the builder parses only low-dimensional state/action fields.
+max_shards: 8
+max_episodes: 600
+n_collectors: 3
+min_episodes_per_collector: 8
+min_length: 8
+max_length: null
+ood_task_family: null

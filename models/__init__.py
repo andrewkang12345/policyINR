@@ -3,6 +3,7 @@ from .inr_transformer import (
     INRTransformer,
     INRTransformerHistoryConditioned,
     INRTransformerFittedLatent,
+    INRTransformerInferLatent,
 )
 from .inr_diffusion import INRDiffusion, INRDiffusionHistoryConditioned
 from .base import RepresentationModel
@@ -18,6 +19,7 @@ __all__ = [
     "INRTransformer",
     "INRTransformerHistoryConditioned",
     "INRTransformerFittedLatent",
+    "INRTransformerInferLatent",
     "INRDiffusion",
     "INRDiffusionHistoryConditioned",
     "RepresentationModel",

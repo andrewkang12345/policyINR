@@ -1,0 +1,78 @@
+seed: 1
+run_name: fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s1
+output_dir: /mnt/data/INR/outputs/droid_fastf1_full_suite_ver_20260501/fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s1
+train:
+  epochs: 30
+  batch_size: 128
+  eval_batch_size: 512
+  num_workers: 4
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 800
+  early_stop_patience: 0
+shift:
+  kind: predefined_split
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: fastf1_stint_full
+  kind: fastf1
+  seasons:
+  - 2023
+  - 2024
+  gps:
+  - Bahrain
+  - Saudi Arabia
+  - Australia
+  - Japan
+  - Monaco
+  - British
+  - Italian
+  ood_gp: Monaco
+  n_drivers: 3
+  preferred_drivers:
+  - VER
+  min_points: 32
+  max_points: 800
+  cache_dir: /mnt/data/INR/.cache/fastf1
+model:
+  name: inr_transformer_infer_latent_maml
+  kind: inr_transformer_infer_latent
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  head_hidden: 256
+  head_blocks: 3
+  dropout: 0.0
+  shuffle_history_train: false
+  use_unit_latents: false
+  behavior_unit: episode
+  unit_window_size: 16
+  latent_infer_steps: 10
+  latent_infer_lr: 0.05
+  latent_infer_l2_weight: 0.0001
+  latent_infer_create_graph: true
+experiment:
+  name: single_shift
+  description: 'Policy 1: train ID, test OOD. Policy 2: train ID, test ID.'
+  policies:
+  - pid: 0
+    train: ID
+    test: OOD
+  - pid: 1
+    train: ID
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

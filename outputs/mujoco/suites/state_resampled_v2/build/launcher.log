@@ -1,0 +1,11 @@
+[launcher] 5 custom MuJoCo builds across 4 GPUs
+[gpu0] START ant
+[gpu1] START halfcheetah
+[gpu2] START hopper
+[gpu3] START humanoid
+[gpu1] OK halfcheetah (109.4s)
+[gpu1] START walker2d
+[gpu2] OK hopper (111.2s)
+[gpu0] OK ant (117.0s)
+[gpu3] OK humanoid (120.9s)
+[gpu1] OK walker2d (113.2s)

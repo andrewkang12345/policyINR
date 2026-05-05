@@ -1,0 +1,42 @@
+{
+  "data": "lichess_full_2Xepisode_all_policies",
+  "model": "cvae",
+  "experiment": "no_shift",
+  "seed": 0,
+  "n_train_episodes": 3354,
+  "n_val_episodes": 718,
+  "n_test_episodes": 719,
+  "source_run_dir": "/mnt/data/INR/outputs/lichess_full_2Xepisode_hk240/lichess_full_2Xepisode__cvae__no_shift__s0",
+  "eval": {
+    "probe_acc": 0.7649513212795549,
+    "n_probe": 719,
+    "n_classes": 3,
+    "probe_acc_seen": 0.7649513212795549,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.6620305980528511,
+    "knn_acc5": 0.9624478442280946,
+    "n_knn": 719,
+    "train_pids": [
+      0,
+      1,
+      2
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 3354,
+    "n_test_episodes_used": 719,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

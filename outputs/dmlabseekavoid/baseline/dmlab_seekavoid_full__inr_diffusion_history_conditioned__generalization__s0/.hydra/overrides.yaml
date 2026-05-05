@@ -1,0 +1,10 @@
+- data=dmlab_seekavoid_full
+- model=inr_diffusion_history_conditioned
+- experiment=generalization
+- seed=0
+- run_name=dmlab_seekavoid_full__inr_diffusion_history_conditioned__generalization__s0
+- output_dir=outputs/full_suite_new_datasets/dmlab_seekavoid_full__inr_diffusion_history_conditioned__generalization__s0
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=301

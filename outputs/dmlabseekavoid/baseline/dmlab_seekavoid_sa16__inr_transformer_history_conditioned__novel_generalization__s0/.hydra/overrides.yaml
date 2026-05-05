@@ -1,0 +1,9 @@
+- data=dmlab_seekavoid_sa16
+- model=inr_transformer
+- experiment=novel_generalization
+- seed=0
+- run_name=dmlab_seekavoid__inr_transformer__novel_generalization__s0
+- output_dir=outputs/full_suite_new_datasets/dmlab_seekavoid__inr_transformer__novel_generalization__s0
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=16

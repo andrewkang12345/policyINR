@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/data/INR/scripts/reevaluate_probe_database.py", line 412, in <module>
+    main()
+  File "/mnt/data/INR/scripts/reevaluate_probe_database.py", line 406, in main
+    _recompute_run(args.run_dir.resolve())
+  File "/mnt/data/INR/scripts/reevaluate_probe_database.py", line 184, in _recompute_run
+    loaders = build_experiment_loaders(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/INR/data/splits.py", line 157, in build_experiment_loaders
+    raise RuntimeError(
+RuntimeError: Experiment composition requires policy_id=2 but the base store has no episodes for it.

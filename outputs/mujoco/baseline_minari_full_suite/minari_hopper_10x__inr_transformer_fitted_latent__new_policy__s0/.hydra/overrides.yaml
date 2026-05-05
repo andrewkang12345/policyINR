@@ -1,0 +1,10 @@
+- data=minari_hopper_10x
+- model=inr_transformer_fitted_latent
+- experiment=new_policy
+- seed=0
+- run_name=minari_hopper_10x__inr_transformer_fitted_latent__new_policy__s0
+- output_dir=outputs/full_suite/minari_hopper_10x__inr_transformer_fitted_latent__new_policy__s0
+- train.epochs=10
+- train.batch_size=32
+- train.history_k=160
+- ++data.max_episodes_per_policy=40

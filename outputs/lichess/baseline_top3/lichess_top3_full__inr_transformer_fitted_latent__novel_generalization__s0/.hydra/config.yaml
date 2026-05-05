@@ -1,0 +1,73 @@
+seed: 0
+run_name: lichess_top3_full__inr_transformer_fitted_latent__novel_generalization__s0
+output_dir: outputs/full_suite_new_datasets/lichess_top3_full__inr_transformer_fitted_latent__novel_generalization__s0
+train:
+  epochs: 10
+  batch_size: 128
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 120
+  early_stop_patience: 0
+shift:
+  kind: shared_region
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: lichess_top3_full
+  kind: lichess
+  pgn_dir: ${oc.env:HOME}/.cache/INR/lichess/pgn
+  players:
+  - lance5500
+  - Zhigalko_Sergei
+  - penguingim1
+  max_games_per_player: 5000
+  min_plies: 20
+  max_plies: 120
+  tracked_player_only: true
+model:
+  name: inr_transformer_fitted_latent
+  kind: inr_transformer_fitted_latent
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  head_hidden: 256
+  head_blocks: 3
+  dropout: 0.0
+  shuffle_history_train: false
+  use_unit_latents: true
+  behavior_unit: episode
+  unit_window_size: 16
+  unit_latent_l2_weight: 0.0001
+  latent_infer_steps: 40
+  latent_infer_lr: 0.05
+  latent_infer_l2_weight: 0.0001
+experiment:
+  name: novel_generalization
+  description: 'Policy 1: OOD/ID. Policy 2: OOD/ID. Policy 3: unseen in training,
+    test on ID.'
+  policies:
+  - pid: 0
+    train: OOD
+    test: ID
+  - pid: 1
+    train: OOD
+    test: ID
+  - pid: 2
+    train: NONE
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

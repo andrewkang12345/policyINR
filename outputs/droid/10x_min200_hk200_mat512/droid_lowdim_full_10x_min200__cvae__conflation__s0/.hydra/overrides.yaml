@@ -1,0 +1,12 @@
+- data=droid_lowdim_full_10x_min200
+- model=cvae
+- experiment=conflation
+- seed=0
+- run_name=droid_lowdim_full_10x_min200__cvae__conflation__s0
+- output_dir=/mnt/data/INR/outputs/droid_lowdim_full_10x_min200_suite_20260502_mat512/droid_lowdim_full_10x_min200__cvae__conflation__s0
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=512
+- train.num_workers=0
+- train.materialize_dataset=true
+- train.history_k=200

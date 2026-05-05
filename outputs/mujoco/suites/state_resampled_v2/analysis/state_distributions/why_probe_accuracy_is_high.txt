@@ -1,0 +1,43 @@
+Step-resampled MuJoCo probe-accuracy analysis
+
+What the plots show
+- Each environment overview projects the sampled observation states into a shared 2D PCA space.
+- Each policy plot projects one policy's ID and OOD observation clouds.
+- These are observation distributions, not rollout trajectories.
+
+Main conclusion
+- The step-resampled construction mostly removed policy-identifying information from the observation distribution itself, but the downstream representation is still trained on state-action histories, so actions remain strongly policy-identifying.
+
+Quantitative evidence
+ant:
+  state-only linear accuracy=0.310, ID-only=0.336, OOD-only=0.311, action-only=0.645
+  mean pairwise centroid distance=0.000, mean within-policy radius=9.469
+halfcheetah:
+  state-only linear accuracy=0.328, ID-only=0.315, OOD-only=0.364, action-only=0.572
+  mean pairwise centroid distance=0.000, mean within-policy radius=24.275
+hopper:
+  state-only linear accuracy=0.346, ID-only=0.351, OOD-only=0.335, action-only=0.571
+  mean pairwise centroid distance=0.000, mean within-policy radius=6.643
+humanoid:
+  state-only linear accuracy=0.345, ID-only=0.314, OOD-only=0.332, action-only=0.921
+  mean pairwise centroid distance=0.000, mean within-policy radius=29.581
+walker2d:
+  state-only linear accuracy=0.314, ID-only=0.318, OOD-only=0.312, action-only=0.501
+  mean pairwise centroid distance=0.000, mean within-policy radius=10.249
+
+Why the probe accuracy is still high
+- In the step-resampled dataset, each policy is queried on mostly matched state distributions, so state-only classification is near chance in several environments.
+- But each checkpoint still produces policy-specific actions on those states. The training pipeline consumes state-action histories, not states alone.
+- A representation that can predict or reconstruct actions will naturally preserve policy identity even when the state marginals are aligned.
+- Finite-sample effects still leave some residual state mismatch, but that is not the dominant reason for the near-1.0 probe results.
+
+How to fix it
+- If the goal is to remove state leakage specifically, force every policy to use the exact same state bag for train/val/test and for both ID and OOD.
+- If the goal is to make policy identification genuinely hard, you need to break the direct action signal too. Two practical options:
+  1. Evaluate representations built from states only, or from masked/noised actions, so the probe cannot read policy identity directly from control outputs.
+  2. Replace the policy-ID probe with a task-relevant probe, such as return prediction, dynamics prediction, transfer, or OOD action prediction.
+- A stronger dataset construction would use a single canonical pool of sampled states per environment, then replay that exact pool for every checkpoint.
+- If you still want action-conditioned sequences, compare policies only on matched state-action residuals, for example action deltas relative to a shared reference controller.
+
+Practical next step
+- The next clean experiment is a matched-state dataset where each policy receives the exact same sampled state tensor in the same episode order, plus a state-only ablation of the encoder/probe.

@@ -1,0 +1,87 @@
+seed: 1
+run_name: custom_mujoco_action_resampled_v3_halfcheetah__inr_diffusion_history_conditioned__conflation__s1
+output_dir: outputs/suites/action_resampled_v3/runs/custom_mujoco_action_resampled_v3/custom_mujoco_action_resampled_v3_halfcheetah__inr_diffusion_history_conditioned__conflation__s1
+train:
+  epochs: 10
+  batch_size: 256
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 16
+  early_stop_patience: 0
+shift:
+  kind: predefined_split
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: custom_mujoco_action_resampled_v3_halfcheetah
+  kind: custom_mujoco
+  env: halfcheetah
+  dataset_id: inr_mujoco_action_resampled_v3/halfcheetah/controlled-v0
+  max_episodes_per_policy: 384
+  min_length: 32
+  max_length: 128
+  generation:
+    generate_if_missing: true
+    force_rebuild: false
+    generation_mode: action_resampled_v3
+    device: cuda
+    deterministic: true
+    episode_horizon: 128
+    min_episode_length: 32
+    policies:
+    - simple
+    - medium
+    - expert
+    episodes_per_policy:
+      ID: 256
+      OOD: 128
+    calibration:
+      episodes_per_policy: 4
+      horizon: 256
+      sample_stride: 4
+    action_distribution:
+      kind: shared_state_action_mean_matched_v3
+      tail_fraction: 0.4
+      train_frac: 0.7
+      val_frac: 0.15
+      candidate_multiplier: 12
+model:
+  name: inr_diffusion_history_conditioned
+  kind: inr_diffusion_history_conditioned
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  denoise_hidden: 256
+  denoise_layers: 3
+  n_diffusion_steps: 50
+  beta_start: 0.0001
+  beta_end: 0.02
+  n_sample_steps: 10
+  dropout: 0.0
+  shuffle_history_train: false
+experiment:
+  name: conflation
+  description: 'Policy 1: train OOD, test OOD. Policy 2: train ID, test ID.'
+  policies:
+  - pid: 0
+    train: OOD
+    test: OOD
+  - pid: 1
+    train: ID
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

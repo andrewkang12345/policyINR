@@ -1,0 +1,9 @@
+- data=synthetic_grf_10x
+- model=inr_transformer_history_conditioned
+- experiment=single_shift
+- seed=1
+- run_name=synthetic_grf_10x__inr_transformer_history_conditioned__single_shift__s1
+- output_dir=outputs/full_suite_new_datasets/synthetic_grf_10x__inr_transformer_history_conditioned__single_shift__s1
+- train.epochs=10
+- train.batch_size=32
+- train.history_k=160

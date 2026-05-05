@@ -79,6 +79,39 @@ def linear_probe(
     return out
 
 
+def cosine_knn_probe(
+    train_embeddings: np.ndarray,
+    train_labels: np.ndarray,
+    test_embeddings: np.ndarray,
+    test_labels: np.ndarray,
+    *,
+    k: int = 5,
+) -> Dict[str, float]:
+    """Cosine kNN policy classification on train embeddings -> test embeddings."""
+    if train_embeddings.shape[0] == 0 or test_embeddings.shape[0] == 0:
+        return {"knn_acc1": float("nan"), "knn_acc5": float("nan"), "n_knn": 0}
+
+    train_norm = _l2_normalize(train_embeddings.astype(np.float32, copy=False))
+    test_norm = _l2_normalize(test_embeddings.astype(np.float32, copy=False))
+    sims = test_norm @ train_norm.T
+
+    k_eff = min(max(1, int(k)), train_norm.shape[0])
+    topk = np.argpartition(-sims, kth=k_eff - 1, axis=1)[:, :k_eff]
+    top1 = np.argmax(sims, axis=1)
+    topk_labels = train_labels[topk]
+
+    return {
+        "knn_acc1": float(np.mean(train_labels[top1] == test_labels)),
+        "knn_acc5": float(np.mean(np.any(topk_labels == test_labels[:, None], axis=1))),
+        "n_knn": int(test_embeddings.shape[0]),
+    }
+
+
+def _l2_normalize(x: np.ndarray, eps: float = 1e-12) -> np.ndarray:
+    denom = np.linalg.norm(x, axis=1, keepdims=True)
+    return x / np.maximum(denom, eps)
+
+
 def _fit_probe(X, y, *, C, max_iter):
     classes = np.unique(y)
     if X.shape[0] == 0 or classes.size < 2:

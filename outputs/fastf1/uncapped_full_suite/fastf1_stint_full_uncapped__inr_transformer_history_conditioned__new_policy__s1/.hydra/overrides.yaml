@@ -1,0 +1,12 @@
+- data=fastf1_stint_full_uncapped
+- model=inr_transformer_history_conditioned
+- experiment=new_policy
+- seed=1
+- run_name=fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1
+- output_dir=/ocean/projects/cis260099p/akang3/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1
+- data.cache_dir=/ocean/projects/cis260099p/akang3/INR_cache/fastf1
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=128
+- train.num_workers=4
+- train.history_k=800

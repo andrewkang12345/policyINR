@@ -1,0 +1,73 @@
+seed: 1
+run_name: droid_lowdim_full_10x__inr_diffusion_history_conditioned__no_shift__s1
+output_dir: /mnt/data/INR/outputs/droid_lowdim_full_10x_suite_20260501/droid_lowdim_full_10x__inr_diffusion_history_conditioned__no_shift__s1
+train:
+  epochs: 30
+  batch_size: 128
+  eval_batch_size: 512
+  num_workers: 4
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 300
+  early_stop_patience: 0
+shift:
+  kind: predefined_split
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: droid_lowdim_full_10x
+  kind: droid
+  source: droid
+  data_dir: /mnt/data/INR/.cache/droid
+  max_shards: 80
+  max_episodes: 6000
+  n_collectors: 3
+  collectors:
+  - RAIL
+  - IRIS
+  - CLVR
+  min_episodes_per_collector: 8
+  min_length: 8
+  max_length: null
+  ood_task_family: marker
+model:
+  name: inr_diffusion_history_conditioned
+  kind: inr_diffusion_history_conditioned
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  denoise_hidden: 256
+  denoise_layers: 3
+  n_diffusion_steps: 50
+  beta_start: 0.0001
+  beta_end: 0.02
+  n_sample_steps: 10
+  dropout: 0.0
+  shuffle_history_train: false
+  use_unit_latents: false
+  behavior_unit: episode
+  unit_window_size: 16
+experiment:
+  name: no_shift
+  description: 'Policy 1: train ID, test ID. Policy 2: train ID, test ID.'
+  policies:
+  - pid: 0
+    train: ID
+    test: ID
+  - pid: 1
+    train: ID
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

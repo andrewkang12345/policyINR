@@ -18,6 +18,7 @@ Outputs land in `<output_dir>/`:
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 from typing import List
@@ -38,6 +39,8 @@ from data import (
     build_synthetic_store,
     build_minari_store,
     build_custom_mujoco_store,
+    build_droid_store,
+    build_fastf1_store,
     build_experiment_loaders,
 )
 from data.dmlab import build_dmlab_store
@@ -96,6 +99,32 @@ def _build_base_store(data_cfg: DictConfig):
             tracked_player_only=bool(data_cfg.get("tracked_player_only", True)),
             games_per_episode=int(data_cfg.get("games_per_episode", 1)),
         )
+    if data_cfg.kind == "droid":
+        return build_droid_store(
+            source=data_cfg.get("source", "droid_100"),
+            data_dir=data_cfg.get("data_dir", os.environ.get("INR_DROID_CACHE",
+                                              str(Path.home() / ".cache/INR/droid"))),
+            max_shards=data_cfg.get("max_shards", None),
+            max_episodes=int(data_cfg.get("max_episodes", 300)),
+            n_collectors=int(data_cfg.get("n_collectors", 3)),
+            min_episodes_per_collector=int(data_cfg.get("min_episodes_per_collector", 8)),
+            min_length=int(data_cfg.get("min_length", 8)),
+            max_length=data_cfg.get("max_length", None),
+            ood_task_family=data_cfg.get("ood_task_family", None),
+            collectors=tuple(data_cfg.get("collectors", ())) or None,
+        )
+    if data_cfg.kind == "fastf1":
+        return build_fastf1_store(
+            seasons=tuple(data_cfg.get("seasons", (2023, 2024))),
+            gps=tuple(data_cfg.get("gps", ("Bahrain", "Saudi Arabia", "Australia", "Japan", "Monaco", "British", "Italian"))),
+            ood_gp=str(data_cfg.get("ood_gp", "Monaco")),
+            n_drivers=int(data_cfg.get("n_drivers", 3)),
+            preferred_drivers=tuple(data_cfg.get("preferred_drivers", ())),
+            min_points=int(data_cfg.get("min_points", 32)),
+            max_points=data_cfg.get("max_points", 800),
+            cache_dir=data_cfg.get("cache_dir", os.environ.get("INR_FASTF1_CACHE",
+                                                str(Path.home() / ".cache/INR/fastf1"))),
+        )
     raise ValueError(f"Unknown data kind: {data_cfg.kind}")
 
 
@@ -138,6 +167,7 @@ def main(cfg: DictConfig) -> None:
         behavior_unit=str(cfg.model.get("behavior_unit", "episode")),
         unit_window_size=int(cfg.model.get("unit_window_size", cfg.train.history_k)),
         use_unit_latents=bool(cfg.model.get("use_unit_latents", False)),
+        materialize_datasets=bool(cfg.train.get("materialize_dataset", False)),
         seed=int(cfg.seed),
     )
     logger.info(

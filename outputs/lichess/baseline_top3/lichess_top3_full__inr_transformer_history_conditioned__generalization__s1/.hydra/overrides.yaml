@@ -1,0 +1,9 @@
+- data=lichess_top3_full
+- model=inr_transformer_history_conditioned
+- experiment=generalization
+- seed=1
+- run_name=lichess_top3_full__inr_transformer_history_conditioned__generalization__s1
+- output_dir=outputs/full_suite_new_datasets/lichess_top3_full__inr_transformer_history_conditioned__generalization__s1
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=120

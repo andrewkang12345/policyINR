@@ -1,0 +1,13 @@
+[gpu0:0] START lichess_top3_full__inr_transformer_infer_latent_maml__no_shift__s0
+[gpu1:1] START lichess_top3_full__inr_transformer_infer_latent_maml__new_policy__s0
+[gpu2:2] START lichess_top3_full__inr_transformer_infer_latent_maml__single_shift__s0
+[gpu3:3] START lichess_top3_full__inr_transformer_infer_latent_maml__conflation__s0
+[gpu3:3] OK lichess_top3_full__inr_transformer_infer_latent_maml__conflation__s0 (4669.1s)
+[gpu3:3] START lichess_top3_full__inr_transformer_infer_latent_maml__generalization__s0
+[gpu3:3] OK lichess_top3_full__inr_transformer_infer_latent_maml__generalization__s0 (2034.3s)
+[gpu3:3] START lichess_top3_full__inr_transformer_infer_latent_maml__specialization__s0
+[gpu2:2] OK lichess_top3_full__inr_transformer_infer_latent_maml__single_shift__s0 (7415.2s)
+[gpu2:2] START lichess_top3_full__inr_transformer_infer_latent_maml__novel_generalization__s0
+[gpu0:0] OK lichess_top3_full__inr_transformer_infer_latent_maml__no_shift__s0 (7435.0s)
+[gpu1:1] OK lichess_top3_full__inr_transformer_infer_latent_maml__new_policy__s0 (7460.4s)
+[gpu2:2] OK lichess_top3_full__inr_transformer_infer_latent_maml__novel_generalization__s0 (2061.5s)

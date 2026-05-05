@@ -1,0 +1,75 @@
+{
+  "run_name": "custom_mujoco_humanoid__inr_transformer_history_conditioned__novel_generalization__s0",
+  "shift_strength": {
+    "0": 0.3594189239474306,
+    "1": 0.34266120984154047,
+    "2": 0.3110064547652422
+  },
+  "shift_overlap": 27.79932975769043,
+  "shift_overlap_ratio": 1.0328530619207064,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "custom_mujoco_humanoid",
+  "model": "inr_transformer_history_conditioned",
+  "experiment": "novel_generalization",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 180,
+  "n_val_episodes": 38,
+  "n_test_episodes": 117,
+  "train": {
+    "best_val_loss": 0.18601237028202378,
+    "best_epoch": 10,
+    "final_train_loss": 0.09911594639827566,
+    "total_epochs": 10,
+    "wallclock_s": 17.078174352645874
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 117,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 4.291164398193359,
+    "n_novel": 39,
+    "gen_mse": 0.6313053965568542,
+    "gen_rmse": 0.7945472903212585,
+    "gen_nmse": 0.5652507554083274,
+    "gen_median_se": 0.3121192753314972,
+    "gen_nmse_per_dim": [
+      0.9913506507873535,
+      0.3981589078903198,
+      0.27348724007606506,
+      0.3969915509223938,
+      0.5811845064163208,
+      0.23102615773677826,
+      0.4979345500469208,
+      0.4586918354034424,
+      0.7405200600624084,
+      0.20708554983139038,
+      0.6081974506378174,
+      0.6340377926826477,
+      0.3723420202732086,
+      1.0007449388504028,
+      0.3449232578277588,
+      0.7387050986289978,
+      0.5777256488800049
+    ],
+    "target_var": 1.1168590055236816,
+    "n_gen_samples": 12903,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 180,
+    "n_test_episodes_used": 117,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

@@ -57,7 +57,8 @@ DMLAB_SHARDS_BUCKET = "https://storage.googleapis.com/rl_unplugged/dmlab"
 DEFAULT_CACHE_ROOT = Path(os.environ.get("INR_DMLAB_CACHE",
                                           Path.home() / ".cache/INR/dmlab")).expanduser()
 DEFAULT_SHARD_CACHE = Path(os.environ.get("INR_DMLAB_SHARD_CACHE",
-                                           "/mnt/data/INR/.cache/rlu_dmlab")).expanduser()
+                                           os.environ.get("INR_RLU_DMLAB_CACHE",
+                                           Path.home() / ".cache/INR/rlu_dmlab"))).expanduser()
 
 
 def _shard_url(config_name: str, shard_id: int) -> str:
@@ -122,6 +123,14 @@ def _cache_path(config_name: str, max_episodes: int) -> Path:
     return DEFAULT_CACHE_ROOT / tag
 
 
+def _feature_cache_path(config_name: str, max_episodes: int, cnn_feature_dim: int, seed: int) -> Path:
+    tag = (
+        f"{config_name}_N{max_episodes}_L{DMLAB_EPISODE_LENGTH}"
+        f"_features_D{cnn_feature_dim}_seed{seed}.npz"
+    )
+    return DEFAULT_CACHE_ROOT / tag
+
+
 def build_dmlab_store(max_episodes_per_policy: int = 60,
                       cnn_feature_dim: int = 128,
                       seed: int = 0,
@@ -133,11 +142,8 @@ def build_dmlab_store(max_episodes_per_policy: int = 60,
     has `3 * max_episodes_per_policy` total episodes. Episodes are kept at
     the full RLU length (301 steps) with no truncation.
     """
-    from utils.featurizers import DMLabFeaturizer
-
     DEFAULT_CACHE_ROOT.mkdir(parents=True, exist_ok=True)
-    feat = DMLabFeaturizer(n_actions=DMLAB_N_ACTIONS,
-                            cnn_feature_dim=cnn_feature_dim, seed=seed, device=device)
+    feat = None
 
     all_states: List[np.ndarray] = []
     all_actions: List[np.ndarray] = []
@@ -146,38 +152,65 @@ def build_dmlab_store(max_episodes_per_policy: int = 60,
 
     for pid, (policy_name, eps_configs) in enumerate(DMLAB_POLICY_CONFIGS):
         for config_name, split_tag in eps_configs:
-            cache = _cache_path(config_name, max_episodes_per_policy)
-            if cache.exists():
-                z = np.load(cache, allow_pickle=True)
-                pixels_list = list(z["pixels"])
-                la_list = list(z["last_action"])
-                lr_list = list(z["last_reward"])
+            feature_cache = _feature_cache_path(config_name, max_episodes_per_policy, cnn_feature_dim, seed)
+            if feature_cache.exists():
+                z = np.load(feature_cache, allow_pickle=True)
+                feat_list = list(z["states"])
                 act_list = list(z["action"])
             else:
-                pixels_list, la_list, lr_list, act_list = [], [], [], []
-                shard_id = 0
-                while len(pixels_list) < max_episodes_per_policy and shard_id < 500:
-                    shard_path = _download_shard(config_name, shard_id)
-                    p, la, lr, ac = _parse_tfrecord_shard(
-                        shard_path,
-                        max_episodes=max_episodes_per_policy - len(pixels_list),
+                from utils.featurizers import DMLabFeaturizer
+
+                if feat is None:
+                    feat = DMLabFeaturizer(
+                        n_actions=DMLAB_N_ACTIONS,
+                        cnn_feature_dim=cnn_feature_dim,
+                        seed=seed,
+                        device=device,
                     )
-                    pixels_list.extend(p)
-                    la_list.extend(la)
-                    lr_list.extend(lr)
-                    act_list.extend(ac)
-                    shard_id += 1
+                feat_list = []
+                act_list = []
+            cache = _cache_path(config_name, max_episodes_per_policy)
+            if not feature_cache.exists():
+                if cache.exists():
+                    z = np.load(cache, allow_pickle=True)
+                    pixels_list = list(z["pixels"])
+                    la_list = list(z["last_action"])
+                    lr_list = list(z["last_reward"])
+                    act_list = list(z["action"])
+                else:
+                    pixels_list, la_list, lr_list, act_list = [], [], [], []
+                    shard_id = 0
+                    while len(pixels_list) < max_episodes_per_policy and shard_id < 500:
+                        shard_path = _download_shard(config_name, shard_id)
+                        p, la, lr, ac = _parse_tfrecord_shard(
+                            shard_path,
+                            max_episodes=max_episodes_per_policy - len(pixels_list),
+                        )
+                        pixels_list.extend(p)
+                        la_list.extend(la)
+                        lr_list.extend(lr)
+                        act_list.extend(ac)
+                        shard_id += 1
+                    np.savez_compressed(
+                        cache,
+                        pixels=np.array(pixels_list, dtype=object),
+                        last_action=np.array(la_list, dtype=object),
+                        last_reward=np.array(lr_list, dtype=object),
+                        action=np.array(act_list, dtype=object),
+                    )
+                for pixels, la, lr in zip(pixels_list, la_list, lr_list):
+                    feat_list.append(feat(pixels, la, lr))
+                tmp_cache = feature_cache.with_name(f"{feature_cache.stem}.{os.getpid()}.tmp.npz")
                 np.savez_compressed(
-                    cache,
-                    pixels=np.array(pixels_list, dtype=object),
-                    last_action=np.array(la_list, dtype=object),
-                    last_reward=np.array(lr_list, dtype=object),
+                    tmp_cache,
+                    states=np.array(feat_list, dtype=object),
                     action=np.array(act_list, dtype=object),
                 )
-            for pixels, la, lr, a in zip(pixels_list, la_list, lr_list, act_list):
-                feats = feat(pixels, la, lr)
-                all_states.append(feats)
-                all_actions.append(a.reshape(-1, 1))  # store as (T, 1) int for uniformity
+                os.replace(tmp_cache, feature_cache)
+
+            for feats, a in zip(feat_list, act_list):
+                all_states.append(np.asarray(feats, dtype=np.float32))
+                all_actions.append(np.asarray(a).reshape(-1, 1))  # store as (T, 1) int for uniformity
                 all_meta.append(EpisodeMeta(
                     episode_id=ep_counter, policy_id=pid,
                     is_ood=(split_tag == "OOD"),
@@ -188,7 +221,7 @@ def build_dmlab_store(max_episodes_per_policy: int = 60,
                 ))
                 ep_counter += 1
 
-    state_dim = all_states[0].shape[-1] if all_states else feat.feature_dim
+    state_dim = all_states[0].shape[-1] if all_states else int(cnn_feature_dim + DMLAB_N_ACTIONS + 1)
     return EpisodeStore(
         states=all_states, actions=all_actions, meta=all_meta,
         state_dim=int(state_dim), action_dim=1,

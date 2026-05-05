@@ -1,0 +1,75 @@
+{
+  "run_name": "custom_mujoco_state_resampled_v2_humanoid__inr_transformer_history_conditioned__new_policy__s0",
+  "shift_strength": {
+    "0": 1.071236605187874,
+    "1": 1.071236605187874,
+    "2": 1.071236605187874
+  },
+  "shift_overlap": 0.0,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "custom_mujoco_state_resampled_v2_humanoid",
+  "model": "inr_transformer_history_conditioned",
+  "experiment": "new_policy",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 358,
+  "n_val_episodes": 76,
+  "n_test_episodes": 117,
+  "train": {
+    "best_val_loss": 0.0005175271410837293,
+    "best_epoch": 8,
+    "final_train_loss": 0.00010086348327072965,
+    "total_epochs": 10,
+    "wallclock_s": 35.28347849845886
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 117,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 0.16841864585876465,
+    "n_novel": 39,
+    "gen_mse": 0.4744259715080261,
+    "gen_rmse": 0.6887858676744364,
+    "gen_nmse": 0.4712260243448043,
+    "gen_median_se": 8.507001621183008e-05,
+    "gen_nmse_per_dim": [
+      0.5571573972702026,
+      0.29415950179100037,
+      0.49489539861679077,
+      0.3281420171260834,
+      0.7667219638824463,
+      0.23910649120807648,
+      0.8474905490875244,
+      0.43371033668518066,
+      0.0456913597881794,
+      0.26808255910873413,
+      0.45748719573020935,
+      0.03736134618520737,
+      0.26058194041252136,
+      1.00204598903656,
+      0.4505094885826111,
+      1.0584707260131836,
+      0.272070050239563
+    ],
+    "target_var": 1.0067906842956542,
+    "n_gen_samples": 14859,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 358,
+    "n_test_episodes_used": 117,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

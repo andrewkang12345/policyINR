@@ -1,0 +1,20 @@
+Step-resampled MuJoCo action-distribution analysis
+
+What the plots show
+- Each environment overview projects sampled actions into a shared 2D PCA space.
+- Each policy plot shows the action cloud split by ID and OOD states for that policy.
+
+Main conclusion
+- Actions remain substantially more policy-separable than states, which explains why policy-ID probe accuracy stayed high after state matching.
+
+Quantitative evidence
+ant: action-only linear accuracy=0.645, mean pairwise centroid distance=0.701, mean within-policy radius=1.536
+halfcheetah: action-only linear accuracy=0.585, mean pairwise centroid distance=0.612, mean within-policy radius=1.844
+hopper: action-only linear accuracy=0.525, mean pairwise centroid distance=0.576, mean within-policy radius=1.184
+humanoid: action-only linear accuracy=0.906, mean pairwise centroid distance=0.740, mean within-policy radius=1.096
+walker2d: action-only linear accuracy=0.492, mean pairwise centroid distance=0.429, mean within-policy radius=1.544
+
+Interpretation
+- The step-resampled construction aligned the observation marginals much better than the action marginals.
+- Since the encoder sees state-action history, it can still recover policy identity from consistent control preferences.
+- The tasks with the highest residual action separability, especially Ant and Humanoid, are the ones where overall probe accuracy stayed closest to 1.0.

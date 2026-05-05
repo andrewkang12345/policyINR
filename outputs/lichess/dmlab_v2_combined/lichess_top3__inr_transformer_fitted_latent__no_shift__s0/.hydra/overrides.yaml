@@ -1,0 +1,9 @@
+- data=lichess_top3
+- model=inr_transformer_fitted_latent
+- experiment=no_shift
+- seed=0
+- run_name=lichess_top3__inr_transformer_fitted_latent__no_shift__s0
+- output_dir=outputs/lichess_dmlab_v2/lichess_top3__inr_transformer_fitted_latent__no_shift__s0
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=16

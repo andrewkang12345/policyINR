@@ -1,0 +1,3 @@
+/home/ec2-user/mambaforge/lib/python3.12/site-packages/minari/storage/local.py:109: UserWarning: Misconfigured dataset named inr_mujoco_state_resampled_v2/ant/controlled-v0: The data path /home/ec2-user/.minari/datasets/inr_mujoco_state_resampled_v2/ant/controlled-v0/data doesn't exist
+  warnings.warn(f"Misconfigured dataset named {dst_id}: {e}")
+Dataset inr_mujoco_state_resampled_v2/hopper/controlled-v0 deleted!

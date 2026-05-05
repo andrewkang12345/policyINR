@@ -1,0 +1,78 @@
+{
+  "run_name": "minari_humanoid__inr_transformer_history_conditioned__new_policy__s0",
+  "shift_strength": {
+    "0": 0.6572974763826969,
+    "1": 0.7634993709889206,
+    "2": 0.5510524345473069
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.03565726450239489,
+  "shift_fallback": "per_policy_cluster",
+  "data": "minari_humanoid",
+  "model": "inr_transformer_history_conditioned",
+  "experiment": "new_policy",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 40,
+  "n_val_episodes": 8,
+  "n_test_episodes": 12,
+  "train": {
+    "best_val_loss": Infinity,
+    "best_epoch": 0,
+    "final_train_loss": 0.2962252967059612,
+    "total_epochs": 10,
+    "wallclock_s": 9.144370079040527
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 12,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 2.753787040710449,
+    "n_novel": 4,
+    "gen_mse": 0.7270455360412598,
+    "gen_rmse": 0.8526696523515187,
+    "gen_nmse": 0.6362190745932631,
+    "gen_median_se": 0.4883187711238861,
+    "gen_nmse_per_dim": [
+      0.763670027256012,
+      0.5937879681587219,
+      0.36977314949035645,
+      0.48692944645881653,
+      0.5207123756408691,
+      0.2888140082359314,
+      0.5696810483932495,
+      0.3925657570362091,
+      0.7072507739067078,
+      0.2654707729816437,
+      0.5384494662284851,
+      0.8730665445327759,
+      0.46644091606140137,
+      1.125351905822754,
+      0.44033846259117126,
+      0.9311744570732117,
+      0.7741782665252686
+    ],
+    "target_var": 1.1427597270736694,
+    "n_gen_samples": 3060,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 40,
+    "n_test_episodes_used": 12,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 0.6666666666666666,
+    "knn_acc5": 0.6666666666666666,
+    "n_knn": 12
+  }
+}

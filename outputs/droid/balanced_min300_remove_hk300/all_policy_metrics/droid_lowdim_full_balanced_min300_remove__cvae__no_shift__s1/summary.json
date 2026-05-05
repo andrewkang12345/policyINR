@@ -1,0 +1,42 @@
+{
+  "data": "droid_lowdim_full_balanced_min300_remove_all_policies",
+  "model": "cvae",
+  "experiment": "no_shift",
+  "seed": 1,
+  "n_train_episodes": 222,
+  "n_val_episodes": 48,
+  "n_test_episodes": 45,
+  "source_run_dir": "/mnt/data/INR/outputs/droid_lowdim_full_shards707of2048_p345_balanced_min300_remove_hk300_suite_20260503/droid_lowdim_full_balanced_min300_remove__cvae__no_shift__s1",
+  "eval": {
+    "probe_acc": 0.7111111111111111,
+    "n_probe": 45,
+    "n_classes": 3,
+    "probe_acc_seen": 0.7111111111111111,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.5777777777777777,
+    "knn_acc5": 0.9333333333333333,
+    "n_knn": 45,
+    "train_pids": [
+      0,
+      1,
+      2
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 222,
+    "n_test_episodes_used": 45,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

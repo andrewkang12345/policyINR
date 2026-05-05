@@ -1,0 +1,66 @@
+{
+  "run_name": "custom_mujoco_ant__inr_transformer_fitted_latent__new_policy__s0",
+  "shift_strength": {
+    "0": 0.1604391638354221,
+    "1": 0.13933372490036477,
+    "2": 0.14749576718652194
+  },
+  "shift_overlap": 12.58617877960205,
+  "shift_overlap_ratio": 0.9819098828789463,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "custom_mujoco_ant",
+  "model": "inr_transformer_fitted_latent",
+  "experiment": "new_policy",
+  "seed": 0,
+  "state_dim": 105,
+  "action_dim": 8,
+  "n_train_episodes": 358,
+  "n_val_episodes": 76,
+  "n_test_episodes": 117,
+  "train": {
+    "best_val_loss": 0.25553348407279,
+    "best_epoch": 4,
+    "final_train_loss": 0.0796219775390424,
+    "total_epochs": 10,
+    "wallclock_s": 53.92551302909851
+  },
+  "eval": {
+    "probe_acc": 0.3333333333333333,
+    "n_probe": 117,
+    "n_classes": 2,
+    "probe_acc_seen": 0.5,
+    "novel_mean_embed_dist": 0.20335698127746582,
+    "n_novel": 39,
+    "gen_mse": 0.9426076412200928,
+    "gen_rmse": 0.9708798284134308,
+    "gen_nmse": 0.8440969186973729,
+    "gen_median_se": 0.2568364441394806,
+    "gen_nmse_per_dim": [
+      1.1408604383468628,
+      0.5973460078239441,
+      0.376373827457428,
+      0.6277700662612915,
+      1.0858131647109985,
+      1.1345946788787842,
+      1.1718676090240479,
+      0.3413828909397125
+    ],
+    "target_var": 1.1167054639587402,
+    "n_gen_samples": 14859,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 358,
+    "n_test_episodes_used": 117,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

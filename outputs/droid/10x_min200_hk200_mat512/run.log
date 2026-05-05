@@ -1,0 +1,181 @@
+[launcher] 56 jobs across 4 GPUs (1 datasets x 4 models x 7 experiments x 2 seeds)
+[launcher] visible devices: ['0', '1', '2', '3']
+[gpu0:0] START droid_lowdim_full_10x_min200__cvae__no_shift__s0
+[gpu1:1] START droid_lowdim_full_10x_min200__cvae__no_shift__s1
+[gpu2:2] START droid_lowdim_full_10x_min200__cvae__new_policy__s0
+[gpu3:3] START droid_lowdim_full_10x_min200__cvae__new_policy__s1
+[gpu0:0] OK droid_lowdim_full_10x_min200__cvae__no_shift__s0 (200.1s)
+[gpu0:0] START droid_lowdim_full_10x_min200__cvae__single_shift__s0
+[gpu1:1] OK droid_lowdim_full_10x_min200__cvae__no_shift__s1 (200.3s)
+[gpu1:1] START droid_lowdim_full_10x_min200__cvae__single_shift__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__cvae__new_policy__s0 (200.5s)
+[gpu2:2] START droid_lowdim_full_10x_min200__cvae__conflation__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__cvae__new_policy__s1 (200.7s)
+[gpu3:3] START droid_lowdim_full_10x_min200__cvae__conflation__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__cvae__conflation__s1 (151.3s)
+[gpu3:3] START droid_lowdim_full_10x_min200__cvae__generalization__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__cvae__conflation__s0 (151.7s)
+[gpu2:2] START droid_lowdim_full_10x_min200__cvae__generalization__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__cvae__generalization__s0 (36.8s)
+[gpu3:3] START droid_lowdim_full_10x_min200__cvae__specialization__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__cvae__generalization__s1 (37.2s)
+[gpu2:2] START droid_lowdim_full_10x_min200__cvae__specialization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__cvae__single_shift__s1 (199.0s)
+[gpu1:1] START droid_lowdim_full_10x_min200__cvae__novel_generalization__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__cvae__single_shift__s0 (199.5s)
+[gpu0:0] START droid_lowdim_full_10x_min200__cvae__novel_generalization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__cvae__novel_generalization__s0 (36.8s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__no_shift__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__cvae__novel_generalization__s1 (37.3s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__no_shift__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__cvae__specialization__s0 (199.9s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__new_policy__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__cvae__specialization__s1 (199.8s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__new_policy__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__no_shift__s0 (258.5s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__single_shift__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__no_shift__s1 (258.5s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__single_shift__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__new_policy__s0 (256.0s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__conflation__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__new_policy__s1 (255.7s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__conflation__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__single_shift__s0 (255.0s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__generalization__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__single_shift__s1 (254.7s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__generalization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__generalization__s0 (44.6s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__specialization__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__generalization__s1 (45.7s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__specialization__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__conflation__s1 (193.9s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__novel_generalization__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__conflation__s0 (194.5s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__novel_generalization__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__novel_generalization__s0 (45.2s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__no_shift__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__novel_generalization__s1 (45.5s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__no_shift__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__specialization__s0 (254.1s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__new_policy__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_history_conditioned__specialization__s1 (254.0s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__new_policy__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__no_shift__s0 (257.0s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__single_shift__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__no_shift__s1 (257.4s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__single_shift__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__new_policy__s0 (257.6s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__conflation__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__new_policy__s1 (257.6s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__conflation__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__single_shift__s0 (257.0s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__generalization__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__single_shift__s1 (256.7s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__generalization__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__generalization__s0 (45.3s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__specialization__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__generalization__s1 (45.5s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__specialization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__conflation__s0 (194.8s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__novel_generalization__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__conflation__s1 (194.8s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__novel_generalization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__novel_generalization__s0 (45.7s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__no_shift__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__novel_generalization__s1 (46.1s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__no_shift__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__specialization__s0 (253.5s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__new_policy__s0
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_diffusion_history_conditioned__specialization__s1 (254.5s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__new_policy__s1
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__no_shift__s1 (1648.8s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__single_shift__s0
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__no_shift__s0 (1742.8s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__single_shift__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__new_policy__s1 (1659.6s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__conflation__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__new_policy__s0 (1753.5s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__conflation__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__conflation__s0 (1343.7s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__generalization__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__conflation__s1 (1278.4s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__generalization__s1
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__single_shift__s1 (1620.9s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__specialization__s0
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__single_shift__s0 (1715.8s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__specialization__s1
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__generalization__s0 (316.0s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__generalization__s1 (300.5s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__novel_generalization__s1
+[gpu2:2] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__novel_generalization__s1 (313.9s)
+[gpu3:3] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__novel_generalization__s0 (327.4s)
+[gpu0:0] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__specialization__s1 (1572.5s)
+[gpu1:1] OK droid_lowdim_full_10x_min200__inr_transformer_fitted_latent__specialization__s0 (1671.0s)
+[launcher] done. logs at /mnt/data/INR/outputs/droid_lowdim_full_10x_min200_suite_20260502_mat512/launcher.log
+[launcher] 14 jobs across 4 GPUs (1 datasets x 1 models x 7 experiments x 2 seeds)
+[launcher] visible devices: ['0', '1', '2', '3']
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__no_shift__s0
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__no_shift__s1
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__new_policy__s0
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__new_policy__s1
+[gpu0:0] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__no_shift__s0 (15.3s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s0
+[gpu1:1] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__no_shift__s1 (15.7s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s1
+[gpu2:2] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__new_policy__s0 (15.9s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__conflation__s0
+[gpu3:3] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__new_policy__s1 (16.1s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__conflation__s1
+[gpu2:2] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__conflation__s0 (13.0s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__generalization__s0
+[gpu3:3] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__conflation__s1 (12.8s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__generalization__s1
+[gpu0:0] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s0 (15.2s)
+[gpu0:0] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__specialization__s0
+[gpu1:1] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__single_shift__s1 (14.9s)
+[gpu1:1] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__specialization__s1
+[gpu2:2] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__generalization__s0 (8.8s)
+[gpu2:2] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__novel_generalization__s0
+[gpu3:3] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__generalization__s1 (8.8s)
+[gpu3:3] START droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__novel_generalization__s1
+[gpu1:1] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__specialization__s1 (14.3s)
+[gpu0:0] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__specialization__s0 (14.6s)
+[gpu2:2] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__novel_generalization__s0 (8.9s)
+[gpu3:3] FAIL droid_lowdim_full_10x_min200__inr_transformer_infer_latent_maml__novel_generalization__s1 (8.9s)
+[launcher] done. logs at /mnt/data/INR/outputs/droid_lowdim_full_10x_min200_suite_20260502_mat512/launcher.log
+<frozen runpy>:128: RuntimeWarning: 'eval.summary' found in sys.modules after import of package 'eval', but prior to execution of 'eval.summary'; this may result in unpredictable behaviour
+# Aggregate (56 runs)
+
+Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
+
+| data | model | experiment | n | deg | probe_acc | probe_acc_seen | gen_nmse | gen_median_se | gen_acc | gen_nll |
+|---|---|---|---|---|---|---|---|---|---|---|
+| droid_lowdim_full_10x_min200 | cvae | conflation | 2 | 0 | 0.923±0.038 | 0.923±0.038 | 0.066±0.007 | 0.018±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | generalization | 2 | 0 | 0.758±0.061 | 0.758±0.061 | 0.078±0.005 | 0.045±0.005 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | new_policy | 2 | 0 | 0.688±0.113 | 0.833±0.136 | 0.072±0.007 | 0.019±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | no_shift | 2 | 0 | 0.833±0.136 | 0.833±0.136 | 0.072±0.005 | 0.019±0.002 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | novel_generalization | 2 | 0 | 0.625±0.050 | 0.758±0.061 | 0.077±0.006 | 0.042±0.003 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | single_shift | 2 | 0 | 0.865±0.096 | 0.865±0.096 | 0.064±0.005 | 0.020±0.003 | - | - |
+| droid_lowdim_full_10x_min200 | cvae | specialization | 2 | 0 | 0.833±0.000 | 0.833±0.000 | 0.067±0.006 | 0.015±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | conflation | 2 | 0 | 0.923±0.038 | 0.923±0.038 | 0.163±0.023 | 0.013±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | generalization | 2 | 0 | 0.727±0.030 | 0.727±0.030 | 0.249±0.019 | 0.211±0.027 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.738±0.013 | 0.894±0.015 | 0.193±0.030 | 0.012±0.003 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 0.894±0.015 | 0.894±0.015 | 0.187±0.028 | 0.013±0.002 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.600±0.025 | 0.727±0.030 | 0.249±0.018 | 0.200±0.028 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.808±0.077 | 0.808±0.077 | 0.174±0.029 | 0.015±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.917±0.083 | 0.917±0.083 | 0.228±0.011 | 0.011±0.002 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.827±0.096 | 0.827±0.096 | 0.077±0.006 | 0.024±0.003 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | generalization | 2 | 0 | 0.485±0.061 | 0.485±0.061 | 0.134±0.002 | 0.076±0.009 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.675±0.050 | 0.818±0.061 | 0.079±0.006 | 0.023±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | no_shift | 2 | 0 | 0.818±0.061 | 0.818±0.061 | 0.080±0.005 | 0.023±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.400±0.050 | 0.485±0.061 | 0.132±0.002 | 0.071±0.008 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | single_shift | 2 | 0 | 0.904±0.019 | 0.904±0.019 | 0.074±0.005 | 0.024±0.002 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_fitted_latent | specialization | 2 | 0 | 0.667±0.167 | 0.667±0.167 | 0.070±0.011 | 0.018±0.001 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | conflation | 2 | 0 | 0.923±0.038 | 0.923±0.038 | 0.029±0.007 | 0.005±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | generalization | 2 | 0 | 0.697±0.061 | 0.697±0.061 | 0.156±0.005 | 0.092±0.019 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.712±0.013 | 0.864±0.015 | 0.023±0.004 | 0.003±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | no_shift | 2 | 0 | 0.864±0.015 | 0.864±0.015 | 0.023±0.004 | 0.003±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.575±0.050 | 0.697±0.061 | 0.153±0.003 | 0.086±0.017 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.865±0.019 | 0.865±0.019 | 0.023±0.005 | 0.003±0.000 | - | - |
+| droid_lowdim_full_10x_min200 | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.750±0.083 | 0.750±0.083 | 0.018±0.002 | 0.002±0.000 | - | - |

@@ -1,0 +1,10 @@
+- data=minari_walker2d
+- model=inr_diffusion
+- experiment=single_shift
+- seed=0
+- run_name=minari_walker2d__inr_diffusion__single_shift__s0
+- output_dir=outputs/full_suite/minari_walker2d__inr_diffusion__single_shift__s0
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=40

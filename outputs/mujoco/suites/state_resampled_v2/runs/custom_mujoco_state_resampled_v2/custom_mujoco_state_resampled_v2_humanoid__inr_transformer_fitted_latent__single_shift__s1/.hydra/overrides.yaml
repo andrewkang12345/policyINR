@@ -1,0 +1,11 @@
+- data=custom_mujoco_state_resampled_v2_humanoid
+- model=inr_transformer_fitted_latent
+- experiment=single_shift
+- seed=1
+- run_name=custom_mujoco_state_resampled_v2_humanoid__inr_transformer_fitted_latent__single_shift__s1
+- output_dir=outputs/suites/state_resampled_v2/runs/custom_mujoco_state_resampled_v2/custom_mujoco_state_resampled_v2_humanoid__inr_transformer_fitted_latent__single_shift__s1
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=384

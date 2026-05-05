@@ -1,0 +1,68 @@
+{
+  "run_name": "droid_lowdim_full_balanced_min300_remove__cvae__novel_generalization__s1",
+  "shift_strength": {
+    "0": 0.3853883934670996,
+    "1": 0.32655605773504726,
+    "2": 0.35299254883126635
+  },
+  "shift_overlap": 3.811751365661621,
+  "shift_overlap_ratio": 1.2603101308550781,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "droid_lowdim_full_balanced_min300_remove",
+  "model": "cvae",
+  "experiment": "novel_generalization",
+  "seed": 1,
+  "state_dim": 14,
+  "action_dim": 7,
+  "n_train_episodes": 16,
+  "n_val_episodes": 4,
+  "n_test_episodes": 45,
+  "train": {
+    "best_val_loss": 0.08516629945998098,
+    "best_epoch": 20,
+    "final_train_loss": 0.049649635220275205,
+    "total_epochs": 30,
+    "wallclock_s": 34.29683232307434
+  },
+  "eval": {
+    "probe_acc": 0.5777777777777777,
+    "n_probe": 45,
+    "n_classes": 2,
+    "probe_acc_seen": 0.8666666666666667,
+    "novel_mean_embed_dist": 2.779491901397705,
+    "n_novel": 15,
+    "gen_mse": 0.1394444853067398,
+    "gen_rmse": 0.3734226630866689,
+    "gen_nmse": 0.09754281036998326,
+    "gen_median_se": 0.05547666922211647,
+    "gen_nmse_per_dim": [
+      0.14708581566810608,
+      0.10149478167295456,
+      0.0578794926404953,
+      0.34868720173835754,
+      0.029265902936458588,
+      0.07259949296712875,
+      0.09720274806022644
+    ],
+    "target_var": 1.4295721517333984,
+    "n_gen_samples": 20627,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 16,
+    "n_test_episodes_used": 45,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 0.5777777777777777,
+    "knn_acc5": 0.6666666666666666,
+    "n_knn": 45
+  }
+}

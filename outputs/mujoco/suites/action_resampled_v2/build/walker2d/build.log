@@ -1,0 +1,3 @@
+/home/ec2-user/mambaforge/lib/python3.12/site-packages/minari/storage/local.py:109: UserWarning: Misconfigured dataset named inr_mujoco_action_resampled_v2/ant/controlled-v0: 'dataset_id'
+  warnings.warn(f"Misconfigured dataset named {dst_id}: {e}")
+Dataset inr_mujoco_action_resampled_v2/walker2d/controlled-v0 deleted!

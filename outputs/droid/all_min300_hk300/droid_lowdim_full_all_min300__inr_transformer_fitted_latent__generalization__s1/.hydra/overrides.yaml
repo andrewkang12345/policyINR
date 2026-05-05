@@ -1,0 +1,13 @@
+- data=droid_lowdim_full_all_min300
+- model=inr_transformer_fitted_latent
+- experiment=generalization
+- seed=1
+- run_name=droid_lowdim_full_all_min300__inr_transformer_fitted_latent__generalization__s1
+- output_dir=/mnt/data/INR/outputs/droid_lowdim_full_shards707of2048_p345_min300_hk300_suite_20260503/droid_lowdim_full_all_min300__inr_transformer_fitted_latent__generalization__s1
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=512
+- train.eval_batch_size=512
+- train.num_workers=0
+- train.materialize_dataset=true
+- train.history_k=300

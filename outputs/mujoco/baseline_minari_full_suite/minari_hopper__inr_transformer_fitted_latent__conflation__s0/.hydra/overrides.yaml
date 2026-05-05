@@ -1,0 +1,10 @@
+- data=minari_hopper
+- model=inr_transformer_fitted_latent
+- experiment=conflation
+- seed=0
+- run_name=minari_hopper__inr_transformer_fitted_latent__conflation__s0
+- output_dir=outputs/full_suite/minari_hopper__inr_transformer_fitted_latent__conflation__s0
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=40

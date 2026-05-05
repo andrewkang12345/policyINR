@@ -1,0 +1,10 @@
+- data=dmlab_seekavoid_full
+- model=inr_transformer_fitted_latent
+- experiment=generalization
+- seed=1
+- run_name=dmlab_seekavoid_full__inr_transformer_fitted_latent__generalization__s1
+- output_dir=outputs/full_suite_new_datasets/dmlab_seekavoid_full__inr_transformer_fitted_latent__generalization__s1
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=128
+- train.history_k=301

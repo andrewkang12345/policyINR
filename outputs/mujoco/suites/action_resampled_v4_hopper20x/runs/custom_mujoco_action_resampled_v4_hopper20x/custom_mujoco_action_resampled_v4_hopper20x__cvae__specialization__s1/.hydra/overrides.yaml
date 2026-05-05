@@ -1,0 +1,11 @@
+- data=custom_mujoco_action_resampled_v4_hopper20x
+- model=cvae
+- experiment=specialization
+- seed=1
+- run_name=custom_mujoco_action_resampled_v4_hopper20x__cvae__specialization__s1
+- output_dir=/ocean/projects/cis260099p/akang3/INR/outputs/suites/action_resampled_v4_hopper20x/runs/custom_mujoco_action_resampled_v4_hopper20x/custom_mujoco_action_resampled_v4_hopper20x__cvae__specialization__s1
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=32
+- train.history_k=320
+- ++data.max_episodes_per_policy=384

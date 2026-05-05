@@ -1,0 +1,17 @@
+name: droid_lowdim_full_10x
+kind: droid
+source: droid
+data_dir: ${oc.env:INR_DROID_CACHE,${oc.env:HOME}/.cache/INR/droid}
+# About 10x the current 8-shard DROID subset while preserving the same
+# collector-policy definition and held-out task family.
+max_shards: 80
+max_episodes: 6000
+n_collectors: 3
+collectors:
+  - RAIL
+  - IRIS
+  - CLVR
+min_episodes_per_collector: 8
+min_length: 8
+max_length: null
+ood_task_family: marker

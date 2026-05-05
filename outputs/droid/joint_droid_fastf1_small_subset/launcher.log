@@ -1,0 +1,140 @@
+[gpu0:0] START fastf1_stint_full__cvae__no_shift__s0
+[gpu1:1] START fastf1_stint_full__cvae__no_shift__s1
+[gpu2:2] START fastf1_stint_full__cvae__new_policy__s0
+[gpu3:3] START fastf1_stint_full__cvae__new_policy__s1
+[gpu1:1] OK fastf1_stint_full__cvae__no_shift__s1 (373.4s)
+[gpu1:1] START fastf1_stint_full__cvae__single_shift__s0
+[gpu0:0] OK fastf1_stint_full__cvae__no_shift__s0 (373.5s)
+[gpu0:0] START fastf1_stint_full__cvae__single_shift__s1
+[gpu3:3] OK fastf1_stint_full__cvae__new_policy__s1 (373.9s)
+[gpu3:3] START fastf1_stint_full__cvae__conflation__s0
+[gpu2:2] OK fastf1_stint_full__cvae__new_policy__s0 (374.1s)
+[gpu2:2] START fastf1_stint_full__cvae__conflation__s1
+[gpu3:3] OK fastf1_stint_full__cvae__conflation__s0 (245.9s)
+[gpu3:3] START fastf1_stint_full__cvae__generalization__s0
+[gpu2:2] OK fastf1_stint_full__cvae__conflation__s1 (246.1s)
+[gpu2:2] START fastf1_stint_full__cvae__generalization__s1
+[gpu3:3] OK fastf1_stint_full__cvae__generalization__s0 (67.4s)
+[gpu3:3] START fastf1_stint_full__cvae__specialization__s0
+[gpu2:2] OK fastf1_stint_full__cvae__generalization__s1 (67.4s)
+[gpu2:2] START fastf1_stint_full__cvae__specialization__s1
+[gpu1:1] OK fastf1_stint_full__cvae__single_shift__s0 (372.2s)
+[gpu1:1] START fastf1_stint_full__cvae__novel_generalization__s0
+[gpu0:0] OK fastf1_stint_full__cvae__single_shift__s1 (372.5s)
+[gpu0:0] START fastf1_stint_full__cvae__novel_generalization__s1
+[gpu1:1] OK fastf1_stint_full__cvae__novel_generalization__s0 (68.8s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_history_conditioned__no_shift__s0
+[gpu0:0] OK fastf1_stint_full__cvae__novel_generalization__s1 (68.7s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_history_conditioned__no_shift__s1
+[gpu2:2] OK fastf1_stint_full__cvae__specialization__s1 (371.1s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_history_conditioned__new_policy__s0
+[gpu3:3] OK fastf1_stint_full__cvae__specialization__s0 (372.0s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_history_conditioned__new_policy__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_history_conditioned__no_shift__s0 (555.5s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_history_conditioned__single_shift__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_history_conditioned__no_shift__s1 (555.4s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_history_conditioned__single_shift__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_history_conditioned__new_policy__s0 (556.3s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_history_conditioned__conflation__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_history_conditioned__new_policy__s1 (556.2s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_history_conditioned__conflation__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_history_conditioned__single_shift__s0 (553.6s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_history_conditioned__generalization__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_history_conditioned__single_shift__s1 (553.6s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_history_conditioned__generalization__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_history_conditioned__conflation__s0 (363.9s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_history_conditioned__specialization__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_history_conditioned__conflation__s1 (363.6s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_history_conditioned__specialization__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_history_conditioned__generalization__s0 (95.5s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_history_conditioned__novel_generalization__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_history_conditioned__generalization__s1 (96.0s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_history_conditioned__novel_generalization__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_history_conditioned__novel_generalization__s0 (97.5s)
+[gpu1:1] START fastf1_stint_full__inr_diffusion_history_conditioned__no_shift__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_history_conditioned__novel_generalization__s1 (97.8s)
+[gpu0:0] START fastf1_stint_full__inr_diffusion_history_conditioned__no_shift__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_history_conditioned__specialization__s0 (551.7s)
+[gpu2:2] START fastf1_stint_full__inr_diffusion_history_conditioned__new_policy__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_history_conditioned__specialization__s1 (552.6s)
+[gpu3:3] START fastf1_stint_full__inr_diffusion_history_conditioned__new_policy__s1
+[gpu1:1] OK fastf1_stint_full__inr_diffusion_history_conditioned__no_shift__s0 (557.1s)
+[gpu1:1] START fastf1_stint_full__inr_diffusion_history_conditioned__single_shift__s0
+[gpu0:0] OK fastf1_stint_full__inr_diffusion_history_conditioned__no_shift__s1 (557.2s)
+[gpu0:0] START fastf1_stint_full__inr_diffusion_history_conditioned__single_shift__s1
+[gpu2:2] OK fastf1_stint_full__inr_diffusion_history_conditioned__new_policy__s0 (558.9s)
+[gpu2:2] START fastf1_stint_full__inr_diffusion_history_conditioned__conflation__s0
+[gpu3:3] OK fastf1_stint_full__inr_diffusion_history_conditioned__new_policy__s1 (558.8s)
+[gpu3:3] START fastf1_stint_full__inr_diffusion_history_conditioned__conflation__s1
+[gpu1:1] OK fastf1_stint_full__inr_diffusion_history_conditioned__single_shift__s0 (555.4s)
+[gpu1:1] START fastf1_stint_full__inr_diffusion_history_conditioned__generalization__s0
+[gpu0:0] OK fastf1_stint_full__inr_diffusion_history_conditioned__single_shift__s1 (555.5s)
+[gpu0:0] START fastf1_stint_full__inr_diffusion_history_conditioned__generalization__s1
+[gpu1:1] OK fastf1_stint_full__inr_diffusion_history_conditioned__generalization__s0 (96.5s)
+[gpu1:1] START fastf1_stint_full__inr_diffusion_history_conditioned__specialization__s0
+[gpu0:0] OK fastf1_stint_full__inr_diffusion_history_conditioned__generalization__s1 (96.6s)
+[gpu0:0] START fastf1_stint_full__inr_diffusion_history_conditioned__specialization__s1
+[gpu2:2] OK fastf1_stint_full__inr_diffusion_history_conditioned__conflation__s0 (365.5s)
+[gpu2:2] START fastf1_stint_full__inr_diffusion_history_conditioned__novel_generalization__s0
+[gpu3:3] OK fastf1_stint_full__inr_diffusion_history_conditioned__conflation__s1 (365.1s)
+[gpu3:3] START fastf1_stint_full__inr_diffusion_history_conditioned__novel_generalization__s1
+[gpu2:2] OK fastf1_stint_full__inr_diffusion_history_conditioned__novel_generalization__s0 (98.1s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_fitted_latent__no_shift__s0
+[gpu3:3] OK fastf1_stint_full__inr_diffusion_history_conditioned__novel_generalization__s1 (98.2s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_fitted_latent__no_shift__s1
+[gpu1:1] OK fastf1_stint_full__inr_diffusion_history_conditioned__specialization__s0 (552.4s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_fitted_latent__new_policy__s0
+[gpu0:0] OK fastf1_stint_full__inr_diffusion_history_conditioned__specialization__s1 (552.6s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_fitted_latent__new_policy__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_fitted_latent__no_shift__s0 (4351.1s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_fitted_latent__single_shift__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_fitted_latent__no_shift__s1 (4351.5s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_fitted_latent__single_shift__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_fitted_latent__new_policy__s0 (4466.6s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_fitted_latent__conflation__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_fitted_latent__new_policy__s1 (4467.1s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_fitted_latent__conflation__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_fitted_latent__conflation__s0 (2412.4s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_fitted_latent__generalization__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_fitted_latent__conflation__s1 (2411.9s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_fitted_latent__generalization__s1
+[gpu1:1] OK fastf1_stint_full__inr_transformer_fitted_latent__generalization__s0 (619.1s)
+[gpu1:1] START fastf1_stint_full__inr_transformer_fitted_latent__specialization__s0
+[gpu0:0] OK fastf1_stint_full__inr_transformer_fitted_latent__generalization__s1 (619.1s)
+[gpu0:0] START fastf1_stint_full__inr_transformer_fitted_latent__specialization__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_fitted_latent__single_shift__s0 (4274.5s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_fitted_latent__single_shift__s1 (4273.9s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_fitted_latent__novel_generalization__s1
+[gpu2:2] OK fastf1_stint_full__inr_transformer_fitted_latent__novel_generalization__s0 (733.6s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__no_shift__s0
+[gpu3:3] OK fastf1_stint_full__inr_transformer_fitted_latent__novel_generalization__s1 (733.6s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__no_shift__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__no_shift__s0 (26.8s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__new_policy__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__no_shift__s1 (26.6s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__new_policy__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__new_policy__s0 (26.8s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__new_policy__s1 (26.8s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s0 (26.8s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__conflation__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__single_shift__s1 (26.8s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__conflation__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__conflation__s0 (26.8s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__generalization__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__conflation__s1 (26.8s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__generalization__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__generalization__s0 (26.9s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__specialization__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__generalization__s1 (26.9s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__specialization__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__specialization__s0 (26.8s)
+[gpu2:2] START fastf1_stint_full__inr_transformer_infer_latent_maml__novel_generalization__s0
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__specialization__s1 (26.8s)
+[gpu3:3] START fastf1_stint_full__inr_transformer_infer_latent_maml__novel_generalization__s1
+[gpu2:2] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__novel_generalization__s0 (26.8s)
+[gpu3:3] FAIL fastf1_stint_full__inr_transformer_infer_latent_maml__novel_generalization__s1 (26.8s)
+[gpu1:1] OK fastf1_stint_full__inr_transformer_fitted_latent__specialization__s0 (4158.2s)
+[gpu0:0] OK fastf1_stint_full__inr_transformer_fitted_latent__specialization__s1 (4157.1s)

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# Action-resampled MuJoCo suite with clean subfolder layout.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
+export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
+
+N_GPUS="${N_GPUS:-4}"
+SEEDS="${SEEDS:-0,1}"
+SUITE_ROOT="${SUITE_ROOT:-outputs/suites/action_resampled_v1}"
+BUILD_ROOT="${BUILD_ROOT:-${SUITE_ROOT}/build}"
+RUNS_ROOT="${RUNS_ROOT:-${SUITE_ROOT}/runs}"
+CUSTOM_ROOT="${CUSTOM_ROOT:-${RUNS_ROOT}/custom_mujoco_action_resampled}"
+STORE_CACHE_ROOT="${STORE_CACHE_ROOT:-${SUITE_ROOT}/cache/custom_mujoco_store}"
+EPOCHS="${EPOCHS:-10}"
+BATCH="${BATCH:-256}"
+HISTORY_K="${HISTORY_K:-16}"
+MAX_EPS="${MAX_EPS:-384}"
+
+CUSTOM_DATASETS="${CUSTOM_DATASETS:-custom_mujoco_action_resampled_hopper,custom_mujoco_action_resampled_halfcheetah,custom_mujoco_action_resampled_walker2d,custom_mujoco_action_resampled_ant,custom_mujoco_action_resampled_humanoid}"
+MODELS="${MODELS:-cvae,inr_transformer_history_conditioned,inr_diffusion_history_conditioned,inr_transformer_fitted_latent}"
+EXPERIMENTS="${EXPERIMENTS:-no_shift,new_policy,single_shift,conflation,generalization,specialization,novel_generalization}"
+
+mkdir -p "${SUITE_ROOT}" "${BUILD_ROOT}" "${RUNS_ROOT}" "${CUSTOM_ROOT}" "${STORE_CACHE_ROOT}"
+export INR_CUSTOM_MUJOCO_CACHE="${STORE_CACHE_ROOT}"
+find "${BUILD_ROOT}" -mindepth 1 -delete 2>/dev/null || true
+find "${CUSTOM_ROOT}" -mindepth 1 -delete 2>/dev/null || true
+find "${STORE_CACHE_ROOT}" -mindepth 1 -delete 2>/dev/null || true
+rm -f "${SUITE_ROOT}/aggregate.csv" "${SUITE_ROOT}/aggregate.md"
+
+python scripts/build_custom_mujoco.py \
+  --generation-mode action_resampled_steps \
+  --qpos-noise-scale 0.0 \
+  --qvel-noise-scale 0.0 \
+  --n-gpus "${N_GPUS}" \
+  --out-root "${BUILD_ROOT}" \
+  --force-rebuild
+
+python scripts/multi_gpu_launch.py \
+  --n-gpus "${N_GPUS}" \
+  --seeds "${SEEDS}" \
+  --out-root "${CUSTOM_ROOT}" \
+  --datasets "${CUSTOM_DATASETS}" \
+  --models "${MODELS}" \
+  --experiments "${EXPERIMENTS}" \
+  --overrides \
+      "shift.kind=predefined_split" \
+      "train.epochs=${EPOCHS}" \
+      "train.batch_size=${BATCH}" \
+      "train.history_k=${HISTORY_K}" \
+      "++data.max_episodes_per_policy=${MAX_EPS}"
+
+echo
+echo "== action-resampled suite aggregate =="
+python -m eval.summary "${RUNS_ROOT}" --out "${SUITE_ROOT}/aggregate.csv" --md "${SUITE_ROOT}/aggregate.md"
+echo "Action-resampled suite complete. Results in ${SUITE_ROOT}/"

@@ -1,0 +1,12 @@
+- data=lichess_top3_full
+- model=inr_transformer_infer_latent
+- experiment=no_shift
+- seed=0
+- run_name=lichess_top3_full__inr_transformer_infer_latent__no_shift__s0
+- output_dir=/mnt/data/INR/outputs/lichess_full_hk120_infer_latent_meta64/lichess_top3_full__inr_transformer_infer_latent__no_shift__s0
+- train.epochs=120
+- train.batch_size=256
+- train.num_workers=4
+- train.history_k=120
+- model.latent_dim=64
+- model.latent_infer_steps=40

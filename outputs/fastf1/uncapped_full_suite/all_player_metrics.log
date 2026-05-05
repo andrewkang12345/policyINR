@@ -1,0 +1,224 @@
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s0
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s1
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s0
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s0 (13.1s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s1 (13.2s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s0 (16.0s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s1 (16.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s0 (3.9s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s0 (17.2s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s1 (17.2s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s0 (12.3s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s1 (20.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s1 (12.4s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s0 (19.4s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s1 (19.5s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s0 (18.8s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s1 (19.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s0 (16.3s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s1 (16.3s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s0 (13.3s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s1 (13.3s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s0 (17.6s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s1 (17.4s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s0 (20.4s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s1 (20.5s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s0 (12.6s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s1 (12.6s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s0 (19.9s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s1 (20.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s0 (19.6s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s1 (19.6s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s1
+[gpu1] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([34, 64]) from checkpoint, the shape in current model is torch.Size([273, 64]).
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s0
+[gpu3] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([8, 64]) from checkpoint, the shape in current model is torch.Size([74, 64]).
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s1
+[gpu2] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([34, 64]) from checkpoint, the shape in current model is torch.Size([273, 64]).
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s0
+[gpu0] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([8, 64]) from checkpoint, the shape in current model is torch.Size([74, 64]).
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s1
+[gpu1] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([321, 64]).
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu3] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([321, 64]).
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s1
+[gpu2] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s0
+[gpu0] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s1
+[gpu1] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([8, 64]) from checkpoint, the shape in current model is torch.Size([51, 64]).
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s0
+[gpu3] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([8, 64]) from checkpoint, the shape in current model is torch.Size([51, 64]).
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s1
+[gpu2] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s0
+[gpu0] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s1
+[gpu1] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s0 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s0
+[gpu3] FAIL /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s1 :: 	size mismatch for unit_latents.weight: copying a param with shape torch.Size([52, 64]) from checkpoint, the shape in current model is torch.Size([478, 64]).
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s0 (13.2s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s0 (16.1s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s1 (16.4s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s1 (13.2s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s0 (17.4s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1 (17.3s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0 (20.5s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1 (20.4s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s0 (12.7s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s1 (12.6s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s0 (19.9s)
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s1 (20.0s)
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s0 (19.3s)
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s1 (19.5s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s0
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s1
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s0
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s0 (4.0s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s0
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__conflation__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__generalization__s1 (4.2s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s0 (4.0s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s0 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__new_policy__s1 (4.1s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__no_shift__s1 (4.1s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s0 (4.1s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__novel_generalization__s1 (4.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s0 (4.2s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__single_shift__s1 (4.2s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s0 (4.1s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__cvae__specialization__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__conflation__s1 (4.0s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s0 (4.0s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__generalization__s1 (4.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__new_policy__s1 (4.1s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s1
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s0 (4.1s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__no_shift__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__novel_generalization__s1 (4.1s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s0 (4.2s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__single_shift__s1 (4.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_diffusion_history_conditioned__specialization__s1 (4.1s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s0 (47.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__generalization__s1 (46.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s0 (77.8s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__conflation__s1 (77.9s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s1
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s0 (99.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__new_policy__s1 (98.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s1 (41.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__novel_generalization__s0 (42.1s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s0 (132.1s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__no_shift__s1 (132.1s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s0 (123.4s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__single_shift__s1 (123.3s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s0 (3.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__conflation__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s0 (3.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__generalization__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s0 (3.9s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s0 (114.9s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_fitted_latent__specialization__s1 (115.2s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0 (4.1s)
+[gpu3] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1 (4.0s)
+[gpu1] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s1
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s0 (4.0s)
+[gpu2] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s0
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__novel_generalization__s1 (4.1s)
+[gpu0] START /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s1
+[gpu3] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s0 (4.2s)
+[gpu1] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s1 (4.0s)
+[gpu2] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s0 (4.0s)
+[gpu0] OK /mnt/data/INR/outputs/fastf1_uncapped_full_suite_20260501/fastf1_stint_full_uncapped__inr_transformer_history_conditioned__specialization__s1 (4.0s)

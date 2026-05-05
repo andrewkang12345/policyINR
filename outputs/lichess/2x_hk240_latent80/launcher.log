@@ -1,0 +1,6 @@
+[gpu0:0] START lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0
+[gpu1:1] START lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0
+[gpu2:2] START lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0
+[gpu2:2] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0 (2087.4s)
+[gpu1:1] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0 (4049.3s)
+[gpu0:0] OK lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0 (6584.7s)

@@ -22,7 +22,7 @@ import numpy as np
 
 FIELDS = [
     "data", "model", "experiment", "seed",
-    "probe_acc", "probe_acc_seen", "novel_mean_embed_dist",
+    "probe_acc", "probe_acc_seen", "knn_acc1", "knn_acc5", "novel_mean_embed_dist",
     "gen_mse", "gen_nmse", "gen_median_se", "gen_rmse",
     "gen_acc", "gen_nll",
     "finite_fraction", "target_var",
@@ -45,11 +45,13 @@ def _collect(root: Path) -> List[Dict]:
             row[k] = s.get(k)
         e = s.get("eval", {})
         for k in ("probe_acc", "probe_acc_seen", "novel_mean_embed_dist",
+                  "knn_acc1", "knn_acc5",
                   "gen_mse", "gen_nmse", "gen_median_se", "gen_rmse",
                   "gen_acc", "gen_nll",
                   "finite_fraction", "target_var",
                   "n_test_episodes_used", "n_test_ood"):
             row[k] = e.get(k)
+        row["probe_only"] = bool(e.get("probe_only", False))
         rows.append(row)
     return rows
 
@@ -107,6 +109,8 @@ def aggregate_runs(root: Path, out_csv: Path | None = None, out_md: Path | None 
     def degenerate_count(rs):
         n = 0
         for r in rs:
+            if r.get("probe_only"):
+                continue
             ff = r.get("finite_fraction")
             mse = r.get("gen_mse")
             acc = r.get("gen_acc")
@@ -128,18 +132,21 @@ def aggregate_runs(root: Path, out_csv: Path | None = None, out_md: Path | None 
         "",
         "Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; "
         "`probe_acc_seen` = same probe restricted to training-policy labels; "
+        "`knn_acc1`/`knn_acc5` = cosine kNN policy accuracy using train embeddings as the index; "
         "`gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); "
         "`gen_median_se` = median per-sample squared error; "
         "`deg` = degenerate runs (non-finite gen or partial finite fraction).",
         "",
-        "| data | model | experiment | n | deg | probe_acc | probe_acc_seen | gen_nmse | gen_median_se | gen_acc | gen_nll |",
-        "|---|---|---|---|---|---|---|---|---|---|---|",
+        "| data | model | experiment | n | deg | probe_acc | probe_acc_seen | knn_acc@1 | knn_acc@5 | gen_nmse | gen_median_se | gen_acc | gen_nll |",
+        "|---|---|---|---|---|---|---|---|---|---|---|---|---|",
     ]
     for (d, m, e), rs in sorted(grouped.items(), key=lambda x: str(x[0])):
         lines.append(
             f"| {d} | {m} | {e} | {len(rs)} | {degenerate_count(rs)} | "
             f"{_mstd(_finite_values(rs, 'probe_acc'))} | "
             f"{_mstd(_finite_values(rs, 'probe_acc_seen'))} | "
+            f"{_mstd(_finite_values(rs, 'knn_acc1'))} | "
+            f"{_mstd(_finite_values(rs, 'knn_acc5'))} | "
             f"{_mstd(_finite_values(rs, 'gen_nmse'))} | "
             f"{_mstd(_finite_values(rs, 'gen_median_se'))} | "
             f"{_mstd(_finite_values(rs, 'gen_acc'))} | "

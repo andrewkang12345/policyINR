@@ -1,0 +1,44 @@
+# --- python ----------------------------------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.python-version
+*.egg-info/
+.pytest_cache/
+
+# --- editor ----------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# --- caches & datasets (kept on disk, never in git) ------------------------
+.cache/
+.staging/
+.minari/
+.huggingface/
+
+# --- run artifacts ---------------------------------------------------------
+# Checkpoints live on Hugging Face — see README §Checkpoints.
+# Small per-run metadata (config.yaml, summary.json, eval.json, metrics.jsonl,
+# aggregate.csv, aggregate.md) is kept in git for reproducibility.
+outputs/**/*.pt
+outputs/**/*.ckpt
+outputs/**/*.npz
+outputs/**/*.npy
+outputs/**/*.h5
+
+# Generated logs/checkpoints from rerun bookkeeping
+outputs/**/stdout.log
+outputs/**/main.log
+outputs/_archive/
+outputs/_logs/
+outputs/PLOTS/
+outputs/synth_images/
+outputs/mujoco/custom_mujoco_build/
+
+# Slurm job logs
+outputs/slurm/
+*.out
+*.err

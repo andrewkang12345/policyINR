@@ -1,0 +1,36 @@
+[gpu0:0] START fastf1_stint_full_uncapped__cvae__no_shift__s0
+[gpu1:1] START fastf1_stint_full_uncapped__cvae__no_shift__s1
+[gpu2:2] START fastf1_stint_full_uncapped__cvae__new_policy__s0
+[gpu3:3] START fastf1_stint_full_uncapped__cvae__new_policy__s1
+[gpu1:1] OK fastf1_stint_full_uncapped__cvae__no_shift__s1 (5840.6s)
+[gpu1:1] START fastf1_stint_full_uncapped__cvae__single_shift__s0
+[gpu3:3] OK fastf1_stint_full_uncapped__cvae__new_policy__s1 (5853.8s)
+[gpu3:3] START fastf1_stint_full_uncapped__cvae__single_shift__s1
+[gpu0:0] OK fastf1_stint_full_uncapped__cvae__no_shift__s0 (5906.0s)
+[gpu0:0] START fastf1_stint_full_uncapped__cvae__conflation__s0
+[gpu2:2] OK fastf1_stint_full_uncapped__cvae__new_policy__s0 (5924.7s)
+[gpu2:2] START fastf1_stint_full_uncapped__cvae__conflation__s1
+[gpu2:2] OK fastf1_stint_full_uncapped__cvae__conflation__s1 (3758.1s)
+[gpu2:2] START fastf1_stint_full_uncapped__cvae__generalization__s0
+[gpu0:0] OK fastf1_stint_full_uncapped__cvae__conflation__s0 (3778.2s)
+[gpu0:0] START fastf1_stint_full_uncapped__cvae__generalization__s1
+[gpu0:0] OK fastf1_stint_full_uncapped__cvae__generalization__s1 (1420.6s)
+[gpu0:0] START fastf1_stint_full_uncapped__cvae__specialization__s0
+[gpu2:2] OK fastf1_stint_full_uncapped__cvae__generalization__s0 (1572.2s)
+[gpu2:2] START fastf1_stint_full_uncapped__cvae__specialization__s1
+[gpu3:3] OK fastf1_stint_full_uncapped__cvae__single_shift__s1 (5756.1s)
+[gpu3:3] START fastf1_stint_full_uncapped__cvae__novel_generalization__s0
+[gpu1:1] OK fastf1_stint_full_uncapped__cvae__single_shift__s0 (5874.0s)
+[gpu1:1] START fastf1_stint_full_uncapped__cvae__novel_generalization__s1
+[gpu1:1] OK fastf1_stint_full_uncapped__cvae__novel_generalization__s1 (1431.4s)
+[gpu1:1] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0
+[gpu3:3] OK fastf1_stint_full_uncapped__cvae__novel_generalization__s0 (1584.2s)
+[gpu3:3] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1
+[gpu0:0] OK fastf1_stint_full_uncapped__cvae__specialization__s0 (5890.2s)
+[gpu0:0] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s0
+[gpu2:2] OK fastf1_stint_full_uncapped__cvae__specialization__s1 (5817.3s)
+[gpu2:2] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__new_policy__s1
+[gpu3:3] OK fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s1 (8469.9s)
+[gpu3:3] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s0
+[gpu1:1] OK fastf1_stint_full_uncapped__inr_transformer_history_conditioned__no_shift__s0 (8566.3s)
+[gpu1:1] START fastf1_stint_full_uncapped__inr_transformer_history_conditioned__single_shift__s1

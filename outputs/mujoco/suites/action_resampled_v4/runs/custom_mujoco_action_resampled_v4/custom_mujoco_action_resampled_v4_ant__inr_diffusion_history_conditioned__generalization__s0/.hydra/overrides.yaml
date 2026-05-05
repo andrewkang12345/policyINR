@@ -1,0 +1,11 @@
+- data=custom_mujoco_action_resampled_v4_ant
+- model=inr_diffusion
+- experiment=generalization
+- seed=0
+- run_name=custom_mujoco_action_resampled_v4_ant__inr_diffusion__generalization__s0
+- output_dir=outputs/suites/action_resampled_v4/runs/custom_mujoco_action_resampled_v4/custom_mujoco_action_resampled_v4_ant__inr_diffusion__generalization__s0
+- shift.kind=predefined_split
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=384

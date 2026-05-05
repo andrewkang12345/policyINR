@@ -1,0 +1,42 @@
+{
+  "data": "lichess_full_2Xepisode_all_policies",
+  "model": "inr_transformer_fitted_latent",
+  "experiment": "conflation",
+  "seed": 0,
+  "n_train_episodes": 2084,
+  "n_val_episodes": 446,
+  "n_test_episodes": 448,
+  "source_run_dir": "/mnt/data/INR/outputs/lichess_full_2Xepisode_hk240/lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0",
+  "eval": {
+    "probe_acc": 0.26339285714285715,
+    "n_probe": 448,
+    "n_classes": 3,
+    "probe_acc_seen": 0.26339285714285715,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.578125,
+    "knn_acc5": 0.71875,
+    "n_knn": 448,
+    "train_pids": [
+      0,
+      1,
+      2
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 2084,
+    "n_test_episodes_used": 448,
+    "n_test_ood": 205,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

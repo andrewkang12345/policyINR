@@ -1,0 +1,75 @@
+{
+  "run_name": "custom_mujoco_action_resampled_v2_humanoid__inr_diffusion_history_conditioned__novel_generalization__s0",
+  "shift_strength": {
+    "0": 0.9323740985059926,
+    "1": 0.9323740985059926,
+    "2": 0.9323740985059926
+  },
+  "shift_overlap": 0.0,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "custom_mujoco_action_resampled_v2_humanoid",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "novel_generalization",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 180,
+  "n_val_episodes": 38,
+  "n_test_episodes": 117,
+  "train": {
+    "best_val_loss": 0.2094756965685622,
+    "best_epoch": 10,
+    "final_train_loss": 0.21200400872362984,
+    "total_epochs": 10,
+    "wallclock_s": 17.93825078010559
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 117,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 0.14055262506008148,
+    "n_novel": 39,
+    "gen_mse": 0.5964932441711426,
+    "gen_rmse": 0.7723297509297066,
+    "gen_nmse": 0.719824344836622,
+    "gen_median_se": 0.5541471838951111,
+    "gen_nmse_per_dim": [
+      0.7414924502372742,
+      0.6411278247833252,
+      0.7511615753173828,
+      0.8114606142044067,
+      0.8416851162910461,
+      0.5115005970001221,
+      1.0245997905731201,
+      0.6895784735679626,
+      0.6818807721138,
+      0.6349063515663147,
+      0.6438934803009033,
+      0.5362362265586853,
+      0.6050681471824646,
+      0.6978222131729126,
+      0.6808520555496216,
+      1.544539213180542,
+      0.5520530939102173
+    ],
+    "target_var": 0.8286650048027039,
+    "n_gen_samples": 14859,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 180,
+    "n_test_episodes_used": 117,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

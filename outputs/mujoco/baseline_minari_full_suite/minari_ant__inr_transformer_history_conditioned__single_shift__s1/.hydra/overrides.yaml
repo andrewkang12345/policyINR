@@ -1,0 +1,10 @@
+- data=minari_ant
+- model=inr_transformer
+- experiment=single_shift
+- seed=1
+- run_name=minari_ant__inr_transformer__single_shift__s1
+- output_dir=outputs/full_suite/minari_ant__inr_transformer__single_shift__s1
+- train.epochs=10
+- train.batch_size=256
+- train.history_k=16
+- ++data.max_episodes_per_policy=40

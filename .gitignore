@@ -44,3 +44,6 @@ outputs/mujoco/custom_mujoco_build/
 outputs/slurm/
 *.out
 *.err
+outputs/_materialize_logs/
+outputs/_5p_master_logs/
+outputs/_5p_master.log

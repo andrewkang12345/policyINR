@@ -1,0 +1,16 @@
+name: synthetic_grf_10x_5p
+kind: synthetic
+n_policies: 5
+episodes_per_policy: 80
+episode_length: 1280
+state_dim: 8
+action_dim: 4
+state_generator: grf
+action_policy: grf_policy
+noise_std: 0.05
+state_gen_kwargs:
+  n_modes: 8
+  length_scale: 1.0
+action_gen_kwargs:
+  n_modes: 8
+  length_scale: 1.0

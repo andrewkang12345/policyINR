@@ -1,0 +1,8 @@
+name: generalization_5p
+description: "Policy 1: train OOD, test ID. Policy 2: train OOD, test ID." (5-policy variant — pid 0..4)
+policies:
+  - { pid: 0, train: OOD, test: ID }
+  - { pid: 1, train: OOD, test: ID }
+  - { pid: 2, train: OOD, test: ID }
+  - { pid: 3, train: OOD, test: ID }
+  - { pid: 4, train: OOD, test: ID }

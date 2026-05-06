@@ -1,0 +1,14 @@
+name: lichess_top5_full_2Xepisode
+kind: lichess
+pgn_dir: ${oc.env:INR_LICHESS_CACHE,${oc.env:HOME}/.cache/INR/lichess}/pgn
+players:
+  - lance5500
+  - Zhigalko_Sergei
+  - penguingim1
+  - nihalsarin2004
+  - Night-King96
+max_games_per_player: 5000
+min_plies: 20
+max_plies: 120
+tracked_player_only: true
+games_per_episode: 2

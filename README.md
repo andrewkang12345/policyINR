@@ -132,24 +132,6 @@ each `aggregate.csv` is now repo-relative
 (`outputs/<domain>/<suite>/<run>`), so the row points to the actual
 artifacts in this checkout.
 
-### Where new runs land
-
-Future runs land in the right place by default — no manual moves
-needed. The rules:
-
-| invoked via | output goes to |
-|---|---|
-| `python -m train.main ...` (single run) | `outputs/oneoff/<timestamp>_<data>_<model>_<exp>_s<seed>/` |
-| `python -m train.main -m ...` (Hydra multirun) | `outputs/oneoff/multirun/<timestamp>/<job>/` |
-| any single-domain `scripts/run_*_suite.sh` | the matching `outputs/<domain>/<suite>/` listed in §3 |
-| cross-domain sweep (`run_full_suite.sh`, `run_full_suite_new_datasets.sh`, `run_lichess_dmlab_v2.sh`, `run_droid_fastf1_full_suite.sh`) | `outputs/_combined/<sweep>/` — split into the domain tree afterward via `python scripts/split_combined_outputs.py outputs/_combined/<sweep>` (use `--dry-run` first) |
-| `scripts/multi_gpu_launch.py` directly without `--out-root` | `outputs/_combined/manual_launch/` (override `--out-root` to a domain path for canonical sweeps) |
-
-`outputs/_combined/` is gitignored — it's a staging area. Run the
-splitter to promote those runs into the canonical domain tree before
-they're picked up by `eval/summary.py` or aggregated into a
-suite-level `aggregate.csv`.
-
 ### One-off Hydra runs
 
 ```bash

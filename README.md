@@ -122,8 +122,8 @@ artifacts to a deterministic path under `outputs/<domain>/<suite>/`.
 | mujoco | state-resampled v2 | `scripts/run_state_resampled_v2_suite.sh` | `outputs/mujoco/suites/state_resampled_v2/` | 5 envs |
 | mujoco | action-resampled v2 / v3 / v4 | `scripts/run_action_resampled_v{2,3,4}_suite.sh` | `outputs/mujoco/suites/action_resampled_v{2,3,4}/` | each across 5 envs |
 | mujoco | action-resampled v4 hopper-10× / 20× | `scripts/run_action_resampled_v5_suite.sh` (10×); `slurm_psc/slurm_hopper20x_*.sh` (20×) | `outputs/mujoco/suites/action_resampled_v4_hopper{10x,20x}/` | extended-horizon scaling study |
-| **syntheticgrf** | base | `scripts/run_full_suite.sh` (synthetic_grf rows) | `outputs/syntheticgrf/baseline_full_suite/` | sanity / smoke |
-| syntheticgrf | 10× horizon | `scripts/run_full_suite_new_datasets.sh` (synthetic_grf_10x rows) | `outputs/syntheticgrf/baseline_10x/` | scaling sanity |
+| **synthetic** | base | `scripts/run_full_suite.sh` (synthetic_grf rows) | `outputs/synthetic/baseline_full_suite/` | sanity / smoke |
+| synthetic | 10× horizon | `scripts/run_full_suite_new_datasets.sh` (synthetic_grf_10x rows) | `outputs/synthetic/baseline_10x/` | scaling sanity |
 
 Every per-run directory carries `config.yaml`, `metrics.jsonl`,
 `summary.json`, `eval.json`, and an `stdout.log`. Per-suite directories

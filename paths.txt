@@ -84,7 +84,7 @@ mkdir -p \
   "$INR_ROOT/outputs/droid" \
   "$INR_ROOT/outputs/fastf1" \
   "$INR_ROOT/outputs/mujoco/suites" \
-  "$INR_ROOT/outputs/syntheticgrf" \
+  "$INR_ROOT/outputs/synthetic" \
   "$INR_ROOT/outputs/dmlabseekavoid" \
   "$INR_ROOT/outputs/oneoff" \
   "$INR_ROOT/outputs/_combined"

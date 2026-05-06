@@ -26,8 +26,8 @@ from pathlib import Path
 # When a launcher mixes domains, every per-run dir starts with one of
 # these prefixes (matched longest-first).
 DATASET_PREFIX_MAP = [
-    ("synthetic_grf_10x__",    ("syntheticgrf", "baseline_10x")),
-    ("synthetic_grf__",        ("syntheticgrf", "baseline_full_suite")),
+    ("synthetic_grf_10x__",    ("synthetic", "baseline_10x")),
+    ("synthetic_grf__",        ("synthetic", "baseline_full_suite")),
     ("minari_",                ("mujoco",       "baseline_minari_full_suite")),
     ("custom_mujoco_",         ("mujoco",       "baseline_custom_mujoco")),
     ("dmlab_seekavoid_",       ("dmlabseekavoid", "{sweep_name}")),

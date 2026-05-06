@@ -6,7 +6,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/droid_lowdim_full_10x_min200_suite_20260502}"
+OUT_ROOT="${OUT_ROOT:-outputs/droid/10x_min200_hk200_mat512}"
 EPOCHS="${EPOCHS:-30}"
 BATCH="${BATCH:-128}"
 WORKERS="${WORKERS:-0}"

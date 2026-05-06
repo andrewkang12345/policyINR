@@ -8,7 +8,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-3}"
 SEEDS="${SEEDS:-0,1}"
-SUITE_ROOT="${SUITE_ROOT:-outputs/suites/action_resampled_v5}"
+SUITE_ROOT="${SUITE_ROOT:-outputs/mujoco/suites/action_resampled_v4_hopper10x}"
 BUILD_ROOT="${BUILD_ROOT:-${SUITE_ROOT}/build}"
 RUNS_ROOT="${RUNS_ROOT:-${SUITE_ROOT}/runs}"
 CUSTOM_ROOT="${CUSTOM_ROOT:-${RUNS_ROOT}/custom_mujoco_action_resampled_v5}"

@@ -79,7 +79,15 @@ mkdir -p \
   "$INR_DMLAB_CACHE" \
   "$INR_RLU_DMLAB_CACHE" \
   "$HF_HOME" \
-  "$INR_ROOT/outputs"
+  "$INR_ROOT/outputs" \
+  "$INR_ROOT/outputs/lichess" \
+  "$INR_ROOT/outputs/droid" \
+  "$INR_ROOT/outputs/fastf1" \
+  "$INR_ROOT/outputs/mujoco/suites" \
+  "$INR_ROOT/outputs/syntheticgrf" \
+  "$INR_ROOT/outputs/dmlabseekavoid" \
+  "$INR_ROOT/outputs/oneoff" \
+  "$INR_ROOT/outputs/_combined"
 
 # Convenience: chdir to the repo unless the caller set INR_KEEP_CWD=1.
 if [ -z "${INR_KEEP_CWD:-}" ]; then

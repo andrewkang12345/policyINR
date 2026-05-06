@@ -16,7 +16,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/lichess_dmlab_v2}"
+OUT_ROOT="${OUT_ROOT:-outputs/_combined/lichess_dmlab_v2}"
 EPOCHS="${EPOCHS:-10}"
 BATCH="${BATCH:-128}"
 HISTORY_K="${HISTORY_K:-16}"

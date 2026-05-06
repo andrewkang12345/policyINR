@@ -7,7 +7,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/droid_lowdim_full_10x_suite_20260501}"
+OUT_ROOT="${OUT_ROOT:-outputs/droid/10x_shards80_min8_hk300}"
 EPOCHS="${EPOCHS:-30}"
 BATCH="${BATCH:-128}"
 WORKERS="${WORKERS:-4}"

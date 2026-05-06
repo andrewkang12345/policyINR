@@ -8,7 +8,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/custom_mujoco_suite}"
+OUT_ROOT="${OUT_ROOT:-outputs/mujoco/baseline_custom_mujoco}"
 EPOCHS="${EPOCHS:-10}"
 BATCH="${BATCH:-256}"
 HISTORY_K="${HISTORY_K:-16}"

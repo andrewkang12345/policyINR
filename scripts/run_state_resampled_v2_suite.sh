@@ -8,7 +8,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
 SEEDS="${SEEDS:-0,1}"
-SUITE_ROOT="${SUITE_ROOT:-outputs/suites/state_resampled_v2}"
+SUITE_ROOT="${SUITE_ROOT:-outputs/mujoco/suites/state_resampled_v2}"
 BUILD_ROOT="${BUILD_ROOT:-${SUITE_ROOT}/build}"
 RUNS_ROOT="${RUNS_ROOT:-${SUITE_ROOT}/runs}"
 CUSTOM_ROOT="${CUSTOM_ROOT:-${RUNS_ROOT}/custom_mujoco_state_resampled_v2}"

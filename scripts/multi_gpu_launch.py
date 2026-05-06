@@ -85,7 +85,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n-gpus", type=int, default=4)
     ap.add_argument("--seeds", type=str, default="0,1,2")
-    ap.add_argument("--out-root", type=str, default="outputs/full_suite")
+    ap.add_argument("--out-root", type=str, default="outputs/_combined/manual_launch",
+                    help="Each job lands at <out-root>/<data>__<model>__<exp>__s<seed>/. "
+                         "For canonical sweeps, prefer scripts/run_*_suite.sh which set "
+                         "<out-root> to a domain-tree path (e.g. outputs/lichess/2x_hk240).")
     ap.add_argument("--datasets", type=str, required=True)
     ap.add_argument("--models", type=str, required=True)
     ap.add_argument("--experiments", type=str, required=True)

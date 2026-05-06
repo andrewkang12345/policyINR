@@ -34,6 +34,8 @@ outputs/**/stdout.log
 outputs/**/main.log
 outputs/_archive/
 outputs/_logs/
+outputs/_combined/
+outputs/oneoff/
 outputs/PLOTS/
 outputs/synth_images/
 outputs/mujoco/custom_mujoco_build/

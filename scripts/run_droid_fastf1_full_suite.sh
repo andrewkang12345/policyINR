@@ -8,7 +8,7 @@ export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-}"
 
 N_GPUS="${N_GPUS:-0}"
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/droid_fastf1_full_suite}"
+OUT_ROOT="${OUT_ROOT:-outputs/_combined/droid_fastf1_full_suite}"
 EPOCHS="${EPOCHS:-10}"
 BATCH="${BATCH:-128}"
 WORKERS="${WORKERS:-4}"

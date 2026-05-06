@@ -6,7 +6,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
-OUT_ROOT="${OUT_ROOT:-outputs/droid_lowdim_full_all_min300_hk300_suite_20260502}"
+OUT_ROOT="${OUT_ROOT:-outputs/droid/all_min300_hk300}"
 SEEDS="${SEEDS:-0,1}"
 EPOCHS="${EPOCHS:-30}"
 WORKERS="${WORKERS:-0}"

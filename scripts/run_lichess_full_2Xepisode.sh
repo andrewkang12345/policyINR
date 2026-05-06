@@ -6,7 +6,7 @@ export PYTHONPATH="$(pwd):${PYTHONPATH:-}"
 export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
-OUT_ROOT="${OUT_ROOT:-outputs/lichess_full_2Xepisode}"
+OUT_ROOT="${OUT_ROOT:-outputs/lichess/2x_hk240}"
 SEEDS="${SEEDS:-0}"
 EPOCHS="${EPOCHS:-10}"
 BATCH="${BATCH:-128}"

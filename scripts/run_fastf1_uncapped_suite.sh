@@ -7,7 +7,7 @@ export INR_LOG_LEVEL="${INR_LOG_LEVEL:-INFO}"
 
 N_GPUS="${N_GPUS:-4}"
 SEEDS="${SEEDS:-0,1}"
-OUT_ROOT="${OUT_ROOT:-outputs/fastf1_uncapped_full_suite}"
+OUT_ROOT="${OUT_ROOT:-outputs/fastf1/uncapped_full_suite}"
 EPOCHS="${EPOCHS:-30}"
 BATCH="${BATCH:-128}"
 WORKERS="${WORKERS:-4}"

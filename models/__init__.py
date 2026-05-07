@@ -1,4 +1,7 @@
 from .cvae import CVAE
+from .cvae_rnn import CVAERNN
+from .vqvae import VQVAE
+from .state_action_bem import StateActionBEM
 from .inr_transformer import (
     INRTransformer,
     INRTransformerHistoryConditioned,
@@ -16,6 +19,9 @@ def build_model(name: str, **kwargs) -> RepresentationModel:
 
 __all__ = [
     "CVAE",
+    "CVAERNN",
+    "VQVAE",
+    "StateActionBEM",
     "INRTransformer",
     "INRTransformerHistoryConditioned",
     "INRTransformerFittedLatent",

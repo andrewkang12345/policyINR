@@ -1,0 +1,17 @@
+name: inr_diffusion_history_conditioned_shuffle
+kind: inr_diffusion_history_conditioned
+latent_dim: 64
+d_model: 128
+n_heads: 4
+n_layers: 3
+denoise_hidden: 256
+denoise_layers: 3
+n_diffusion_steps: 50
+beta_start: 1.0e-4
+beta_end: 0.02
+n_sample_steps: 10
+dropout: 0.0
+shuffle_history_train: true
+use_unit_latents: false
+behavior_unit: episode
+unit_window_size: 16

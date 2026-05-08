@@ -1,4 +1,4 @@
-# Aggregate (42 runs)
+# Aggregate (61 runs)
 
 Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
 
@@ -46,3 +46,22 @@ Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episod
 | lichess_top5_full_2Xepisode | vqvae | novel_generalization_5p | 1 | 0 | 0.271 | 0.344 | 0.228 | 0.686 | - | - | 0.057 | 5.695 |
 | lichess_top5_full_2Xepisode | vqvae | single_shift_5p | 1 | 0 | 0.703 | 0.703 | 0.652 | 0.888 | - | - | 0.169 | 4.095 |
 | lichess_top5_full_2Xepisode | vqvae | specialization_5p | 1 | 0 | 0.417 | 0.417 | 0.310 | 0.761 | - | - | 0.116 | 4.486 |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | conflation_5p | 1 | 0 | 0.759 | 0.759 | 0.620 | 0.881 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | generalization_5p | 1 | 0 | 0.257 | 0.257 | 0.243 | 0.710 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | new_policy_5p | 1 | 0 | 0.671 | 0.850 | 0.669 | 0.908 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | no_shift_5p | 1 | 0 | 0.845 | 0.845 | 0.751 | 0.916 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | novel_generalization_5p | 1 | 0 | 0.308 | 0.390 | 0.230 | 0.718 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | single_shift_5p | 1 | 0 | 0.754 | 0.754 | 0.677 | 0.908 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | cvae_rnn | specialization_5p | 1 | 0 | 0.441 | 0.441 | 0.387 | 0.794 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | conflation_5p | 1 | 0 | 0.571 | 0.571 | 0.360 | 0.830 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | generalization_5p | 1 | 0 | 0.246 | 0.246 | 0.286 | 0.742 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | new_policy_5p | 1 | 0 | 0.413 | 0.523 | 0.284 | 0.722 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | no_shift_5p | 1 | 0 | 0.480 | 0.480 | 0.300 | 0.748 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | novel_generalization_5p | 1 | 0 | 0.313 | 0.397 | 0.280 | 0.723 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | single_shift_5p | 1 | 0 | 0.432 | 0.432 | 0.470 | 0.853 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_diffusion_history_conditioned_shuffle | specialization_5p | 1 | 0 | 0.237 | 0.237 | 0.217 | 0.677 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_transformer_fitted_latent_shuffle | conflation_5p | 1 | 0 | 0.351 | 0.351 | 0.304 | 0.715 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_transformer_fitted_latent_shuffle | generalization_5p | 1 | 0 | 0.239 | 0.239 | 0.243 | 0.724 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_transformer_fitted_latent_shuffle | new_policy_5p | 1 | 0 | 0.300 | 0.381 | 0.225 | 0.703 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_transformer_fitted_latent_shuffle | no_shift_5p | 1 | 0 | 0.362 | 0.362 | 0.206 | 0.684 | - | - | - | - |
+| lichess_top5_full_2Xepisode_all_policies | inr_transformer_fitted_latent_shuffle | novel_generalization_5p | 1 | 0 | 0.238 | 0.301 | 0.255 | 0.743 | - | - | - | - |

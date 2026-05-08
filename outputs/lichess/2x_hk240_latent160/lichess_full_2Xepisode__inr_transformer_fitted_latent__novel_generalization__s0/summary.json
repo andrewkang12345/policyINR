@@ -1843,7 +1843,11 @@
     "n_train_episodes_used": 962,
     "n_test_episodes_used": 719,
     "n_test_ood": 0,
-    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 0.4144645340751043,
+    "knn_acc5": 0.9221140472878998,
+    "n_knn": 719,
+    "knn_protocol": "test_leave_one_out_cosine"
   },
   "shared_checkpoint_from": "lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0"
 }

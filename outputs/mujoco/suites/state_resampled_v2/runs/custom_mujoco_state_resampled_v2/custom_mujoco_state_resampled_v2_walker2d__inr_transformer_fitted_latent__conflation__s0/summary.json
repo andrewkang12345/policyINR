@@ -26,10 +26,10 @@
     "wallclock_s": 41.23433303833008
   },
   "eval": {
-    "probe_acc": 0.6724137931034483,
+    "probe_acc": 1.0,
     "n_probe": 58,
     "n_classes": 2,
-    "probe_acc_seen": 0.6724137931034483,
+    "probe_acc_seen": 1.0,
     "novel_mean_embed_dist": NaN,
     "n_novel": 0,
     "gen_mse": 0.0010608697775751352,
@@ -58,6 +58,10 @@
     "n_train_episodes_used": 269,
     "n_test_episodes_used": 58,
     "n_test_ood": 19,
-    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 58,
+    "knn_protocol": "test_leave_one_out_cosine"
   }
 }

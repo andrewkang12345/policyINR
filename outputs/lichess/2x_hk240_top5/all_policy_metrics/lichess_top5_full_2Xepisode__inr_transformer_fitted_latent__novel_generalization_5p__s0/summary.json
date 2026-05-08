@@ -1,0 +1,48 @@
+{
+  "data": "lichess_top5_full_2Xepisode_all_policies",
+  "model": "inr_transformer_fitted_latent",
+  "experiment": "novel_generalization_5p",
+  "seed": 0,
+  "n_train_episodes": 1963,
+  "n_val_episodes": 420,
+  "n_test_episodes": 1245,
+  "source_run_dir": "/mnt/data/INR/outputs/lichess/2x_hk240_top5/lichess_top5_full_2Xepisode__inr_transformer_fitted_latent__novel_generalization_5p__s0",
+  "eval": {
+    "probe_acc": 0.21606425702811244,
+    "n_probe": 1245,
+    "n_classes": 4,
+    "probe_acc_seen": 0.2739307535641548,
+    "novel_mean_embed_dist": 0.00767325796186924,
+    "n_novel": 263,
+    "knn_acc1": 0.26265060240963856,
+    "knn_acc5": 0.7365461847389558,
+    "n_knn": 1245,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "test_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_all_policies": 5,
+    "n_train_episodes_used": 1963,
+    "n_test_episodes_used": 1245,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

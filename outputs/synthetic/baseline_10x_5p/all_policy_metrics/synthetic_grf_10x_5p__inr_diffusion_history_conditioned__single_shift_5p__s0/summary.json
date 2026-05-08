@@ -1,0 +1,49 @@
+{
+  "data": "synthetic_grf_10x_5p_all_policies",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "single_shift_5p",
+  "seed": 0,
+  "n_train_episodes": 195,
+  "n_val_episodes": 40,
+  "n_test_episodes": 33,
+  "source_run_dir": "/mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s0",
+  "eval": {
+    "probe_acc": 0.6060606060606061,
+    "n_probe": 33,
+    "n_classes": 5,
+    "probe_acc_seen": 0.6060606060606061,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.6060606060606061,
+    "knn_acc5": 0.9090909090909091,
+    "n_knn": 33,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "test_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_all_policies": 5,
+    "n_train_episodes_used": 195,
+    "n_test_episodes_used": 33,
+    "n_test_ood": 6,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

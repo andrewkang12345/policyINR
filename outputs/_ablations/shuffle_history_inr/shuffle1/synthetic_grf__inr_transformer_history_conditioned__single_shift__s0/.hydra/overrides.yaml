@@ -1,0 +1,8 @@
+- data=synthetic_grf
+- model=inr_transformer_history_conditioned
+- experiment=single_shift
+- seed=0
+- run_name=synthetic_grf__inr_transformer_history_conditioned__single_shift__s0
+- output_dir=outputs/_ablations/shuffle_history_inr/shuffle1/synthetic_grf__inr_transformer_history_conditioned__single_shift__s0
+- train.epochs=20
+- model.shuffle_history_train=true

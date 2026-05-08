@@ -31,7 +31,8 @@
   "n_test_episodes_used": 18,
   "n_test_ood": 0,
   "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
-  "knn_acc1": 0.3888888888888889,
-  "knn_acc5": 0.6666666666666666,
-  "n_knn": 18
+  "knn_acc1": 0.3333333333333333,
+  "knn_acc5": 0.8333333333333334,
+  "n_knn": 18,
+  "knn_protocol": "test_leave_one_out_cosine"
 }

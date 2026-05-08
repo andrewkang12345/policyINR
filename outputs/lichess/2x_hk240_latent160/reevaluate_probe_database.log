@@ -1,0 +1,14 @@
+[gpu0] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0
+[gpu1] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0
+[gpu3] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__new_policy__s0
+[gpu2] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__generalization__s0 (967.3s)
+[gpu1] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu0] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__conflation__s0 (1272.4s)
+[gpu0] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__single_shift__s0
+[gpu2] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__no_shift__s0 (1707.7s)
+[gpu2] START /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__specialization__s0
+[gpu3] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__new_policy__s0 (1743.6s)
+[gpu1] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__novel_generalization__s0 (1053.8s)
+[gpu0] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__single_shift__s0 (1237.0s)
+[gpu2] OK /mnt/data/INR/outputs/lichess/2x_hk240_latent160/lichess_full_2Xepisode__inr_transformer_fitted_latent__specialization__s0 (1426.5s)

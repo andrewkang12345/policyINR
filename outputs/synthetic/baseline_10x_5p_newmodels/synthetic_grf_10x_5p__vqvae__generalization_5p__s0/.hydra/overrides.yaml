@@ -1,0 +1,10 @@
+- data=synthetic_grf_10x_5p
+- model=vqvae
+- experiment=generalization_5p
+- seed=0
+- run_name=synthetic_grf_10x_5p__vqvae__generalization_5p__s0
+- output_dir=outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__generalization_5p__s0
+- train.epochs=20
+- train.batch_size=256
+- train.num_workers=2
+- train.history_k=16

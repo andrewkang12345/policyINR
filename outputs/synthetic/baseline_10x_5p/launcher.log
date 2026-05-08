@@ -1,0 +1,112 @@
+[gpu0:0] START synthetic_grf_10x_5p__cvae__no_shift_5p__s0
+[gpu1:1] START synthetic_grf_10x_5p__cvae__no_shift_5p__s1
+[gpu2:2] START synthetic_grf_10x_5p__cvae__new_policy_5p__s0
+[gpu3:3] START synthetic_grf_10x_5p__cvae__new_policy_5p__s1
+[gpu2:2] OK synthetic_grf_10x_5p__cvae__new_policy_5p__s0 (283.5s)
+[gpu2:2] START synthetic_grf_10x_5p__cvae__single_shift_5p__s0
+[gpu3:3] OK synthetic_grf_10x_5p__cvae__new_policy_5p__s1 (287.5s)
+[gpu3:3] START synthetic_grf_10x_5p__cvae__single_shift_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__cvae__no_shift_5p__s1 (345.9s)
+[gpu1:1] START synthetic_grf_10x_5p__cvae__conflation_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__cvae__no_shift_5p__s0 (349.3s)
+[gpu0:0] START synthetic_grf_10x_5p__cvae__conflation_5p__s1
+[gpu0:0] OK synthetic_grf_10x_5p__cvae__conflation_5p__s1 (245.4s)
+[gpu0:0] START synthetic_grf_10x_5p__cvae__generalization_5p__s0
+[gpu1:1] OK synthetic_grf_10x_5p__cvae__conflation_5p__s0 (250.3s)
+[gpu1:1] START synthetic_grf_10x_5p__cvae__generalization_5p__s1
+[gpu2:2] OK synthetic_grf_10x_5p__cvae__single_shift_5p__s0 (342.5s)
+[gpu2:2] START synthetic_grf_10x_5p__cvae__specialization_5p__s0
+[gpu3:3] OK synthetic_grf_10x_5p__cvae__single_shift_5p__s1 (341.6s)
+[gpu3:3] START synthetic_grf_10x_5p__cvae__specialization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__cvae__generalization_5p__s1 (88.1s)
+[gpu1:1] START synthetic_grf_10x_5p__cvae__novel_generalization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__cvae__generalization_5p__s0 (91.2s)
+[gpu0:0] START synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1
+[gpu0:0] OK synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1 (81.0s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s0
+[gpu1:1] OK synthetic_grf_10x_5p__cvae__novel_generalization_5p__s0 (84.8s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__cvae__specialization_5p__s1 (337.7s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__cvae__specialization_5p__s0 (341.5s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s1 (352.2s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s0 (357.2s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s0 (283.3s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s1 (284.3s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s0 (349.2s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s1 (352.0s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s0 (246.0s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s1 (245.8s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s0 (86.1s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s1 (85.0s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s0 (80.5s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s1 (80.8s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s0 (347.7s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s1 (353.5s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s0 (375.2s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s1 (380.6s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s0 (306.6s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s1 (309.9s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s0 (377.1s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s1 (374.8s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s0 (263.2s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s1 (260.1s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s0 (91.5s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s1 (89.3s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s0 (84.0s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s1 (81.2s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s0 (360.1s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s1 (368.7s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s0 (600.1s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s1 (602.3s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s0 (488.5s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s1 (486.6s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s0 (424.2s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s1 (417.8s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s1
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s0 (585.6s)
+[gpu1:1] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s0
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s1 (586.6s)
+[gpu0:0] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s0 (171.1s)
+[gpu3:3] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s0
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s1 (163.9s)
+[gpu2:2] START synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s1
+[gpu3:3] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s0 (158.1s)
+[gpu2:2] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s1 (215.6s)
+[gpu1:1] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s0 (570.1s)
+[gpu0:0] OK synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s1 (573.0s)

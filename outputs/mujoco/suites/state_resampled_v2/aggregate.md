@@ -1,146 +1,146 @@
 # Aggregate (280 runs)
 
-Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
+Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
 
-| data | model | experiment | n | deg | probe_acc | probe_acc_seen | gen_nmse | gen_median_se | gen_acc | gen_nll |
-|---|---|---|---|---|---|---|---|---|---|---|
-| custom_mujoco_state_resampled_v2_ant | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.015±0.001 | 0.010±0.001 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.585±0.002 | 0.350±0.001 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.724±0.000 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.009±0.000 | 0.004±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.018±0.006 | 0.590±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | single_shift | 2 | 0 | 0.836±0.078 | 0.836±0.078 | 0.673±0.054 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | cvae | specialization | 2 | 0 | 0.750±0.118 | 0.750±0.118 | 1.743±0.132 | 1.267±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.280±0.013 | 0.122±0.006 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | generalization | 2 | 0 | 0.917±0.083 | 0.917±0.083 | 0.957±0.050 | 0.649±0.036 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.709±0.006 | 0.144±0.008 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.155±0.007 | 0.053±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.611±0.056 | 0.917±0.083 | 1.161±0.029 | 0.861±0.027 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.784±0.026 | 0.784±0.026 | 0.528±0.005 | 0.156±0.004 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.671±0.039 | 0.671±0.039 | 1.030±0.008 | 0.947±0.049 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.672±0.000 | 0.672±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.659±0.003 | 0.495±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.839±0.043 | 0.353±0.018 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.269±0.000 | 0.204±0.009 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.025±0.002 | 0.697±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.536±0.050 | 0.339±0.028 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.953±0.093 | 0.938±0.047 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.573±0.005 | 0.395±0.004 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.725±0.003 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.003±0.001 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.955±0.001 | 0.631±0.011 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.957±0.026 | 0.957±0.026 | 0.358±0.002 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.934±0.039 | 0.934±0.039 | 0.895±0.002 | 0.900±0.026 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.012±0.000 | 0.005±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | generalization | 2 | 0 | 0.962±0.038 | 0.962±0.038 | 0.561±0.007 | 0.330±0.013 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.231±0.002 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.009±0.001 | 0.003±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | novel_generalization | 2 | 0 | 0.641±0.026 | 0.962±0.038 | 0.658±0.021 | 0.435±0.016 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | single_shift | 2 | 0 | 0.991±0.009 | 0.991±0.009 | 0.232±0.034 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | cvae | specialization | 2 | 0 | 0.987±0.013 | 0.987±0.013 | 0.736±0.036 | 0.510±0.026 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.554±0.001 | 0.169±0.008 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.031±0.003 | 0.694±0.010 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.609±0.025 | 0.287±0.016 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.470±0.029 | 0.128±0.009 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.088±0.010 | 0.824±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.983±0.017 | 0.983±0.017 | 0.654±0.001 | 0.350±0.016 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.974±0.026 | 0.974±0.026 | 0.843±0.016 | 0.821±0.030 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.672±0.000 | 0.672±0.000 | 0.015±0.001 | 0.003±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.680±0.011 | 0.495±0.020 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.518±0.005 | 0.412±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.334±0.001 | 0.310±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.786±0.007 | 0.633±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.440±0.002 | 0.386±0.003 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.732±0.041 | 0.602±0.019 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.434±0.018 | 0.229±0.019 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.225±0.002 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.002±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.564±0.035 | 0.336±0.024 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.974±0.026 | 0.974±0.026 | 0.196±0.010 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.961±0.039 | 0.961±0.039 | 0.573±0.032 | 0.492±0.030 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.011±0.001 | 0.005±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | generalization | 2 | 0 | 0.795±0.192 | 0.795±0.192 | 1.536±0.032 | 0.828±0.081 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.636±0.019 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.010±0.001 | 0.004±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | novel_generalization | 2 | 0 | 0.530±0.128 | 0.795±0.192 | 1.838±0.021 | 1.231±0.026 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.628±0.046 | 0.008±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | cvae | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 1.949±0.160 | 2.340±0.126 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.248±0.011 | 0.069±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | generalization | 2 | 0 | 0.744±0.077 | 0.744±0.077 | 1.784±0.048 | 1.021±0.034 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.679±0.001 | 0.140±0.003 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.147±0.002 | 0.040±0.004 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.496±0.051 | 0.744±0.077 | 1.910±0.039 | 1.317±0.047 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.541±0.024 | 0.150±0.011 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 1.400±0.070 | 1.768±0.140 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.672±0.000 | 0.672±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | generalization | 2 | 0 | 0.994±0.006 | 0.994±0.006 | 1.314±0.025 | 0.669±0.053 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.773±0.002 | 0.447±0.009 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.337±0.000 | 0.227±0.006 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.662±0.004 | 0.994±0.006 | 1.590±0.038 | 1.010±0.010 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.618±0.025 | 0.398±0.017 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 1.330±0.086 | 1.764±0.080 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.002±0.000 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | generalization | 2 | 0 | 0.885±0.013 | 0.885±0.013 | 1.244±0.182 | 0.656±0.106 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.641±0.004 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.003±0.000 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.590±0.009 | 0.885±0.013 | 1.478±0.168 | 0.928±0.107 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.356±0.005 | 0.002±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 1.102±0.016 | 1.478±0.044 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.009±0.001 | 0.006±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.570±0.018 | 0.459±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.472±0.003 | 0.004±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.004±0.000 | 0.003±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.915±0.034 | 0.679±0.019 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.396±0.004 | 0.004±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | cvae | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.939±0.009 | 0.840±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.150±0.008 | 0.077±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.736±0.008 | 0.575±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.480±0.005 | 0.115±0.010 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.099±0.008 | 0.051±0.005 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.875±0.008 | 0.776±0.006 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.311±0.002 | 0.079±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.661±0.019 | 0.659±0.015 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.672±0.000 | 0.672±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.867±0.013 | 0.731±0.024 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.819±0.000 | 0.598±0.001 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.461±0.004 | 0.385±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.127±0.003 | 0.998±0.031 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.610±0.001 | 0.495±0.013 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.778±0.012 | 0.856±0.027 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.001±0.001 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.612±0.003 | 0.491±0.001 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.470±0.002 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.885±0.001 | 0.708±0.027 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.258±0.003 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.606±0.016 | 0.614±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.014±0.002 | 0.006±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.775±0.018 | 0.469±0.017 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.369±0.001 | 0.006±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.008±0.001 | 0.003±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.965±0.035 | 0.636±0.034 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | single_shift | 2 | 0 | 0.836±0.009 | 0.836±0.009 | 0.477±0.039 | 0.007±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | cvae | specialization | 2 | 0 | 0.750±0.013 | 0.750±0.013 | 1.163±0.099 | 1.398±0.171 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.407±0.012 | 0.142±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.207±0.016 | 0.784±0.008 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.398±0.001 | 0.120±0.006 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.128±0.005 | 0.046±0.004 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.301±0.011 | 0.909±0.007 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.836±0.164 | 0.836±0.164 | 0.543±0.043 | 0.149±0.014 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.737±0.237 | 0.737±0.237 | 1.031±0.054 | 1.238±0.095 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | conflation | 2 | 0 | 0.672±0.000 | 0.672±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.155±0.028 | 0.720±0.034 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.679±0.003 | 0.468±0.003 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.397±0.000 | 0.341±0.003 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.331±0.013 | 0.929±0.011 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.658±0.015 | 0.505±0.008 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.983±0.022 | 1.184±0.019 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.759±0.010 | 0.479±0.017 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.364±0.001 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 0.002±0.001 | 0.000±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.961±0.003 | 0.638±0.002 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.948±0.034 | 0.948±0.034 | 0.406±0.003 | 0.001±0.000 | - | - |
-| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.908±0.039 | 0.908±0.039 | 0.922±0.004 | 1.114±0.023 | - | - |
+| data | model | experiment | n | deg | probe_acc | probe_acc_seen | knn_acc@1 | knn_acc@5 | gen_nmse | gen_median_se | gen_acc | gen_nll |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| custom_mujoco_state_resampled_v2_ant | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.015±0.001 | 0.010±0.001 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.585±0.002 | 0.350±0.001 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.724±0.000 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.009±0.000 | 0.004±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.983±0.000 | 0.987±0.004 | 1.018±0.006 | 0.590±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | single_shift | 2 | 0 | 0.836±0.078 | 0.836±0.078 | 1.000±0.000 | 1.000±0.000 | 0.673±0.054 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | cvae | specialization | 2 | 0 | 0.750±0.118 | 0.750±0.118 | 0.934±0.039 | 0.961±0.013 | 1.743±0.132 | 1.267±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.280±0.013 | 0.122±0.006 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | generalization | 2 | 0 | 0.917±0.083 | 0.917±0.083 | 1.000±0.000 | 1.000±0.000 | 0.957±0.050 | 0.649±0.036 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.709±0.006 | 0.144±0.008 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.155±0.007 | 0.053±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.611±0.056 | 0.917±0.083 | 0.936±0.021 | 0.974±0.000 | 1.161±0.029 | 0.861±0.027 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.784±0.026 | 0.784±0.026 | 0.991±0.009 | 0.991±0.009 | 0.528±0.005 | 0.156±0.004 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.671±0.039 | 0.671±0.039 | 0.947±0.053 | 0.974±0.026 | 1.030±0.008 | 0.947±0.049 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.659±0.003 | 0.495±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 0.996±0.004 | 0.839±0.043 | 0.353±0.018 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.269±0.000 | 0.204±0.009 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.025±0.002 | 0.697±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.536±0.050 | 0.339±0.028 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.953±0.093 | 0.938±0.047 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.573±0.005 | 0.395±0.004 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.725±0.003 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.003±0.001 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.953±0.013 | 0.979±0.004 | 0.955±0.001 | 0.631±0.011 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.957±0.026 | 0.957±0.026 | 1.000±0.000 | 1.000±0.000 | 0.358±0.002 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_ant | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.934±0.039 | 0.934±0.039 | 0.961±0.013 | 1.000±0.000 | 0.895±0.002 | 0.900±0.026 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.012±0.000 | 0.005±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | generalization | 2 | 0 | 0.962±0.038 | 0.962±0.038 | 1.000±0.000 | 1.000±0.000 | 0.561±0.007 | 0.330±0.013 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.231±0.002 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.009±0.001 | 0.003±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | novel_generalization | 2 | 0 | 0.641±0.026 | 0.962±0.038 | 0.996±0.004 | 1.000±0.000 | 0.658±0.021 | 0.435±0.016 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | single_shift | 2 | 0 | 0.991±0.009 | 0.991±0.009 | 1.000±0.000 | 1.000±0.000 | 0.232±0.034 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | cvae | specialization | 2 | 0 | 0.987±0.013 | 0.987±0.013 | 1.000±0.000 | 1.000±0.000 | 0.736±0.036 | 0.510±0.026 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.554±0.001 | 0.169±0.008 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.031±0.003 | 0.694±0.010 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.609±0.025 | 0.287±0.016 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.470±0.029 | 0.128±0.009 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.088±0.010 | 0.824±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.983±0.017 | 0.983±0.017 | 1.000±0.000 | 1.000±0.000 | 0.654±0.001 | 0.350±0.016 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.974±0.026 | 0.974±0.026 | 1.000±0.000 | 1.000±0.000 | 0.843±0.016 | 0.821±0.030 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.015±0.001 | 0.003±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.680±0.011 | 0.495±0.020 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 1.000±0.000 | 0.518±0.005 | 0.412±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.334±0.001 | 0.310±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.983±0.017 | 0.996±0.004 | 0.786±0.007 | 0.633±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.440±0.002 | 0.386±0.003 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.732±0.041 | 0.602±0.019 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.434±0.018 | 0.229±0.019 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.225±0.002 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.002±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 1.000±0.000 | 0.564±0.035 | 0.336±0.024 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.974±0.026 | 0.974±0.026 | 1.000±0.000 | 1.000±0.000 | 0.196±0.010 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_halfcheetah | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.961±0.039 | 0.961±0.039 | 1.000±0.000 | 1.000±0.000 | 0.573±0.032 | 0.492±0.030 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.011±0.001 | 0.005±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | generalization | 2 | 0 | 0.795±0.192 | 0.795±0.192 | 1.000±0.000 | 1.000±0.000 | 1.536±0.032 | 0.828±0.081 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.636±0.019 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.010±0.001 | 0.004±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | novel_generalization | 2 | 0 | 0.530±0.128 | 0.795±0.192 | 1.000±0.000 | 1.000±0.000 | 1.838±0.021 | 1.231±0.026 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.628±0.046 | 0.008±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | cvae | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.987±0.013 | 1.000±0.000 | 1.949±0.160 | 2.340±0.126 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.248±0.011 | 0.069±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | generalization | 2 | 0 | 0.744±0.077 | 0.744±0.077 | 0.994±0.006 | 0.994±0.006 | 1.784±0.048 | 1.021±0.034 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.679±0.001 | 0.140±0.003 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.147±0.002 | 0.040±0.004 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.496±0.051 | 0.744±0.077 | 0.996±0.004 | 0.996±0.004 | 1.910±0.039 | 1.317±0.047 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.541±0.024 | 0.150±0.011 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.908±0.013 | 0.987±0.013 | 1.400±0.070 | 1.768±0.140 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.314±0.025 | 0.669±0.053 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 1.000±0.000 | 0.773±0.002 | 0.447±0.009 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.337±0.000 | 0.227±0.006 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 0.996±0.004 | 1.590±0.038 | 1.010±0.010 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.618±0.025 | 0.398±0.017 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_fitted_latent | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.987±0.013 | 0.987±0.013 | 1.330±0.086 | 1.764±0.080 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.002±0.000 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | generalization | 2 | 0 | 0.885±0.013 | 0.885±0.013 | 1.000±0.000 | 1.000±0.000 | 1.244±0.182 | 0.656±0.106 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.641±0.004 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.003±0.000 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.590±0.009 | 0.885±0.013 | 0.996±0.004 | 0.996±0.004 | 1.478±0.168 | 0.928±0.107 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.356±0.005 | 0.002±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_hopper | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.947±0.053 | 0.987±0.013 | 1.102±0.016 | 1.478±0.044 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.009±0.001 | 0.006±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.570±0.018 | 0.459±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.472±0.003 | 0.004±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.004±0.000 | 0.003±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.915±0.034 | 0.679±0.019 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.396±0.004 | 0.004±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | cvae | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.939±0.009 | 0.840±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.150±0.008 | 0.077±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.736±0.008 | 0.575±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.480±0.005 | 0.115±0.010 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.099±0.008 | 0.051±0.005 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.875±0.008 | 0.776±0.006 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.311±0.002 | 0.079±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_diffusion_history_conditioned | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.661±0.019 | 0.659±0.015 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.867±0.013 | 0.731±0.024 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.819±0.000 | 0.598±0.001 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.461±0.004 | 0.385±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.127±0.003 | 0.998±0.031 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.610±0.001 | 0.495±0.013 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.778±0.012 | 0.856±0.027 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.001 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.612±0.003 | 0.491±0.001 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.470±0.002 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.000±0.000 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.885±0.001 | 0.708±0.027 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.258±0.003 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_humanoid | inr_transformer_history_conditioned | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.606±0.016 | 0.614±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.014±0.002 | 0.006±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.775±0.018 | 0.469±0.017 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.369±0.001 | 0.006±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.008±0.001 | 0.003±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.965±0.035 | 0.636±0.034 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | single_shift | 2 | 0 | 0.836±0.009 | 0.836±0.009 | 1.000±0.000 | 1.000±0.000 | 0.477±0.039 | 0.007±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | cvae | specialization | 2 | 0 | 0.750±0.013 | 0.750±0.013 | 1.000±0.000 | 1.000±0.000 | 1.163±0.099 | 1.398±0.171 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.407±0.012 | 0.142±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.207±0.016 | 0.784±0.008 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.996±0.004 | 0.996±0.004 | 0.398±0.001 | 0.120±0.006 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.128±0.005 | 0.046±0.004 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.991±0.000 | 1.000±0.000 | 1.301±0.011 | 0.909±0.007 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | single_shift | 2 | 0 | 0.836±0.164 | 0.836±0.164 | 1.000±0.000 | 1.000±0.000 | 0.543±0.043 | 0.149±0.014 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_diffusion_history_conditioned | specialization | 2 | 0 | 0.737±0.237 | 0.737±0.237 | 1.000±0.000 | 1.000±0.000 | 1.031±0.054 | 1.238±0.095 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.155±0.028 | 0.720±0.034 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.983±0.009 | 0.996±0.004 | 0.679±0.003 | 0.468±0.003 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.397±0.000 | 0.341±0.003 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.979±0.004 | 0.996±0.004 | 1.331±0.013 | 0.929±0.011 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.658±0.015 | 0.505±0.008 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_fitted_latent | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.983±0.022 | 1.184±0.019 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.001±0.000 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.759±0.010 | 0.479±0.017 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | new_policy | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.364±0.001 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 0.002±0.001 | 0.000±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | novel_generalization | 2 | 0 | 0.667±0.000 | 1.000±0.000 | 0.962±0.013 | 0.983±0.000 | 0.961±0.003 | 0.638±0.002 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | single_shift | 2 | 0 | 0.948±0.034 | 0.948±0.034 | 1.000±0.000 | 1.000±0.000 | 0.406±0.003 | 0.001±0.000 | - | - |
+| custom_mujoco_state_resampled_v2_walker2d | inr_transformer_history_conditioned | specialization | 2 | 0 | 0.908±0.039 | 0.908±0.039 | 0.987±0.013 | 1.000±0.000 | 0.922±0.004 | 1.114±0.023 | - | - |

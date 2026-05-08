@@ -1745,9 +1745,10 @@
     "n_test_episodes_used": 346,
     "n_test_ood": 103,
     "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
-    "knn_acc1": 0.884393063583815,
-    "knn_acc5": 0.9797687861271677,
-    "n_knn": 346
+    "knn_acc1": 0.8728323699421965,
+    "knn_acc5": 0.976878612716763,
+    "n_knn": 346,
+    "knn_protocol": "test_leave_one_out_cosine"
   },
   "shared_checkpoint_from": "lichess_full_2Xepisode__cvae__no_shift__s0"
 }

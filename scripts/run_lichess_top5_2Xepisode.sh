@@ -13,7 +13,7 @@ BATCH="${BATCH:-128}"
 WORKERS="${WORKERS:-4}"
 HISTORY_K="${HISTORY_K:-240}"
 MODELS="${MODELS:-cvae,inr_transformer_history_conditioned,inr_diffusion_history_conditioned,inr_transformer_fitted_latent}"
-EXPERIMENTS="${EXPERIMENTS:-5p/no_shift,5p/new_policy,5p/single_shift,5p/conflation,5p/generalization,5p/specialization,5p/novel_generalization}"
+EXPERIMENTS="${EXPERIMENTS:-no_shift_5p,new_policy_5p,single_shift_5p,conflation_5p,generalization_5p,specialization_5p,novel_generalization_5p}"
 
 mkdir -p "${OUT_ROOT}"
 

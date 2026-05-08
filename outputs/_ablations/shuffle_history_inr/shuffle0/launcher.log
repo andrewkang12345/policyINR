@@ -1,0 +1,15 @@
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__no_shift__s0
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__no_shift__s0 (25.5s)
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__no_shift__s1
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__no_shift__s1 (28.4s)
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__single_shift__s0
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__single_shift__s0 (25.2s)
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__single_shift__s1
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__single_shift__s1 (28.1s)
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__generalization__s0
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__generalization__s0 (14.2s)
+[gpu0:0] START synthetic_grf__inr_transformer_history_conditioned__generalization__s1
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__generalization__s1 (14.2s)
+oned__generalization__s1
+[gpu0:0] OK synthetic_grf__inr_transformer_history_conditioned__generalization__s1 (14.2s)
+[launcher] done. logs at outputs/_ablations/shuffle_history_inr/shuffle0/launcher.log

@@ -1,8 +1,0 @@
-name: conflation_5p
-description: "Policy 1: train OOD, test OOD. Policy 2: train ID, test ID." (5-policy variant — pid 0..4)
-policies:
-  - { pid: 0, train: OOD, test: OOD }
-  - { pid: 1, train: ID,  test: ID }
-  - { pid: 2, train: OOD, test: OOD }
-  - { pid: 3, train: ID,  test: ID }
-  - { pid: 4, train: ID,  test: ID }

@@ -1,0 +1,10 @@
+- data=lichess_top5_full_2Xepisode
+- model=inr_transformer_history_conditioned
+- experiment=novel_generalization_5p
+- seed=0
+- run_name=lichess_top5_full_2Xepisode__inr_transformer_history_conditioned__novel_generalization_5p__s0
+- output_dir=outputs/lichess/2x_hk240_top5/lichess_top5_full_2Xepisode__inr_transformer_history_conditioned__novel_generalization_5p__s0
+- train.epochs=10
+- train.batch_size=128
+- train.num_workers=4
+- train.history_k=240

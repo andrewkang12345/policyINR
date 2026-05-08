@@ -6,7 +6,7 @@ data_dir: ${oc.env:INR_DROID_CACHE,${oc.env:HOME}/.cache/INR/droid}
 # all-policies probe. Adds TRI and AUTOLab — the two highest-volume
 # collectors not already in {RAIL, IRIS, CLVR} per a 30-shard sniff of
 # the cached r2d2_faceblur shards.
-max_shards: null
+max_shards: 80
 max_episodes: 1000000
 n_collectors: 5
 collectors:

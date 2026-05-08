@@ -1,0 +1,13 @@
+- data=droid_lowdim_full_balanced_min300_remove_5col
+- model=inr_diffusion_history_conditioned
+- experiment=conflation_5p
+- seed=0
+- run_name=droid_lowdim_full_balanced_min300_remove_5col__inr_diffusion_history_conditioned__conflation_5p__s0
+- output_dir=outputs/droid/balanced_min300_remove_hk300_5col/droid_lowdim_full_balanced_min300_remove_5col__inr_diffusion_history_conditioned__conflation_5p__s0
+- shift.kind=predefined_split
+- train.epochs=30
+- train.batch_size=512
+- train.eval_batch_size=512
+- train.num_workers=0
+- train.materialize_dataset=true
+- train.history_k=300

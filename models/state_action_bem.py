@@ -95,6 +95,10 @@ class StateActionBEM(RepresentationModel):
         a_all = torch.cat([pa, ca], dim=1)
         feats = self._featurize_sa(s_all, a_all).detach().cpu().numpy().astype(np.float32)
 
+        # Skip fit if batch too small for k-means; the next call retries.
+        if feats.shape[0] < self.n_clusters:
+            return
+
         if feats.shape[0] > self.kmeans_max_samples:
             rng = np.random.default_rng(self.seed)
             idx = rng.choice(feats.shape[0], size=self.kmeans_max_samples, replace=False)

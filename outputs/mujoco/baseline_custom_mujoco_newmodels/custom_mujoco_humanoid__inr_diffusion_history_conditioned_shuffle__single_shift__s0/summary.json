@@ -1,0 +1,78 @@
+{
+  "run_name": "custom_mujoco_humanoid__inr_diffusion_history_conditioned_shuffle__single_shift__s0",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.7369618312816527
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16394864677307425,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "inr_diffusion_history_conditioned_shuffle",
+  "experiment": "single_shift",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 376,
+  "n_val_episodes": 80,
+  "n_test_episodes": 59,
+  "train": {
+    "best_val_loss": 0.36786970585349976,
+    "best_epoch": 17,
+    "final_train_loss": 0.317982090029487,
+    "total_epochs": 20,
+    "wallclock_s": 181.45866799354553
+  },
+  "eval": {
+    "probe_acc": 0.9491525423728814,
+    "n_probe": 59,
+    "n_classes": 2,
+    "probe_acc_seen": 0.9491525423728814,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 59,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.863422691822052,
+    "gen_rmse": 0.9292054088424432,
+    "gen_nmse": 0.7519262129581851,
+    "gen_median_se": 0.39463865756988525,
+    "gen_nmse_per_dim": [
+      0.8297693133354187,
+      0.9711889028549194,
+      0.5037662386894226,
+      0.7322191596031189,
+      0.5369389057159424,
+      0.5337956547737122,
+      0.8413335084915161,
+      0.5350796580314636,
+      0.9149899482727051,
+      0.47417429089546204,
+      0.6432236433029175,
+      0.9621930718421936,
+      0.6159889698028564,
+      1.0704967975616455,
+      0.7853379845619202,
+      0.877838134765625,
+      0.652460515499115
+    ],
+    "target_var": 1.1482811437377929,
+    "n_gen_samples": 7093,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 376,
+    "n_test_episodes_used": 59,
+    "n_test_ood": 18,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

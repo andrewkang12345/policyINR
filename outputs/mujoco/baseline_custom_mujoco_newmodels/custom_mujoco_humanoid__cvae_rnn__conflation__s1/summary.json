@@ -1,0 +1,78 @@
+{
+  "run_name": "custom_mujoco_humanoid__cvae_rnn__conflation__s1",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.530997612655329
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16357275040481148,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "cvae_rnn",
+  "experiment": "conflation",
+  "seed": 1,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 268,
+  "n_val_episodes": 57,
+  "n_test_episodes": 59,
+  "train": {
+    "best_val_loss": 0.17950903441307398,
+    "best_epoch": 20,
+    "final_train_loss": 0.1256874665860238,
+    "total_epochs": 20,
+    "wallclock_s": 83.26839804649353
+  },
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 59,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 59,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.5657447576522827,
+    "gen_rmse": 0.7521600611919531,
+    "gen_nmse": 0.5912138911465992,
+    "gen_median_se": 0.050469812005758286,
+    "gen_nmse_per_dim": [
+      0.5191207528114319,
+      0.5229573845863342,
+      0.41257959604263306,
+      0.3247973322868347,
+      0.3077062964439392,
+      0.32638198137283325,
+      0.1879584938287735,
+      1.7673354148864746,
+      0.7493986487388611,
+      0.8701708316802979,
+      0.254700630903244,
+      0.2884543538093567,
+      0.8465796709060669,
+      0.8469956517219543,
+      0.4379214942455292,
+      1.5547982454299927,
+      0.15429669618606567
+    ],
+    "target_var": 0.9569206105003357,
+    "n_gen_samples": 6843,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 268,
+    "n_test_episodes_used": 59,
+    "n_test_ood": 18,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

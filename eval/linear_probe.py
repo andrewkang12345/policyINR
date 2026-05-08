@@ -87,23 +87,31 @@ def cosine_knn_probe(
     *,
     k: int = 5,
 ) -> Dict[str, float]:
-    """Cosine kNN policy classification on train embeddings -> test embeddings."""
-    if train_embeddings.shape[0] == 0 or test_embeddings.shape[0] == 0:
+    """Leave-one-out cosine kNN policy classification on eval embeddings.
+
+    The train arrays are accepted for API compatibility with older callers,
+    but the metric intentionally indexes the evaluation/test embeddings and
+    excludes each query's own row. This measures local policy clustering and
+    can score labels that were absent from the training split.
+    """
+    del train_embeddings, train_labels
+    if test_embeddings.shape[0] < 2:
         return {"knn_acc1": float("nan"), "knn_acc5": float("nan"), "n_knn": 0}
 
-    train_norm = _l2_normalize(train_embeddings.astype(np.float32, copy=False))
     test_norm = _l2_normalize(test_embeddings.astype(np.float32, copy=False))
-    sims = test_norm @ train_norm.T
+    sims = test_norm @ test_norm.T
+    np.fill_diagonal(sims, -np.inf)
 
-    k_eff = min(max(1, int(k)), train_norm.shape[0])
+    k_eff = min(max(1, int(k)), test_norm.shape[0] - 1)
     topk = np.argpartition(-sims, kth=k_eff - 1, axis=1)[:, :k_eff]
     top1 = np.argmax(sims, axis=1)
-    topk_labels = train_labels[topk]
+    topk_labels = test_labels[topk]
 
     return {
-        "knn_acc1": float(np.mean(train_labels[top1] == test_labels)),
+        "knn_acc1": float(np.mean(test_labels[top1] == test_labels)),
         "knn_acc5": float(np.mean(np.any(topk_labels == test_labels[:, None], axis=1))),
         "n_knn": int(test_embeddings.shape[0]),
+        "knn_protocol": "test_leave_one_out_cosine",
     }
 
 

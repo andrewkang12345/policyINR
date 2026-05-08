@@ -35,6 +35,7 @@
   "n_test_ood": 0,
   "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings",
   "knn_acc1": 0.5555555555555556,
-  "knn_acc5": 0.6666666666666666,
-  "n_knn": 45
+  "knn_acc5": 0.9111111111111111,
+  "n_knn": 45,
+  "knn_protocol": "test_leave_one_out_cosine"
 }

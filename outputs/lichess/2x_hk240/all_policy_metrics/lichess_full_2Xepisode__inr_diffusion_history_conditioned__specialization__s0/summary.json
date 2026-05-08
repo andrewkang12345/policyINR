@@ -6,7 +6,7 @@
   "n_train_episodes": 3354,
   "n_val_episodes": 718,
   "n_test_episodes": 309,
-  "source_run_dir": "/mnt/data/INR/outputs/lichess_full_2Xepisode_hk240/lichess_full_2Xepisode__inr_diffusion_history_conditioned__specialization__s0",
+  "source_run_dir": "/mnt/data/INR/outputs/lichess/2x_hk240/lichess_full_2Xepisode__inr_diffusion_history_conditioned__specialization__s0",
   "eval": {
     "probe_acc": 0.3883495145631068,
     "n_probe": 309,
@@ -14,9 +14,10 @@
     "probe_acc_seen": 0.3883495145631068,
     "novel_mean_embed_dist": NaN,
     "n_novel": 0,
-    "knn_acc1": 0.34951456310679613,
-    "knn_acc5": 0.8932038834951457,
+    "knn_acc1": 0.3559870550161812,
+    "knn_acc5": 0.8673139158576052,
     "n_knn": 309,
+    "knn_protocol": "test_leave_one_out_cosine",
     "train_pids": [
       0,
       1,

@@ -1,0 +1,79 @@
+{
+  "run_name": "custom_mujoco_humanoid__cvae_rnn__novel_generalization__s1",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.530997612655329
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16357275040481148,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "cvae_rnn",
+  "experiment": "novel_generalization",
+  "seed": 1,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 160,
+  "n_val_episodes": 34,
+  "n_test_episodes": 123,
+  "train": {
+    "best_val_loss": 0.22224113703453302,
+    "best_epoch": 19,
+    "final_train_loss": 0.21275815487869323,
+    "total_epochs": 20,
+    "wallclock_s": 43.48645853996277
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 123,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 1.7459052801132202,
+    "n_novel": 41,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 123,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.35111942887306213,
+    "gen_rmse": 0.5925533131061391,
+    "gen_nmse": 0.45794528124585115,
+    "gen_median_se": 0.18508541584014893,
+    "gen_nmse_per_dim": [
+      1.0162876844406128,
+      0.38323694467544556,
+      0.24035190045833588,
+      0.3407069742679596,
+      0.4340663254261017,
+      0.23641085624694824,
+      0.4222944676876068,
+      0.3970296382904053,
+      0.6872621178627014,
+      0.16345898807048798,
+      0.43426933884620667,
+      0.7666590809822083,
+      0.3166201710700989,
+      0.9547715187072754,
+      0.2999872863292694,
+      0.6125200986862183,
+      0.5678972005844116
+    ],
+    "target_var": 0.7667279110679627,
+    "n_gen_samples": 15621,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 160,
+    "n_test_episodes_used": 123,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

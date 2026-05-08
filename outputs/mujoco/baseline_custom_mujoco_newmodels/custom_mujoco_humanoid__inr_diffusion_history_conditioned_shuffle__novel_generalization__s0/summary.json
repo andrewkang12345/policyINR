@@ -1,0 +1,79 @@
+{
+  "run_name": "custom_mujoco_humanoid__inr_diffusion_history_conditioned_shuffle__novel_generalization__s0",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.7369618312816527
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16394864677307425,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "inr_diffusion_history_conditioned_shuffle",
+  "experiment": "novel_generalization",
+  "seed": 0,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 160,
+  "n_val_episodes": 34,
+  "n_test_episodes": 123,
+  "train": {
+    "best_val_loss": 0.4371996050898923,
+    "best_epoch": 20,
+    "final_train_loss": 0.40790882466300843,
+    "total_epochs": 20,
+    "wallclock_s": 51.15353846549988
+  },
+  "eval": {
+    "probe_acc": 0.6666666666666666,
+    "n_probe": 123,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": 1.6088216304779053,
+    "n_novel": 41,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 123,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.8779643177986145,
+    "gen_rmse": 0.9369975014900598,
+    "gen_nmse": 1.1051747082587655,
+    "gen_median_se": 0.7692988514900208,
+    "gen_nmse_per_dim": [
+      1.4482324123382568,
+      1.2456409931182861,
+      0.9514889121055603,
+      1.1027625799179077,
+      1.0426065921783447,
+      0.7945033311843872,
+      1.2338109016418457,
+      1.0638238191604614,
+      1.2095028162002563,
+      0.9075663089752197,
+      1.068321704864502,
+      1.4403795003890991,
+      1.0815937519073486,
+      1.2406824827194214,
+      0.9413731098175049,
+      1.272859811782837,
+      1.0108768939971924
+    ],
+    "target_var": 0.7944122420082093,
+    "n_gen_samples": 15621,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_train_episodes_used": 160,
+    "n_test_episodes_used": 123,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

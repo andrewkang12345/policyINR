@@ -1,0 +1,77 @@
+seed: 1
+run_name: synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s1
+output_dir: /ocean/projects/cis260099p/akang3/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s1
+train:
+  epochs: 20
+  batch_size: 256
+  eval_batch_size: 512
+  num_workers: 2
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 16
+  early_stop_patience: 0
+  materialize_dataset: false
+shift:
+  kind: shared_region
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: synthetic_grf_10x_5p
+  kind: synthetic
+  n_policies: 5
+  episodes_per_policy: 80
+  episode_length: 1280
+  state_dim: 8
+  action_dim: 4
+  state_generator: grf
+  action_policy: grf_policy
+  noise_std: 0.05
+  state_gen_kwargs:
+    n_modes: 8
+    length_scale: 1.0
+  action_gen_kwargs:
+    n_modes: 8
+    length_scale: 1.0
+model:
+  name: cvae_rnn
+  kind: cvae_rnn
+  latent_dim: 64
+  d_model: 128
+  n_layers: 2
+  decoder_hidden: 256
+  kl_weight: 0.01
+  dropout: 0.0
+  shuffle_history_train: true
+experiment:
+  name: novel_generalization_5p
+  description: 'Policy 1: OOD/ID. Policy 2: OOD/ID. Policy 3: unseen in training,
+    test on ID. (5p)'
+  policies:
+  - pid: 0
+    train: OOD
+    test: ID
+  - pid: 1
+    train: OOD
+    test: ID
+  - pid: 2
+    train: OOD
+    test: ID
+  - pid: 3
+    train: OOD
+    test: ID
+  - pid: 4
+    train: NONE
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

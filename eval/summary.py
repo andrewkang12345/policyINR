@@ -132,7 +132,7 @@ def aggregate_runs(root: Path, out_csv: Path | None = None, out_md: Path | None 
         "",
         "Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; "
         "`probe_acc_seen` = same probe restricted to training-policy labels; "
-        "`knn_acc1`/`knn_acc5` = cosine kNN policy accuracy using train embeddings as the index; "
+        "`knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; "
         "`gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); "
         "`gen_median_se` = median per-sample squared error; "
         "`deg` = degenerate runs (non-finite gen or partial finite fraction).",

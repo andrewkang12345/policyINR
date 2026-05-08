@@ -1,0 +1,14 @@
+[gpu0] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__conflation__s0
+[gpu1] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__generalization__s0
+[gpu3] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__new_policy__s0
+[gpu2] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__no_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__generalization__s0 (236.3s)
+[gpu1] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__novel_generalization__s0
+[gpu0] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__conflation__s0 (300.2s)
+[gpu0] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__single_shift__s0
+[gpu1] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__novel_generalization__s0 (276.8s)
+[gpu1] START /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__specialization__s0
+[gpu0] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__single_shift__s0 (350.6s)
+[gpu3] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__new_policy__s0 (659.4s)
+[gpu2] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__no_shift__s0 (695.4s)
+[gpu1] OK /mnt/data/INR/outputs/lichess/hk120_latent128/lichess_top3_full__inr_transformer_fitted_latent__specialization__s0 (281.5s)

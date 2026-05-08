@@ -1,0 +1,10 @@
+- data=synthetic_grf_10x_5p
+- model=cvae
+- experiment=novel_generalization_5p
+- seed=1
+- run_name=synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1
+- output_dir=outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1
+- train.epochs=20
+- train.batch_size=256
+- train.num_workers=2
+- train.history_k=16

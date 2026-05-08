@@ -1,0 +1,75 @@
+{
+  "run_name": "droid_lowdim_full_balanced_min300_remove_5col__inr_diffusion_history_conditioned__new_policy_5p__s1",
+  "shift_strength": {
+    "0": 0.6841084767456079,
+    "1": 0.2910908822253242,
+    "2": 1.3284849562916632,
+    "3": 0.30271606291474623,
+    "4": 0.3526350475157323
+  },
+  "shift_overlap": 5.769637107849121,
+  "shift_overlap_ratio": 2.1219792877471093,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "droid_lowdim_full_balanced_min300_remove_5col",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "new_policy_5p",
+  "seed": 1,
+  "state_dim": 14,
+  "action_dim": 7,
+  "n_train_episodes": 287,
+  "n_val_episodes": 62,
+  "n_test_episodes": 89,
+  "train": {
+    "best_val_loss": 0.08155930170432274,
+    "best_epoch": 29,
+    "final_train_loss": 0.05742305954391102,
+    "total_epochs": 30,
+    "wallclock_s": 1810.9665884971619
+  },
+  "eval": {
+    "probe_acc": 0.48314606741573035,
+    "n_probe": 89,
+    "n_classes": 4,
+    "probe_acc_seen": 0.7166666666666667,
+    "novel_mean_embed_dist": 0.8961366415023804,
+    "n_novel": 29,
+    "knn_acc1": 0.38202247191011235,
+    "knn_acc5": 0.7865168539325843,
+    "n_knn": 89,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.2415018528699875,
+    "gen_rmse": 0.4914283802040614,
+    "gen_nmse": 0.2573815585928756,
+    "gen_median_se": 0.019944431260228157,
+    "gen_nmse_per_dim": [
+      0.01858709193766117,
+      0.0059984480030834675,
+      0.009725172072649002,
+      1.0321253538131714,
+      0.009666326455771923,
+      0.44965529441833496,
+      0.1725047528743744
+    ],
+    "target_var": 0.9383028612861634,
+    "n_gen_samples": 43136,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "test_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_train_episodes_used": 287,
+    "n_test_episodes_used": 89,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

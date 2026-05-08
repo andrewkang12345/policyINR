@@ -39,6 +39,8 @@ def _parse_args():
     ap.add_argument("--grid-size", type=int, default=72)
     ap.add_argument("--n-history-anchors", type=int, default=4)
     ap.add_argument("--batch-size", type=int, default=512)
+    ap.add_argument("--policy-ids", type=int, nargs="*", default=None)
+    ap.add_argument("--device", type=str, default=None)
     return ap.parse_args()
 
 
@@ -391,7 +393,12 @@ def main():
         for label, path in run_specs.items()
     }
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    selected_policy_ids = list(range(len(clean_policies))) if args.policy_ids is None else list(args.policy_ids)
+    bad_policy_ids = sorted(set(selected_policy_ids) - set(range(len(clean_policies))))
+    if bad_policy_ids:
+        raise ValueError(f"Invalid policy ids {bad_policy_ids}; expected ids in [0, {len(clean_policies) - 1}]")
+
+    device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
     loaded = {}
     for label, run_dir in run_specs.items():
         cfg, loaders = _build_norms_from_run(run_dir)
@@ -399,7 +406,8 @@ def main():
         loaded[label] = (cfg, loaders, model)
 
     scalar_values = []
-    for pid, policy in enumerate(clean_policies):
+    for pid in selected_policy_ids:
+        policy = clean_policies[pid]
         gt_actions = policy(grid_states).astype(np.float32)
         gt_scalars[pid] = action_scalar(gt_actions)
         scalar_values.append(gt_scalars[pid])
@@ -428,25 +436,19 @@ def main():
     vlim = float(np.quantile(np.abs(scalar_stack), 0.99))
     vmin, vmax = -vlim, vlim
 
-    title_order = [
-        "CVAE / ID",
-        "CVAE / OOD",
-        "Transformer / ID",
-        "Transformer / OOD",
-        "Diffusion / ID",
-        "Diffusion / OOD",
+    model_columns = [
+        ("CVAE", "CVAE"),
+        ("Transformer", "Transformer"),
+        ("Diffusion", "Diffusion"),
+        ("Ours", "Transformer FL"),
     ]
-    recent_inr_title_order = [
-        "Transformer HC / ID",
-        "Transformer HC / OOD",
-        "Diffusion HC / ID",
-        "Diffusion HC / OOD",
-        "Transformer FL / ID",
-        "Transformer FL / OOD",
-    ]
+    if args.policy_ids is None:
+        for stale_path in out_root.glob("policy_*_landscapes.png"):
+            stale_path.unlink()
+        for stale_path in out_root.glob("policy_*_recent_inrs.png"):
+            stale_path.unlink()
 
-    for pid, policy in enumerate(clean_policies):
-        fig, axes = plt.subplots(3, 3, figsize=(15, 14), constrained_layout=True)
+    for pid in selected_policy_ids:
         policy_states = np.concatenate(
             [s for i, s in enumerate(base_store.states) if base_store.meta[i].policy_id == pid],
             axis=0,
@@ -466,13 +468,19 @@ def main():
                 pts.append(_project(shifted_store.states[ei].astype(np.float32), state_mean, state_comps))
             split_points[split_name] = np.concatenate(pts, axis=0) if pts else np.zeros((0, 2), dtype=np.float32)
 
-        ax = axes[0, 0]
+        fig = plt.figure(figsize=(19, 7.2), constrained_layout=True)
+        gs = fig.add_gridspec(2, 6, width_ratios=[1.65, 1.0, 1.0, 1.0, 1.0, 1.0])
+        plot_axes = []
+
+        ax = fig.add_subplot(gs[:, 0])
+        plot_axes.append(ax)
         im = _draw_scalar_field(ax, xx, yy, gt_scalars[pid], vmin, vmax, cmap="coolwarm")
         ax.set_title(f"Policy {pid}: Ground Truth")
         _format_axis(ax)
 
-        for col, split_name in enumerate(("ID", "OOD"), start=1):
-            ax = axes[0, col]
+        for row, split_name in enumerate(("ID", "OOD")):
+            ax = fig.add_subplot(gs[row, 1])
+            plot_axes.append(ax)
             pts = split_points[split_name]
             marker = "o" if split_name == "ID" else "^"
             pt_colors = _point_colors_from_gt(pts, xx, yy, gt_scalars[pid], vmin, vmax)
@@ -488,90 +496,28 @@ def main():
             ax.set_title(f"{split_name} Points")
             _format_axis(ax)
 
-        for panel_idx, label in enumerate(title_order):
-            row = 1 + panel_idx // 3
-            col = panel_idx % 3
-            ax = axes[row, col]
-            _draw_scalar_field(ax, xx, yy, pred_scalars[(pid, label)], vmin, vmax, cmap="coolwarm")
-            split_name = "ID" if label.endswith("/ ID") else "OOD"
-            pts = split_points[split_name]
-            marker = "o" if split_name == "ID" else "^"
-            pt_colors = _point_colors_from_gt(pts, xx, yy, gt_scalars[pid], vmin, vmax)
-            ax.scatter(
-                pts[:, 0],
-                pts[:, 1],
-                s=6,
-                c=pt_colors,
-                alpha=0.55,
-                linewidths=0,
-                marker=marker,
-            )
-            prefix = label.split(" / ")[0]
-            ax.set_title(f"{prefix}: Extrapolated from {split_name}")
-            _format_axis(ax)
+            for col, (display_name, source_name) in enumerate(model_columns, start=2):
+                ax = fig.add_subplot(gs[row, col])
+                plot_axes.append(ax)
+                label = f"{source_name} / {split_name}"
+                _draw_scalar_field(ax, xx, yy, pred_scalars[(pid, label)], vmin, vmax, cmap="coolwarm")
+                pts = split_points[split_name]
+                pt_colors = _point_colors_from_gt(pts, xx, yy, gt_scalars[pid], vmin, vmax)
+                ax.scatter(
+                    pts[:, 0],
+                    pts[:, 1],
+                    s=6,
+                    c=pt_colors,
+                    alpha=0.55,
+                    linewidths=0,
+                    marker=marker,
+                )
+                ax.set_title(f"{display_name}: {split_name} Extrapolation")
+                _format_axis(ax)
 
-        cbar = fig.colorbar(im, ax=axes, shrink=0.78, pad=0.02)
+        cbar = fig.colorbar(im, ax=plot_axes, shrink=0.82, pad=0.01)
         cbar.set_label("Action PC1")
-        out_path = out_root / f"policy_{pid}_landscapes.png"
-        fig.savefig(out_path, dpi=220)
-        plt.close(fig)
-
-        fig, axes = plt.subplots(3, 3, figsize=(15, 14), constrained_layout=True)
-        ax = axes[0, 0]
-        im = _draw_scalar_field(ax, xx, yy, gt_scalars[pid], vmin, vmax, cmap="coolwarm")
-        ax.set_title(f"Policy {pid}: Ground Truth")
-        _format_axis(ax)
-
-        for col, split_name in enumerate(("ID", "OOD"), start=1):
-            ax = axes[0, col]
-            pts = split_points[split_name]
-            marker = "o" if split_name == "ID" else "^"
-            pt_colors = _point_colors_from_gt(pts, xx, yy, gt_scalars[pid], vmin, vmax)
-            ax.scatter(
-                pts[:, 0],
-                pts[:, 1],
-                s=10,
-                c=pt_colors,
-                alpha=0.9,
-                linewidths=0,
-                marker=marker,
-            )
-            ax.set_title(f"{split_name} Points")
-            _format_axis(ax)
-
-        recent_label_map = {
-            "Transformer HC / ID": ("Transformer / ID", "Transformer HC"),
-            "Transformer HC / OOD": ("Transformer / OOD", "Transformer HC"),
-            "Diffusion HC / ID": ("Diffusion / ID", "Diffusion HC"),
-            "Diffusion HC / OOD": ("Diffusion / OOD", "Diffusion HC"),
-            "Transformer FL / ID": ("Transformer FL / ID", "Transformer FL"),
-            "Transformer FL / OOD": ("Transformer FL / OOD", "Transformer FL"),
-        }
-        for panel_idx, label in enumerate(recent_inr_title_order):
-            row = 1 + panel_idx // 3
-            col = panel_idx % 3
-            ax = axes[row, col]
-            source_label, prefix = recent_label_map[label]
-            _draw_scalar_field(ax, xx, yy, pred_scalars[(pid, source_label)], vmin, vmax, cmap="coolwarm")
-            split_name = "ID" if label.endswith("/ ID") else "OOD"
-            pts = split_points[split_name]
-            marker = "o" if split_name == "ID" else "^"
-            pt_colors = _point_colors_from_gt(pts, xx, yy, gt_scalars[pid], vmin, vmax)
-            ax.scatter(
-                pts[:, 0],
-                pts[:, 1],
-                s=6,
-                c=pt_colors,
-                alpha=0.55,
-                linewidths=0,
-                marker=marker,
-            )
-            ax.set_title(f"{prefix}: Extrapolated from {split_name}")
-            _format_axis(ax)
-
-        cbar = fig.colorbar(im, ax=axes, shrink=0.78, pad=0.02)
-        cbar.set_label("Action PC1")
-        out_path = out_root / f"policy_{pid}_recent_inrs.png"
+        out_path = out_root / f"policy_{pid}.png"
         fig.savefig(out_path, dpi=220)
         plt.close(fig)
 
@@ -587,9 +533,11 @@ def main():
                 "Architecture extrapolations:",
                 "  ID  -> seed-0 new_policy checkpoint for each architecture.",
                 "  OOD -> seed-0 novel_generalization checkpoint for each architecture.",
+                "Each policy image has ground truth on the left spanning both rows.",
+                "Rows: ID points/extrapolations, then OOD points/extrapolations.",
+                "Columns after points: CVAE, Transformer, Diffusion, Ours.",
+                "Ours is the former Transformer FL variant.",
                 "Colors correspond to the first principal component of the 4D clean/predicted action vector.",
-                "Additional *_recent_inrs.png files use the recent INR variants:",
-                "  Transformer HC, Diffusion HC, Transformer FL.",
             ]
         )
         + "\n"

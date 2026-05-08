@@ -1,0 +1,78 @@
+{
+  "run_name": "custom_mujoco_humanoid__vqvae__generalization__s1",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.530997612655329
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16357275040481148,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "vqvae",
+  "experiment": "generalization",
+  "seed": 1,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 160,
+  "n_val_episodes": 34,
+  "n_test_episodes": 82,
+  "train": {
+    "best_val_loss": 0.22425553834336437,
+    "best_epoch": 20,
+    "final_train_loss": 0.20882481456764282,
+    "total_epochs": 20,
+    "wallclock_s": 45.114028453826904
+  },
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 82,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 82,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.14396478235721588,
+    "gen_rmse": 0.3794269130639205,
+    "gen_nmse": 0.2089201263370313,
+    "gen_median_se": 0.1111043319106102,
+    "gen_nmse_per_dim": [
+      0.3617200553417206,
+      0.2762356102466583,
+      0.16101807355880737,
+      0.21396495401859283,
+      0.11138125509023666,
+      0.1141153946518898,
+      0.26076799631118774,
+      0.17716145515441895,
+      0.26691964268684387,
+      0.12954510748386383,
+      0.19967618584632874,
+      0.2596006989479065,
+      0.2144463211297989,
+      0.44933366775512695,
+      0.18776720762252808,
+      0.2784067392349243,
+      0.1967824399471283
+    ],
+    "target_var": 0.6890900598297119,
+    "n_gen_samples": 10414,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 160,
+    "n_test_episodes_used": 82,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "run_name": "droid_lowdim_full_balanced_min300_remove_5col__inr_diffusion_history_conditioned__single_shift_5p__s0",
+  "shift_strength": {
+    "0": 0.6841084767456079,
+    "1": 0.2910908822253242,
+    "2": 1.3284849562916632,
+    "3": 0.30271606291474623,
+    "4": 0.3526350475157323
+  },
+  "shift_overlap": 5.769637107849121,
+  "shift_overlap_ratio": 2.1219792877471093,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "droid_lowdim_full_balanced_min300_remove_5col",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "single_shift_5p",
+  "seed": 0,
+  "state_dim": 14,
+  "action_dim": 7,
+  "n_train_episodes": 421,
+  "n_val_episodes": 91,
+  "n_test_episodes": 85,
+  "train": {
+    "best_val_loss": 0.05352784320190307,
+    "best_epoch": 27,
+    "final_train_loss": 0.05237971877397822,
+    "total_epochs": 30,
+    "wallclock_s": 1185.7096531391144
+  },
+  "eval": {
+    "probe_acc": 0.6235294117647059,
+    "n_probe": 85,
+    "n_classes": 5,
+    "probe_acc_seen": 0.6235294117647059,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.43529411764705883,
+    "knn_acc5": 0.8823529411764706,
+    "n_knn": 85,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.2723800241947174,
+    "gen_rmse": 0.5219003968141023,
+    "gen_nmse": 0.25772503700208593,
+    "gen_median_se": 0.04293551668524742,
+    "gen_nmse_per_dim": [
+      0.061396274715662,
+      0.018481876701116562,
+      0.022431137040257454,
+      1.0781686305999756,
+      0.025254176929593086,
+      0.38192158937454224,
+      0.15892060101032257
+    ],
+    "target_var": 1.0568628774414062,
+    "n_gen_samples": 41533,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "test_pids": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "n_train_episodes_used": 421,
+    "n_test_episodes_used": 85,
+    "n_test_ood": 1,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

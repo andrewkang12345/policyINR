@@ -1,8 +1,0 @@
-name: specialization_5p
-description: "Policy 1: train ID, test OOD. Policy 2: train ID, test OOD." (5-policy variant — pid 0..4)
-policies:
-  - { pid: 0, train: ID, test: OOD }
-  - { pid: 1, train: ID, test: OOD }
-  - { pid: 2, train: ID, test: OOD }
-  - { pid: 3, train: ID, test: OOD }
-  - { pid: 4, train: ID, test: OOD }

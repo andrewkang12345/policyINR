@@ -1,0 +1,78 @@
+{
+  "run_name": "custom_mujoco_humanoid__inr_transformer_history_conditioned_shuffle__generalization__s1",
+  "shift_strength": {
+    "0": 0.8835985075598618,
+    "1": 0.8094389518189451,
+    "2": 0.530997612655329
+  },
+  "shift_overlap": NaN,
+  "shift_overlap_ratio": NaN,
+  "effective_shared": 0.16357275040481148,
+  "shift_fallback": "per_policy_cluster",
+  "data": "custom_mujoco_humanoid",
+  "model": "inr_transformer_history_conditioned_shuffle",
+  "experiment": "generalization",
+  "seed": 1,
+  "state_dim": 348,
+  "action_dim": 17,
+  "n_train_episodes": 160,
+  "n_val_episodes": 34,
+  "n_test_episodes": 82,
+  "train": {
+    "best_val_loss": 0.2121341985599947,
+    "best_epoch": 18,
+    "final_train_loss": 0.0939977328863836,
+    "total_epochs": 20,
+    "wallclock_s": 47.999810218811035
+  },
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 82,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 82,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.13222087919712067,
+    "gen_rmse": 0.36362189042619625,
+    "gen_nmse": 0.19187750180258747,
+    "gen_median_se": 0.08774962276220322,
+    "gen_nmse_per_dim": [
+      0.3380499482154846,
+      0.2293546497821808,
+      0.1435689777135849,
+      0.18799042701721191,
+      0.09824363887310028,
+      0.1092308759689331,
+      0.2219432145357132,
+      0.13698123395442963,
+      0.29619285464286804,
+      0.1135624423623085,
+      0.18974407017230988,
+      0.2547476589679718,
+      0.1858295500278473,
+      0.5233644247055054,
+      0.1657586395740509,
+      0.27547258138656616,
+      0.19407746195793152
+    ],
+    "target_var": 0.6890900598297119,
+    "n_gen_samples": 10414,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "n_train_episodes_used": 160,
+    "n_test_episodes_used": 82,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

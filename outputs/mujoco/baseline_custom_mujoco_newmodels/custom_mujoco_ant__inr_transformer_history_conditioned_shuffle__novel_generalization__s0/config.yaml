@@ -1,0 +1,91 @@
+seed: 0
+run_name: custom_mujoco_ant__inr_transformer_history_conditioned_shuffle__novel_generalization__s0
+output_dir: /ocean/projects/cis260099p/akang3/INR/outputs/mujoco/baseline_custom_mujoco_newmodels/custom_mujoco_ant__inr_transformer_history_conditioned_shuffle__novel_generalization__s0
+train:
+  epochs: 20
+  batch_size: 256
+  eval_batch_size: 512
+  num_workers: 0
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  log_every: 50
+  val_every_epoch: 1
+  device: cuda
+  amp: true
+  history_k: 16
+  early_stop_patience: 0
+  materialize_dataset: false
+shift:
+  kind: shared_region
+  ood_fraction: 0.3
+  min_per_partition: 3
+data:
+  name: custom_mujoco_ant
+  kind: custom_mujoco
+  env: ant
+  dataset_id: inr_mujoco/ant/controlled-v0
+  max_episodes_per_policy: 384
+  min_length: 32
+  max_length: 128
+  generation:
+    generate_if_missing: true
+    force_rebuild: false
+    device: cuda
+    deterministic: true
+    episode_horizon: 128
+    min_episode_length: 32
+    policies:
+    - simple
+    - medium
+    - expert
+    episodes_per_policy:
+      ID: 256
+      OOD: 128
+    calibration:
+      episodes_per_policy: 4
+      horizon: 256
+      sample_stride: 4
+    state_distribution:
+      kind: clustered_reference
+      n_components: 16
+      qpos_noise_scale: 0.15
+      qvel_noise_scale: 0.25
+      std_floor: 0.05
+      clip_margin_scale: 0.25
+model:
+  name: inr_transformer_history_conditioned_shuffle
+  kind: inr_transformer_history_conditioned
+  latent_dim: 64
+  d_model: 128
+  n_heads: 4
+  n_layers: 3
+  head_hidden: 256
+  head_blocks: 3
+  dropout: 0.0
+  shuffle_history_train: true
+  use_unit_latents: false
+  behavior_unit: episode
+  unit_window_size: 16
+experiment:
+  name: novel_generalization
+  description: 'Policy 1: OOD/ID. Policy 2: OOD/ID. Policy 3: unseen in training,
+    test on ID.'
+  policies:
+  - pid: 0
+    train: OOD
+    test: ID
+  - pid: 1
+    train: OOD
+    test: ID
+  - pid: 2
+    train: NONE
+    test: ID
+eval:
+  name: default
+  per_episode_samples: 8
+  min_episode_length_for_eval: 4
+  probe_max_iter: 1000
+  probe_C: 1.0
+  probe_cv_folds: 5
+  gen_n_batches: null

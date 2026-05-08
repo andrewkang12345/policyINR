@@ -10,7 +10,7 @@ OUT_ROOT="${OUT_ROOT:-outputs/droid/balanced_min300_remove_hk300_5col}"
 SEEDS="${SEEDS:-0,1}"
 EPOCHS="${EPOCHS:-30}"
 WORKERS="${WORKERS:-0}"
-EXPERIMENTS="${EXPERIMENTS:-5p/no_shift,5p/new_policy,5p/single_shift,5p/conflation,5p/generalization,5p/specialization,5p/novel_generalization}"
+EXPERIMENTS="${EXPERIMENTS:-no_shift_5p,new_policy_5p,single_shift_5p,conflation_5p,generalization_5p,specialization_5p,novel_generalization_5p}"
 
 mkdir -p "${OUT_ROOT}"
 

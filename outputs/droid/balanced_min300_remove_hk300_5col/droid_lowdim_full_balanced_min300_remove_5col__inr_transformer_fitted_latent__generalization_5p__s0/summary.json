@@ -1,0 +1,76 @@
+{
+  "run_name": "droid_lowdim_full_balanced_min300_remove_5col__inr_transformer_fitted_latent__generalization_5p__s0",
+  "shift_strength": {
+    "0": 0.6841084767456079,
+    "1": 0.2910908822253242,
+    "2": 1.3284849562916632,
+    "3": 0.30271606291474623,
+    "4": 0.3526350475157323
+  },
+  "shift_overlap": 5.769637107849121,
+  "shift_overlap_ratio": 2.1219792877471093,
+  "effective_shared": 1.0,
+  "shift_fallback": "none",
+  "data": "droid_lowdim_full_balanced_min300_remove_5col",
+  "model": "inr_transformer_fitted_latent",
+  "experiment": "generalization_5p",
+  "seed": 0,
+  "state_dim": 14,
+  "action_dim": 7,
+  "n_train_episodes": 20,
+  "n_val_episodes": 4,
+  "n_test_episodes": 89,
+  "train": {
+    "best_val_loss": 0.22219367633605824,
+    "best_epoch": 3,
+    "final_train_loss": 0.02253134890149037,
+    "total_epochs": 30,
+    "wallclock_s": 492.5534825325012
+  },
+  "eval": {
+    "probe_acc": 0.23595505617977527,
+    "n_probe": 89,
+    "n_classes": 5,
+    "probe_acc_seen": 0.23595505617977527,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.42696629213483145,
+    "knn_acc5": 0.797752808988764,
+    "n_knn": 89,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "gen_mse": 0.20737916231155396,
+    "gen_rmse": 0.4553890230468384,
+    "gen_nmse": 0.16821315517347626,
+    "gen_median_se": 0.08713643997907639,
+    "gen_nmse_per_dim": [
+      0.1474856734275818,
+      0.08891559392213821,
+      0.0862656831741333,
+      0.33127278089523315,
+      0.1809087097644806,
+      0.2033788412809372,
+      0.14750929176807404
+    ],
+    "target_var": 1.2328355775604247,
+    "n_gen_samples": 44415,
+    "finite_fraction": 1.0,
+    "train_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "test_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_train_episodes_used": 20,
+    "n_test_episodes_used": 89,
+    "n_test_ood": 0,
+    "probe_protocol": "train_probe_on_train_embeddings_eval_on_test_embeddings"
+  }
+}

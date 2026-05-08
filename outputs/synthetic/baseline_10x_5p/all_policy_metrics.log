@@ -1,0 +1,112 @@
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__conflation_5p__s0
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__conflation_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__conflation_5p__s0 (36.4s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__conflation_5p__s1 (38.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__generalization_5p__s0 (40.1s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__generalization_5p__s1 (41.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__new_policy_5p__s0 (37.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__new_policy_5p__s1 (43.2s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__no_shift_5p__s0 (37.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__no_shift_5p__s1 (36.1s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__novel_generalization_5p__s0 (35.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__single_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__novel_generalization_5p__s1 (36.4s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__single_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__single_shift_5p__s0 (41.2s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__specialization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__single_shift_5p__s1 (42.0s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__specialization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__specialization_5p__s0 (39.5s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__cvae__specialization_5p__s1 (42.2s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s0 (41.7s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__conflation_5p__s1 (40.8s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s0 (35.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__generalization_5p__s1 (35.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s0 (36.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__new_policy_5p__s1 (41.0s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s0 (37.6s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__no_shift_5p__s1 (38.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s0 (40.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__novel_generalization_5p__s1 (41.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s0 (37.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__single_shift_5p__s1 (35.7s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s0 (35.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_diffusion_history_conditioned__specialization_5p__s1 (36.0s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s0 (39.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__conflation_5p__s1 (38.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s0 (41.4s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__generalization_5p__s1 (38.5s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s0 (39.0s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__new_policy_5p__s1 (38.2s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s0 (36.7s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__no_shift_5p__s1 (38.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s0 (36.6s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__novel_generalization_5p__s1 (42.1s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s0 (40.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__single_shift_5p__s1 (42.7s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s0 (39.5s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_fitted_latent__specialization_5p__s1 (42.0s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s0 (36.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__conflation_5p__s1 (35.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s0 (36.5s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__generalization_5p__s1 (39.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s0 (37.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__new_policy_5p__s1 (36.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s0 (38.6s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__no_shift_5p__s1 (41.2s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s0 (37.1s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__novel_generalization_5p__s1 (34.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s0 (35.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__single_shift_5p__s1 (35.7s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s0 (39.3s)
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p/synthetic_grf_10x_5p__inr_transformer_history_conditioned__specialization_5p__s1 (38.6s)

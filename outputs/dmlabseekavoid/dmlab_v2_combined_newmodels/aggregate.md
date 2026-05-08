@@ -1,4 +1,4 @@
-# Aggregate (60 runs)
+# Aggregate (120 runs)
 
 Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
 
@@ -34,3 +34,33 @@ Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episod
 | dmlab_seekavoid_full | vqvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | 0.520±0.010 | 1.482±0.041 |
 | dmlab_seekavoid_full | vqvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | 0.470±0.021 | 1.682±0.082 |
 | dmlab_seekavoid_full | vqvae | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | 0.362±0.002 | 2.040±0.008 |
+| dmlab_seekavoid_full_all_policies | cvae_rnn | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | cvae_rnn | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | cvae_rnn | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | cvae_rnn | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | cvae_rnn | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_diffusion_history_conditioned_shuffle | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_diffusion_history_conditioned_shuffle | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_diffusion_history_conditioned_shuffle | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_diffusion_history_conditioned_shuffle | single_shift | 2 | 0 | 0.972±0.028 | 0.972±0.028 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_diffusion_history_conditioned_shuffle | specialization | 2 | 0 | 0.958±0.042 | 0.958±0.042 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_fitted_latent_shuffle | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_fitted_latent_shuffle | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_fitted_latent_shuffle | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_fitted_latent_shuffle | single_shift | 2 | 0 | 0.972±0.028 | 0.972±0.028 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_fitted_latent_shuffle | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_history_conditioned_shuffle | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_history_conditioned_shuffle | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_history_conditioned_shuffle | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_history_conditioned_shuffle | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | inr_transformer_history_conditioned_shuffle | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | state_action_bem | conflation | 2 | 0 | 0.917±0.028 | 0.917±0.028 | 0.472±0.028 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | state_action_bem | generalization | 2 | 0 | 0.625±0.083 | 0.625±0.083 | 0.812±0.021 | 0.979±0.021 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | state_action_bem | no_shift | 2 | 0 | 0.938±0.021 | 0.938±0.021 | 0.771±0.062 | 0.958±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | state_action_bem | single_shift | 2 | 0 | 0.750±0.083 | 0.750±0.083 | 0.583±0.083 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | state_action_bem | specialization | 2 | 0 | 0.583±0.000 | 0.583±0.000 | 0.458±0.125 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | vqvae | conflation | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | vqvae | generalization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | vqvae | no_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | vqvae | single_shift | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |
+| dmlab_seekavoid_full_all_policies | vqvae | specialization | 2 | 0 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | 1.000±0.000 | - | - | - | - |

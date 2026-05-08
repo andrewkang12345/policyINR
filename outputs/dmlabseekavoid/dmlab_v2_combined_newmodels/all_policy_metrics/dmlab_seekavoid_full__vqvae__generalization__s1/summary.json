@@ -1,0 +1,40 @@
+{
+  "data": "dmlab_seekavoid_full_all_policies",
+  "model": "vqvae",
+  "experiment": "generalization",
+  "seed": 1,
+  "n_train_episodes": 50,
+  "n_val_episodes": 10,
+  "n_test_episodes": 24,
+  "source_run_dir": "/ocean/projects/cis260099p/akang3/INR/outputs/dmlabseekavoid/dmlab_v2_combined_newmodels/dmlab_seekavoid_full__vqvae__generalization__s1",
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 24,
+    "n_classes": 2,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 24,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1
+    ],
+    "all_policy_pids": [
+      0,
+      1
+    ],
+    "n_all_policies": 2,
+    "n_train_episodes_used": 50,
+    "n_test_episodes_used": 24,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

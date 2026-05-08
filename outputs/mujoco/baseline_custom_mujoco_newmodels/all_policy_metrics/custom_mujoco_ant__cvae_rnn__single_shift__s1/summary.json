@@ -1,0 +1,43 @@
+{
+  "data": "custom_mujoco_ant_all_policies",
+  "model": "cvae_rnn",
+  "experiment": "single_shift",
+  "seed": 1,
+  "n_train_episodes": 564,
+  "n_val_episodes": 120,
+  "n_test_episodes": 77,
+  "source_run_dir": "/ocean/projects/cis260099p/akang3/INR/outputs/mujoco/baseline_custom_mujoco_newmodels/custom_mujoco_ant__cvae_rnn__single_shift__s1",
+  "eval": {
+    "probe_acc": 0.8181818181818182,
+    "n_probe": 77,
+    "n_classes": 3,
+    "probe_acc_seen": 0.8181818181818182,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.922077922077922,
+    "knn_acc5": 0.974025974025974,
+    "n_knn": 77,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1,
+      2
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 564,
+    "n_test_episodes_used": 77,
+    "n_test_ood": 36,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

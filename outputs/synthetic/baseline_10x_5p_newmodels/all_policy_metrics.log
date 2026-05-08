@@ -1,0 +1,266 @@
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__conflation_5p__s0
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__generalization_5p__s0
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__generalization_5p__s1
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__conflation_5p__s1
+[gpu3] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__generalization_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__new_policy_5p__s0
+[gpu1] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__conflation_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__new_policy_5p__s1
+[gpu2] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__generalization_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__no_shift_5p__s0
+[gpu0] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__conflation_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__no_shift_5p__s1
+[gpu3] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__new_policy_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s0
+[gpu2] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__no_shift_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s1
+[gpu1] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__new_policy_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__single_shift_5p__s0
+[gpu0] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__no_shift_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__single_shift_5p__s1
+[gpu3] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__specialization_5p__s0
+[gpu0] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__single_shift_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__specialization_5p__s1
+[gpu2] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__novel_generalization_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__conflation_5p__s0
+[gpu1] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__single_shift_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__conflation_5p__s1
+[gpu3] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__specialization_5p__s0 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__generalization_5p__s0
+[gpu0] FAIL /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__cvae_rnn__specialization_5p__s1 ::     or not torch.backends.cudnn.is_acceptable(fw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 139, in is_acceptable
+    if not _init():
+           ^^^^^^^
+  File "/home/ec2-user/mambaforge/lib/python3.12/site-packages/torch/backends/cudnn/__init__.py", line 72, in _init
+    raise RuntimeError(
+RuntimeError: cuDNN version incompatibility: PyTorch was compiled  against (9, 10, 2) but found runtime version (9, 7, 0). PyTorch already comes bundled with cuDNN. One option to resolving this error is to ensure PyTorch can find the bundled cuDNN. Looks like your LD_LIBRARY_PATH contains incompatible version of cudnn. Please either remove it from the path or install cudnn (9, 10, 2)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__generalization_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__conflation_5p__s0 (34.9s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__conflation_5p__s1 (35.1s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__new_policy_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__generalization_5p__s0 (35.1s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__no_shift_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__generalization_5p__s1 (35.4s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__no_shift_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__new_policy_5p__s0 (35.6s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__new_policy_5p__s1 (35.7s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__novel_generalization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__no_shift_5p__s0 (35.6s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__single_shift_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__no_shift_5p__s1 (35.4s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__single_shift_5p__s1
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__novel_generalization_5p__s1 (34.8s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__specialization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__novel_generalization_5p__s0 (35.3s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__specialization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__single_shift_5p__s0 (34.7s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__conflation_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__specialization_5p__s0 (35.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__conflation_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__single_shift_5p__s1 (35.5s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__generalization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_diffusion_history_conditioned_shuffle__specialization_5p__s1 (35.4s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__generalization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__conflation_5p__s0 (35.9s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__new_policy_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__generalization_5p__s1 (35.7s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__generalization_5p__s0 (36.0s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__conflation_5p__s1 (36.4s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__no_shift_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__new_policy_5p__s0 (36.4s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__novel_generalization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__new_policy_5p__s1 (37.0s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__novel_generalization_5p__s1
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__no_shift_5p__s1 (36.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__single_shift_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__no_shift_5p__s0 (37.0s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__single_shift_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__novel_generalization_5p__s0 (35.8s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__specialization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__novel_generalization_5p__s1 (35.7s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__specialization_5p__s1
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__single_shift_5p__s0 (36.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__conflation_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__single_shift_5p__s1 (37.0s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__conflation_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__specialization_5p__s0 (36.5s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__conflation_5p__s0 (35.1s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__generalization_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__conflation_5p__s1 (34.7s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__new_policy_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_fitted_latent_shuffle__specialization_5p__s1 (37.2s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__new_policy_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__generalization_5p__s0 (34.9s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__no_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__generalization_5p__s1 (35.4s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__new_policy_5p__s0 (35.5s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__novel_generalization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__new_policy_5p__s1 (35.6s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__novel_generalization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__no_shift_5p__s0 (35.2s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__single_shift_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__novel_generalization_5p__s0 (34.7s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__single_shift_5p__s1
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__no_shift_5p__s1 (35.3s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__specialization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__novel_generalization_5p__s1 (34.9s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__specialization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__single_shift_5p__s0 (35.1s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__conflation_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__single_shift_5p__s1 (35.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__conflation_5p__s1
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__specialization_5p__s0 (35.8s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__generalization_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__inr_transformer_history_conditioned_shuffle__specialization_5p__s1 (35.2s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__generalization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__conflation_5p__s0 (35.1s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__generalization_5p__s0 (34.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__new_policy_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__conflation_5p__s1 (35.8s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__no_shift_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__generalization_5p__s1 (34.9s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__no_shift_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__new_policy_5p__s0 (35.6s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__novel_generalization_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__no_shift_5p__s0 (35.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__novel_generalization_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__no_shift_5p__s1 (35.3s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__single_shift_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__new_policy_5p__s1 (35.8s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__single_shift_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__novel_generalization_5p__s0 (35.2s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__specialization_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__novel_generalization_5p__s1 (34.9s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__specialization_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__single_shift_5p__s0 (35.1s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__conflation_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__single_shift_5p__s1 (35.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__conflation_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__specialization_5p__s0 (35.1s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__generalization_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__state_action_bem__specialization_5p__s1 (36.0s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__generalization_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__conflation_5p__s0 (35.7s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__new_policy_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__conflation_5p__s1 (35.7s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__new_policy_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__generalization_5p__s0 (35.1s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__no_shift_5p__s0
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__new_policy_5p__s0 (35.2s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__no_shift_5p__s1
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__generalization_5p__s1 (35.4s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__novel_generalization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__new_policy_5p__s1 (35.6s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__novel_generalization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__no_shift_5p__s0 (35.8s)
+[gpu3] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__single_shift_5p__s0
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__novel_generalization_5p__s0 (35.3s)
+[gpu0] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__single_shift_5p__s1
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__no_shift_5p__s1 (35.8s)
+[gpu2] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__specialization_5p__s0
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__novel_generalization_5p__s1 (34.9s)
+[gpu1] START /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__specialization_5p__s1
+[gpu3] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__single_shift_5p__s0 (35.6s)
+[gpu0] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__single_shift_5p__s1 (35.2s)
+[gpu2] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__specialization_5p__s0 (35.1s)
+[gpu1] OK /mnt/data/INR/outputs/synthetic/baseline_10x_5p_newmodels/synthetic_grf_10x_5p__vqvae__specialization_5p__s1 (35.6s)

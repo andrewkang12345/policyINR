@@ -1,4 +1,4 @@
-# Aggregate (84 runs)
+# Aggregate (154 runs)
 
 Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
 
@@ -46,3 +46,38 @@ Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episod
 | synthetic_grf_10x_5p | vqvae | novel_generalization_5p | 2 | 0 | 0.533±0.067 | 0.667±0.083 | 0.456±0.078 | 0.822±0.022 | 1.127±0.125 | 0.792±0.088 | - | - |
 | synthetic_grf_10x_5p | vqvae | single_shift_5p | 2 | 0 | 0.803±0.045 | 0.803±0.045 | 0.727±0.030 | 0.909±0.000 | 0.791±0.036 | 0.615±0.043 | - | - |
 | synthetic_grf_10x_5p | vqvae | specialization_5p | 2 | 0 | 0.967±0.033 | 0.967±0.033 | 0.700±0.100 | 1.000±0.000 | 0.722±0.029 | 0.405±0.024 | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | conflation_5p | 2 | 0 | 0.818±0.000 | 0.818±0.000 | 0.788±0.121 | 0.970±0.000 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | generalization_5p | 2 | 0 | 0.556±0.044 | 0.556±0.044 | 0.422±0.000 | 0.889±0.044 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | new_policy_5p | 2 | 0 | 0.700±0.011 | 0.875±0.014 | 0.678±0.144 | 0.978±0.000 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | no_shift_5p | 2 | 0 | 0.911±0.022 | 0.911±0.022 | 0.844±0.022 | 0.989±0.011 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | novel_generalization_5p | 2 | 0 | 0.467±0.111 | 0.583±0.139 | 0.544±0.011 | 0.889±0.067 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | single_shift_5p | 2 | 0 | 0.894±0.076 | 0.894±0.076 | 0.758±0.030 | 0.955±0.015 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_diffusion_history_conditioned_shuffle | specialization_5p | 2 | 0 | 0.867±0.133 | 0.867±0.133 | 0.667±0.067 | 0.967±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | conflation_5p | 2 | 0 | 0.803±0.045 | 0.803±0.045 | 0.394±0.091 | 0.833±0.015 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | generalization_5p | 2 | 0 | 0.611±0.078 | 0.611±0.078 | 0.478±0.122 | 0.778±0.022 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | new_policy_5p | 2 | 0 | 0.711±0.000 | 0.889±0.000 | 0.589±0.011 | 0.856±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | no_shift_5p | 2 | 0 | 0.733±0.022 | 0.733±0.022 | 0.511±0.089 | 0.900±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | novel_generalization_5p | 2 | 0 | 0.489±0.000 | 0.611±0.000 | 0.367±0.033 | 0.800±0.000 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | single_shift_5p | 2 | 0 | 0.788±0.061 | 0.788±0.061 | 0.515±0.000 | 0.894±0.015 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_fitted_latent_shuffle | specialization_5p | 2 | 0 | 0.800±0.067 | 0.800±0.067 | 0.433±0.233 | 0.900±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | conflation_5p | 2 | 0 | 0.742±0.045 | 0.742±0.045 | 0.636±0.121 | 0.879±0.030 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | generalization_5p | 2 | 0 | 0.556±0.067 | 0.556±0.067 | 0.456±0.100 | 0.822±0.044 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | new_policy_5p | 2 | 0 | 0.556±0.044 | 0.694±0.056 | 0.500±0.056 | 0.778±0.089 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | no_shift_5p | 2 | 0 | 0.656±0.011 | 0.656±0.011 | 0.489±0.022 | 0.844±0.022 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | novel_generalization_5p | 2 | 0 | 0.478±0.100 | 0.597±0.125 | 0.433±0.056 | 0.856±0.056 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | single_shift_5p | 2 | 0 | 0.697±0.000 | 0.697±0.000 | 0.500±0.106 | 0.894±0.015 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | inr_transformer_history_conditioned_shuffle | specialization_5p | 2 | 0 | 0.867±0.000 | 0.867±0.000 | 0.667±0.067 | 0.967±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | conflation_5p | 2 | 0 | 0.667±0.000 | 0.667±0.000 | 0.227±0.015 | 0.818±0.061 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | generalization_5p | 2 | 0 | 0.489±0.156 | 0.489±0.156 | 0.389±0.100 | 0.844±0.022 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | new_policy_5p | 2 | 0 | 0.467±0.022 | 0.583±0.028 | 0.344±0.011 | 0.756±0.044 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | no_shift_5p | 2 | 0 | 0.600±0.000 | 0.600±0.000 | 0.433±0.011 | 0.856±0.100 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | novel_generalization_5p | 2 | 0 | 0.544±0.033 | 0.681±0.042 | 0.344±0.011 | 0.856±0.056 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | single_shift_5p | 2 | 0 | 0.530±0.106 | 0.530±0.106 | 0.348±0.015 | 0.803±0.076 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | state_action_bem | specialization_5p | 2 | 0 | 0.500±0.100 | 0.500±0.100 | 0.267±0.000 | 0.567±0.033 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | conflation_5p | 2 | 0 | 0.758±0.030 | 0.758±0.030 | 0.727±0.030 | 0.879±0.030 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | generalization_5p | 2 | 0 | 0.611±0.033 | 0.611±0.033 | 0.589±0.033 | 0.878±0.011 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | new_policy_5p | 2 | 0 | 0.622±0.000 | 0.778±0.000 | 0.567±0.033 | 0.867±0.044 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | no_shift_5p | 2 | 0 | 0.767±0.011 | 0.767±0.011 | 0.600±0.044 | 0.889±0.022 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | novel_generalization_5p | 2 | 0 | 0.533±0.067 | 0.667±0.083 | 0.456±0.078 | 0.822±0.022 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | single_shift_5p | 2 | 0 | 0.803±0.045 | 0.803±0.045 | 0.727±0.030 | 0.909±0.000 | - | - | - | - |
+| synthetic_grf_10x_5p_all_policies | vqvae | specialization_5p | 2 | 0 | 0.967±0.033 | 0.967±0.033 | 0.700±0.100 | 1.000±0.000 | - | - | - | - |

@@ -1,0 +1,49 @@
+{
+  "data": "droid_lowdim_full_balanced_min300_remove_5col_all_policies",
+  "model": "inr_diffusion_history_conditioned",
+  "experiment": "no_shift_5p",
+  "seed": 1,
+  "n_train_episodes": 421,
+  "n_val_episodes": 91,
+  "n_test_episodes": 89,
+  "source_run_dir": "/mnt/data/INR/outputs/droid/balanced_min300_remove_hk300_5col/droid_lowdim_full_balanced_min300_remove_5col__inr_diffusion_history_conditioned__no_shift_5p__s1",
+  "eval": {
+    "probe_acc": 0.7078651685393258,
+    "n_probe": 89,
+    "n_classes": 5,
+    "probe_acc_seen": 0.7078651685393258,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 0.3707865168539326,
+    "knn_acc5": 0.8314606741573034,
+    "n_knn": 89,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "test_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "n_all_policies": 5,
+    "n_train_episodes_used": 421,
+    "n_test_episodes_used": 89,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

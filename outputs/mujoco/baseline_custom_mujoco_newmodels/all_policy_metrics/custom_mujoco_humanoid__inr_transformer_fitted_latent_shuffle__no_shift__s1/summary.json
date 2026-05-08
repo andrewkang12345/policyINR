@@ -1,0 +1,43 @@
+{
+  "data": "custom_mujoco_humanoid_all_policies",
+  "model": "inr_transformer_fitted_latent_shuffle",
+  "experiment": "no_shift",
+  "seed": 1,
+  "n_train_episodes": 564,
+  "n_val_episodes": 120,
+  "n_test_episodes": 123,
+  "source_run_dir": "/ocean/projects/cis260099p/akang3/INR/outputs/mujoco/baseline_custom_mujoco_newmodels/custom_mujoco_humanoid__inr_transformer_fitted_latent_shuffle__no_shift__s1",
+  "eval": {
+    "probe_acc": 1.0,
+    "n_probe": 123,
+    "n_classes": 3,
+    "probe_acc_seen": 1.0,
+    "novel_mean_embed_dist": NaN,
+    "n_novel": 0,
+    "knn_acc1": 1.0,
+    "knn_acc5": 1.0,
+    "n_knn": 123,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1,
+      2
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 564,
+    "n_test_episodes_used": 123,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

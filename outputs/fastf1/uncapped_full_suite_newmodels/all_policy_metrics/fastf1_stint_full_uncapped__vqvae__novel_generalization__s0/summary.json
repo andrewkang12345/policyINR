@@ -1,0 +1,42 @@
+{
+  "data": "fastf1_stint_full_uncapped_all_policies",
+  "model": "vqvae",
+  "experiment": "novel_generalization",
+  "seed": 0,
+  "n_train_episodes": 18,
+  "n_val_episodes": 4,
+  "n_test_episodes": 14,
+  "source_run_dir": "/ocean/projects/cis260099p/akang3/INR/outputs/fastf1/uncapped_full_suite_newmodels/fastf1_stint_full_uncapped__vqvae__novel_generalization__s0",
+  "eval": {
+    "probe_acc": 0.42857142857142855,
+    "n_probe": 14,
+    "n_classes": 2,
+    "probe_acc_seen": 0.6666666666666666,
+    "novel_mean_embed_dist": 0.44617971777915955,
+    "n_novel": 5,
+    "knn_acc1": 0.2857142857142857,
+    "knn_acc5": 0.6428571428571429,
+    "n_knn": 14,
+    "knn_protocol": "test_leave_one_out_cosine",
+    "train_pids": [
+      0,
+      1
+    ],
+    "test_pids": [
+      0,
+      1,
+      2
+    ],
+    "all_policy_pids": [
+      0,
+      1,
+      2
+    ],
+    "n_all_policies": 3,
+    "n_train_episodes_used": 18,
+    "n_test_episodes_used": 14,
+    "n_test_ood": 0,
+    "probe_protocol": "all_valid_policies_train_probe_on_train_embeddings_eval_on_test_embeddings",
+    "probe_only": true
+  }
+}

@@ -1,4 +1,4 @@
-# Aggregate (84 runs)
+# Aggregate (168 runs)
 
 Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episodes; `probe_acc_seen` = same probe restricted to training-policy labels; `knn_acc1`/`knn_acc5` = leave-one-out cosine kNN policy accuracy on held-out eval embeddings; `gen_nmse` = MSE / target_var, scale-free (0 = perfect, 1 ≈ mean-predictor baseline); `gen_median_se` = median per-sample squared error; `deg` = degenerate runs (non-finite gen or partial finite fraction).
 
@@ -46,3 +46,45 @@ Metrics: `probe_acc` = strict train-split probe accuracy on held-out test episod
 | fastf1_stint_full_uncapped | vqvae | novel_generalization | 2 | 0 | 0.429±0.000 | 0.667±0.000 | 0.393±0.107 | 0.786±0.143 | 0.565±0.016 | 0.109±0.008 | - | - |
 | fastf1_stint_full_uncapped | vqvae | single_shift | 2 | 0 | 0.667±0.167 | 0.667±0.167 | 0.750±0.083 | 0.833±0.000 | 0.378±0.032 | 0.057±0.015 | - | - |
 | fastf1_stint_full_uncapped | vqvae | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.500±0.000 | 0.750±0.000 | 0.305±0.007 | 0.049±0.011 | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | conflation | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.438±0.062 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | generalization | 2 | 0 | 0.286±0.071 | 0.286±0.071 | 0.321±0.107 | 0.857±0.071 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | new_policy | 2 | 0 | 0.357±0.000 | 0.556±0.000 | 0.250±0.036 | 0.786±0.071 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | no_shift | 2 | 0 | 0.286±0.071 | 0.286±0.071 | 0.214±0.000 | 0.893±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | novel_generalization | 2 | 0 | 0.357±0.000 | 0.556±0.000 | 0.321±0.107 | 0.893±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | single_shift | 2 | 0 | 0.188±0.062 | 0.188±0.062 | 0.375±0.000 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | cvae_rnn | specialization | 2 | 0 | 0.333±0.000 | 0.333±0.000 | 0.000±0.000 | 0.833±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | conflation | 2 | 0 | 0.500±0.125 | 0.500±0.125 | 0.500±0.125 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | generalization | 2 | 0 | 0.143±0.000 | 0.143±0.000 | 0.321±0.250 | 0.786±0.071 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | new_policy | 2 | 0 | 0.357±0.000 | 0.556±0.000 | 0.321±0.036 | 0.786±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | no_shift | 2 | 0 | 0.321±0.036 | 0.321±0.036 | 0.321±0.036 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | novel_generalization | 2 | 0 | 0.214±0.000 | 0.333±0.000 | 0.286±0.286 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | single_shift | 2 | 0 | 0.188±0.062 | 0.188±0.062 | 0.438±0.062 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_diffusion_history_conditioned_shuffle | specialization | 2 | 0 | 0.167±0.000 | 0.167±0.000 | 0.083±0.083 | 0.833±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | conflation | 2 | 0 | 0.750±0.125 | 0.750±0.125 | 0.438±0.188 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | generalization | 2 | 0 | 0.679±0.036 | 0.679±0.036 | 0.500±0.143 | 1.000±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | new_policy | 2 | 0 | 0.607±0.036 | 0.944±0.056 | 0.429±0.143 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | no_shift | 2 | 0 | 0.500±0.071 | 0.500±0.071 | 0.464±0.107 | 0.857±0.143 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | novel_generalization | 2 | 0 | 0.536±0.036 | 0.833±0.056 | 0.464±0.107 | 0.964±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | single_shift | 2 | 0 | 0.562±0.188 | 0.562±0.188 | 0.562±0.188 | 0.812±0.062 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_fitted_latent_shuffle | specialization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.083±0.083 | 0.833±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | conflation | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.438±0.062 | 0.812±0.062 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | generalization | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.429±0.143 | 0.964±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | new_policy | 2 | 0 | 0.357±0.000 | 0.556±0.000 | 0.321±0.179 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | no_shift | 2 | 0 | 0.321±0.036 | 0.321±0.036 | 0.321±0.179 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | novel_generalization | 2 | 0 | 0.429±0.071 | 0.667±0.111 | 0.393±0.107 | 1.000±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | single_shift | 2 | 0 | 0.250±0.125 | 0.250±0.125 | 0.312±0.062 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | inr_transformer_history_conditioned_shuffle | specialization | 2 | 0 | 0.333±0.000 | 0.333±0.000 | 0.083±0.083 | 0.833±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | conflation | 2 | 0 | 0.438±0.312 | 0.438±0.312 | 0.500±0.000 | 0.875±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | generalization | 2 | 0 | 0.321±0.036 | 0.321±0.036 | 0.321±0.036 | 0.857±0.143 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | new_policy | 2 | 0 | 0.286±0.071 | 0.444±0.111 | 0.357±0.143 | 0.821±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | no_shift | 2 | 0 | 0.286±0.000 | 0.286±0.000 | 0.393±0.107 | 0.857±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | novel_generalization | 2 | 0 | 0.250±0.036 | 0.389±0.056 | 0.321±0.036 | 0.821±0.107 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | single_shift | 2 | 0 | 0.312±0.062 | 0.312±0.062 | 0.500±0.000 | 0.750±0.125 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | state_action_bem | specialization | 2 | 0 | 0.333±0.000 | 0.333±0.000 | 0.083±0.083 | 0.833±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | conflation | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.438±0.062 | 0.750±0.125 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | generalization | 2 | 0 | 0.429±0.071 | 0.429±0.071 | 0.357±0.071 | 0.786±0.071 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | new_policy | 2 | 0 | 0.393±0.036 | 0.611±0.056 | 0.250±0.036 | 0.893±0.036 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | no_shift | 2 | 0 | 0.429±0.071 | 0.429±0.071 | 0.286±0.000 | 0.857±0.000 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | novel_generalization | 2 | 0 | 0.429±0.000 | 0.667±0.000 | 0.393±0.107 | 0.786±0.143 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | single_shift | 2 | 0 | 0.500±0.000 | 0.500±0.000 | 0.500±0.125 | 0.812±0.062 | - | - | - | - |
+| fastf1_stint_full_uncapped_all_policies | vqvae | specialization | 2 | 0 | 0.500±0.167 | 0.500±0.167 | 0.250±0.083 | 0.833±0.000 | - | - | - | - |
